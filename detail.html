@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Informasi detail kuliner tradisional Makassar: deskripsi lengkap, bahan utama, profil cita rasa, dan latar belakang budaya." />
+  <title>Detail Kuliner — Mangkasara</title>
+
+  <!-- Favicon & Identitas Dokumen -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/placeholder-food.svg" />
+
+  <!-- Stylesheet Proyek Mangkasara -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <!--
+    ============================================================================
+    NAVBAR / HEADER NAVIGASI
+    ============================================================================
+  -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-link" aria-label="Mangkasara Beranda">
+        <span class="brand-wordmark">MANGKASARA</span>
+        <span class="brand-tagline">Discover the Taste of Makassar</span>
+      </a>
+
+      <button 
+        type="button" 
+        class="btn-mobile-menu" 
+        aria-label="Buka menu navigasi" 
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-menu" aria-label="Navigasi Utama">
+        <ul class="nav-list">
+          <li>
+            <a href="index.html" class="nav-link">Beranda</a>
+          </li>
+          <li>
+            <a href="explore.html" class="nav-link active">Jelajah Kuliner</a>
+          </li>
+          <li>
+            <a href="favorites.html" class="nav-link">
+              <span>Favorit</span>
+              <span class="favorites-count-badge" style="display: none;">0</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="nav-backdrop"></div>
+
+  <main>
+    <!--
+      Kontainer utama konten detail makanan.
+      Jika ID kuliner tidak ditemukan di dataset, fungsi renderNotFound()
+      pada detail.js akan mengganti isi elemen ini dengan pesan error yang ramah.
+    -->
+    <div id="detail-content-area" class="container">
+      <!--
+        ========================================================================
+        BREADCRUMB & NAVIGASI KEMBALI
+        ========================================================================
+      -->
+      <div class="detail-breadcrumb-bar">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumb-list">
+            <li><a href="index.html">Beranda</a></li>
+            <li class="breadcrumb-separator" aria-hidden="true">/</li>
+            <li><a href="explore.html">Jelajah Kuliner</a></li>
+            <li class="breadcrumb-separator" aria-hidden="true">/</li>
+            <li id="breadcrumb-food-name" class="breadcrumb-current" aria-current="page">Memuat Kuliner...</li>
+          </ol>
+        </nav>
+      </div>
+
+      <!--
+        ========================================================================
+        HERO SECTION DETAIL (FOTO & INFORMASI UTAMA)
+        ========================================================================
+      -->
+      <section class="detail-hero-grid" aria-labelledby="detail-food-title">
+        <!-- Kolom Foto Kuliner -->
+        <div class="detail-media-container">
+          <img 
+            id="detail-food-image" 
+            src="assets/images/placeholder-food.svg" 
+            alt="Foto hidangan kuliner" 
+            class="detail-image"
+          />
+        </div>
+
+        <!-- Kolom Info Header & Aksi Favorit -->
+        <div class="detail-info">
+          <div class="detail-meta-row">
+            <a id="detail-category-badge" href="explore.html" class="detail-category-badge">
+              Kategori Kuliner
+            </a>
+
+            <!-- Tombol Favorit Interaktif Halaman Detail -->
+            <button 
+              type="button" 
+              id="btn-detail-fav-toggle" 
+              class="btn-detail-favorite" 
+              aria-label="Simpan ke favorit"
+            >
+              <svg class="heart-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+              </svg>
+              <span class="btn-fav-text">Simpan ke Favorit</span>
+            </button>
+          </div>
+
+          <h1 id="detail-food-title" class="detail-title font-serif">Nama Kuliner</h1>
+          <p id="detail-food-lead" class="detail-lead">Ringkasan deskripsi kuliner.</p>
+
+          <!-- Kartu Karakteristik & Cita Rasa -->
+          <div class="detail-characteristics-card">
+            <h4>Karakteristik & Cita Rasa</h4>
+            <p id="detail-food-characteristics">Memuat karakteristik rasa...</p>
+          </div>
+        </div>
+      </section>
+
+      <!--
+        ========================================================================
+        KONTEN ENSIKLOPEDIA (DESKRIPSI, BAHAN, SEJARAH, SUMBER)
+        ========================================================================
+      -->
+      <div class="detail-content-layout">
+        <!-- Kolom Kiri: Deskripsi Lengkap & Cerita Sejarah Budaya -->
+        <div class="detail-main-text">
+          <!-- Blok Deskripsi Lengkap -->
+          <div class="detail-section-block">
+            <h2 class="detail-heading font-serif">Tentang Hidangan Ini</h2>
+            <div id="detail-food-description" class="detail-prose">
+              <p>Memuat deskripsi kuliner...</p>
+            </div>
+          </div>
+
+          <!--
+            Blok Sejarah & Latar Belakang Budaya.
+            PENTING: Elemen ini disembunyikan secara default (display: none)
+            dan HANYA dimunculkan oleh detail.js jika food.history tidak null!
+          -->
+          <div id="detail-history-block" class="detail-section-block" style="display: none;">
+            <div class="detail-history-box">
+              <h3 class="font-serif">
+                <span aria-hidden="true">🏛️</span>
+                <span>Sejarah & Latar Belakang Budaya</span>
+              </h3>
+              <p id="detail-food-history" class="detail-prose" style="margin-top: 10px;"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kolom Kanan: Bahan Utama & Referensi Sumber -->
+        <aside class="detail-sidebar" aria-label="Informasi Bahan dan Sumber">
+          <!-- Kotak Bahan-Bahan Utama -->
+          <div class="sidebar-box">
+            <h3 class="sidebar-box-title font-serif">
+              <span aria-hidden="true">🧂</span>
+              <span>Bahan Utama</span>
+            </h3>
+            <ul id="detail-ingredients-list" class="ingredients-list">
+              <li class="text-muted">Memuat daftar bahan...</li>
+            </ul>
+          </div>
+
+          <!--
+            Kotak Referensi Informasi / Sumber.
+            PENTING: Elemen ini disembunyikan secara default
+            dan HANYA ditampilkan oleh detail.js jika array sources terisi!
+          -->
+          <div id="detail-sources-block" class="sidebar-box" style="display: none;">
+            <h3 class="sidebar-box-title font-serif">
+              <span aria-hidden="true">📖</span>
+              <span>Referensi & Sumber</span>
+            </h3>
+            <ul id="detail-sources-list" class="sources-list"></ul>
+          </div>
+        </aside>
+      </div>
+
+      <!--
+        ========================================================================
+        REKOMENDASI KULINER TERKAIT
+        ========================================================================
+      -->
+      <section class="section" style="padding-top: 24px; border-top: 1px solid var(--color-border);" aria-labelledby="related-heading">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px;">
+          <div>
+            <span class="section-badge">Kategori Serupa</span>
+            <h2 id="related-heading" class="font-serif" style="font-size: 1.8rem;">Kuliner Terkait</h2>
+          </div>
+          <a href="explore.html" class="btn btn-secondary btn-sm">
+            <span>Lihat Semua Kuliner</span>
+          </a>
+        </div>
+
+        <!-- Grid kuliner terkait (diisi oleh detail.js) -->
+        <div id="related-foods-grid" class="food-grid"></div>
+      </section>
+    </div>
+  </main>
+
+  <!--
+    ============================================================================
+    FOOTER
+    ============================================================================
+  -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3 class="font-serif">MANGKASARA</h3>
+          <div class="footer-tagline">Discover the Taste of Makassar</div>
+          <p class="footer-desc">
+            Platform eksplorasi dan ensiklopedia kuliner tradisional Makassar. Mengabadikan cita rasa otentik, resep turun-temurun, dan cerita budaya Nusantara.
+          </p>
+        </div>
+
+        <div class="footer-nav">
+          <h4 class="footer-heading">Halaman</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="explore.html">Jelajah Kuliner</a></li>
+            <li><a href="favorites.html">Koleksi Favorit</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-categories">
+          <h4 class="footer-heading">Kategori</h4>
+          <ul class="footer-links">
+            <li><a href="explore.html?category=1">Hidangan Berkuah</a></li>
+            <li><a href="explore.html?category=2">Makanan Utama</a></li>
+            <li><a href="explore.html?category=3">Olahan Ikan & Seafood</a></li>
+            <li><a href="explore.html?category=4">Camilan & Jajanan</a></li>
+            <li><a href="explore.html?category=5">Kue & Hidangan Manis</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 <strong>Mangkasara</strong>. Hak Cipta Dilindungi.</div>
+        <div>Dokumentasi Kuliner Tradisional Kota Makassar, Sulawesi Selatan.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Skrip JavaScript -->
+  <script src="js/data/categories.js"></script>
+  <script src="js/data/foods.js"></script>
+  <script src="js/utils/storage.js"></script>
+  <script src="js/components/food-card.js"></script>
+  <script src="js/components/navbar.js"></script>
+  <script src="js/pages/detail.js"></script>
+
+</body>
+</html>

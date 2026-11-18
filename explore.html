@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jelajahi seluruh koleksi kuliner tradisional Makassar. Cari berdasarkan nama hidangan atau filter menurut lima kategori otentik." />
+  <title>Jelajah Kuliner — Mangkasara</title>
+
+  <!-- Favicon & Identitas Dokumen -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/placeholder-food.svg" />
+
+  <!-- Stylesheet Proyek Mangkasara -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <!--
+    ============================================================================
+    NAVBAR / HEADER NAVIGASI
+    ============================================================================
+  -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-link" aria-label="Mangkasara Beranda">
+        <span class="brand-wordmark">MANGKASARA</span>
+        <span class="brand-tagline">Discover the Taste of Makassar</span>
+      </a>
+
+      <button 
+        type="button" 
+        class="btn-mobile-menu" 
+        aria-label="Buka menu navigasi" 
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-menu" aria-label="Navigasi Utama">
+        <ul class="nav-list">
+          <li>
+            <a href="index.html" class="nav-link">Beranda</a>
+          </li>
+          <li>
+            <a href="explore.html" class="nav-link active">Jelajah Kuliner</a>
+          </li>
+          <li>
+            <a href="favorites.html" class="nav-link">
+              <span>Favorit</span>
+              <span class="favorites-count-badge" style="display: none;">0</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="nav-backdrop"></div>
+
+  <main class="section">
+    <div class="container">
+      <!--
+        ========================================================================
+        HEADER HALAMAN EXPLORE
+        ========================================================================
+      -->
+      <div class="section-header" style="text-align: left; max-width: 100%; margin-bottom: 32px;">
+        <span class="section-badge">Koleksi Lengkap</span>
+        <h1 class="section-title">Jelajahi Kuliner Makassar</h1>
+        <p class="section-subtitle" style="max-width: 720px;">
+          Telusuri aneka hidangan berkuah kaya rempah, olahan ikan segar Selat Makassar, kudapan renyah, hingga kue tradisional manis khas Bugis-Makassar.
+        </p>
+      </div>
+
+      <!--
+        ========================================================================
+        EXPLORE TOOLBAR (PENCARIAN, FILTER KATEGORI, RESET, RANDOM)
+        ========================================================================
+        Area kontrol interaktif pengguna untuk menyaring dan menemukan makanan.
+      -->
+      <div class="explore-toolbar">
+        <!-- Baris 1: Kolom Input Pencarian dan Tombol Random Culinary -->
+        <div class="explore-search-row">
+          <div class="search-input-wrapper">
+            <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input 
+              type="text" 
+              id="search-input" 
+              class="search-input" 
+              placeholder="Cari nama makanan (contoh: coto, konro, pisang)..." 
+              aria-label="Cari nama makanan tradisional"
+              autocomplete="off"
+            />
+            <button 
+              type="button" 
+              id="btn-clear-search" 
+              class="btn-clear-search" 
+              aria-label="Bersihkan pencarian"
+              title="Bersihkan teks"
+            >
+              ✕
+            </button>
+          </div>
+
+          <div class="toolbar-actions">
+            <button 
+              type="button" 
+              id="btn-random-culinary" 
+              class="btn btn-secondary" 
+              title="Pilih satu makanan acak"
+            >
+              <span aria-hidden="true">🎲</span>
+              <span>Pilihan Acak</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Baris 2: Tombol Pill Kategori dan Tombol Reset Filter -->
+        <div class="category-filter-wrapper">
+          <!-- Tombol-tombol pill kategori digenerate oleh explore.js -->
+          <div id="category-pills-list" class="category-pills-list" role="tablist" aria-label="Filter Kategori"></div>
+
+          <button 
+            type="button" 
+            id="btn-reset-filter" 
+            class="btn-reset-filter" 
+            title="Kembalikan semua filter ke awal"
+          >
+            <span aria-hidden="true">↺</span>
+            <span>Reset Filter</span>
+          </button>
+        </div>
+      </div>
+
+      <!--
+        ========================================================================
+        BARIS STATUS JUMLAH HASIL PENCARIAN
+        ========================================================================
+      -->
+      <div id="explore-results-status" class="explore-results-status" aria-live="polite">
+        <span>Menampilkan <strong>25</strong> kuliner tradisional</span>
+      </div>
+
+      <!--
+        ========================================================================
+        GRID DAFTAR MAKANAN (FOOD GRID)
+        ========================================================================
+        Elemen kontainer yang akan diisi secara dinamis oleh updateFoodDisplay()
+        di explore.js. Menampilkan kartu makanan atau Empty State jika tidak ada hasil.
+      -->
+      <div id="explore-food-list" class="food-grid"></div>
+    </div>
+  </main>
+
+  <!--
+    ============================================================================
+    MODAL RANDOM CULINARY (REKOMENDASI ACAK)
+    ============================================================================
+    Dialog pop-up yang muncul ketika pengguna menekan tombol "Pilihan Acak".
+  -->
+  <div id="random-modal-backdrop" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-food-title">
+      <button type="button" id="btn-close-modal" class="modal-close-btn" aria-label="Tutup jendela pop-up">
+        ✕
+      </button>
+
+      <div class="modal-media">
+        <img 
+          id="modal-food-image" 
+          src="assets/images/placeholder-food.svg" 
+          alt="Foto makanan acak" 
+          class="modal-image" 
+        />
+      </div>
+
+      <div class="modal-body">
+        <span id="modal-food-category" class="modal-header-badge">Kategori</span>
+        <h3 id="modal-food-title" class="modal-title font-serif">Nama Makanan</h3>
+        <p id="modal-food-desc" class="modal-desc">Deskripsi singkat makanan.</p>
+
+        <div class="modal-actions">
+          <a id="modal-food-detail-link" href="#" class="btn btn-primary" style="flex: 1;">
+            <span>Lihat Detail Lengkap</span>
+            <svg class="arrow-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+          <button type="button" id="btn-random-try-again" class="btn btn-secondary">
+            <span aria-hidden="true">🔄</span>
+            <span>Pilih Lainnya</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--
+    ============================================================================
+    FOOTER
+    ============================================================================
+  -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3 class="font-serif">MANGKASARA</h3>
+          <div class="footer-tagline">Discover the Taste of Makassar</div>
+          <p class="footer-desc">
+            Platform eksplorasi dan ensiklopedia kuliner tradisional Makassar. Mengabadikan cita rasa otentik, resep turun-temurun, dan cerita budaya Nusantara.
+          </p>
+        </div>
+
+        <div class="footer-nav">
+          <h4 class="footer-heading">Halaman</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="explore.html">Jelajah Kuliner</a></li>
+            <li><a href="favorites.html">Koleksi Favorit</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-categories">
+          <h4 class="footer-heading">Kategori</h4>
+          <ul class="footer-links">
+            <li><a href="explore.html?category=1">Hidangan Berkuah</a></li>
+            <li><a href="explore.html?category=2">Makanan Utama</a></li>
+            <li><a href="explore.html?category=3">Olahan Ikan & Seafood</a></li>
+            <li><a href="explore.html?category=4">Camilan & Jajanan</a></li>
+            <li><a href="explore.html?category=5">Kue & Hidangan Manis</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 <strong>Mangkasara</strong>. Hak Cipta Dilindungi.</div>
+        <div>Dokumentasi Kuliner Tradisional Kota Makassar, Sulawesi Selatan.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Skrip JavaScript -->
+  <script src="js/data/categories.js"></script>
+  <script src="js/data/foods.js"></script>
+  <script src="js/utils/storage.js"></script>
+  <script src="js/utils/filters.js"></script>
+  <script src="js/components/food-card.js"></script>
+  <script src="js/components/navbar.js"></script>
+  <script src="js/pages/explore.js"></script>
+
+</body>
+</html>

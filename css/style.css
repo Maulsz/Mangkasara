@@ -1,0 +1,307 @@
+/**
+ * ==============================================================================
+ * MANGKASARA — STYLESHEET UTAMA & DESIGN SYSTEM
+ * ==============================================================================
+ * File ini mendefinisikan:
+ * 1. Design Tokens (Variabel CSS untuk warna, font, radius, dan bayangan).
+ * 2. CSS Reset modern untuk konsistensi antar-browser.
+ * 3. Tipografi hirarki (Playfair Display untuk judul, DM Sans untuk teks isi).
+ * 4. Komposisi layout container dan section grid.
+ * ==============================================================================
+ */
+
+/* -------------------------------------------------------------------------- */
+/* 1. IMPOR FONT EKSTERNAL (GOOGLE FONTS DENGAN FALLBACK AMAN)                 */
+/* -------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+/* -------------------------------------------------------------------------- */
+/* 2. DESIGN TOKENS (CSS VARIABLES)                                           */
+/* -------------------------------------------------------------------------- */
+/*
+  CSS Custom Properties (:root) memungkinkan kita menggunakan nilai warna
+  yang seragam di seluruh aplikasi. Jika ada penyesuaian tema di kemudian hari,
+  tim hanya perlu memperbarui nilai variabel di blok ini.
+*/
+:root {
+  /* Palet Warna Mandatori Sesuai PRD */
+  --color-bg: #FBF9F5;              /* Warm cream: Latar belakang utama halaman */
+  --color-section: #F5EFE6;         /* Soft beige: Latar belakang section alternatif */
+  --color-primary: #BD6249;         /* Terracotta: Warna aksen brand utama */
+  --color-primary-soft: #D18A70;    /* Muted terracotta: Aksen lembut untuk hover/tag */
+  --color-text: #302821;            /* Dark brown: Teks utama dengan kontras tinggi */
+  --color-muted: #82786F;           /* Warm gray: Teks sekunder, deskripsi, & placeholder */
+  --color-border: #E9E2D9;          /* Soft beige-gray: Garis batas kartu dan pemisah */
+  --color-footer: #2D2621;          /* Deep brown: Latar belakang footer elegan */
+  --color-footer-text: #F7F2EA;     /* Warm white: Teks di atas latar gelap footer */
+
+  /* Warna Tambahan Pendukung Interaksi */
+  --color-white: #FFFFFF;
+  --color-danger: #C0392B;
+  --color-danger-bg: #FDEDEC;
+  --color-success: #27AE60;
+
+  /* Font Families */
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Spasi dan Layout */
+  --container-max-width: 1200px;
+  --header-height: 76px;
+  
+  /* Efek Bayangan (Box Shadows) yang Halus */
+  --shadow-subtle: 0 2px 8px rgba(48, 40, 33, 0.04);
+  --shadow-card: 0 4px 20px rgba(48, 40, 33, 0.06);
+  --shadow-hover: 0 10px 30px rgba(189, 98, 73, 0.12);
+  --shadow-modal: 0 20px 40px rgba(45, 38, 33, 0.25);
+
+  /* Radius Sudut (Border Radius) yang Lembut */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+
+  /* Transisi Halus */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 3. MODERN CSS RESET                                                        */
+/* -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+img,
+picture,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 4. TIPOGRAFI HIRARKI (EDITORIAL CULINARY STYLE)                            */
+/* -------------------------------------------------------------------------- */
+h1, h2, h3, h4, .font-serif {
+  font-family: var(--font-serif);
+  color: var(--color-text);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 4vw + 1rem, 3.5rem);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 2.5vw + 0.8rem, 2.4rem);
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+h4 {
+  font-size: 1.15rem;
+}
+
+p {
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.text-muted {
+  color: var(--color-muted);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 5. STRUKTUR CONTAINER & SECTION                                            */
+/* -------------------------------------------------------------------------- */
+/*
+  Container digunakan untuk membungkus konten utama agar tidak melebar
+  melebihi batas maksimal layar lebar (1200px) dan memiliki padding kiri-kanan
+  yang nyaman di layar mobile.
+*/
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.section {
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+.section-alt {
+  background-color: var(--color-section);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 48px;
+}
+
+.section-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-primary);
+  background-color: rgba(189, 98, 73, 0.08);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  margin-bottom: 14px;
+}
+
+.section-title {
+  margin-bottom: 14px;
+}
+
+.section-subtitle {
+  color: var(--color-muted);
+  font-size: 1.05rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 6. TOMBOL (BUTTONS)                                                        */
+/* -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--color-primary-soft);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(189, 98, 73, 0.25);
+}
+
+.btn-primary:hover {
+  background-color: #A9533B;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(189, 98, 73, 0.35);
+}
+
+.btn-secondary {
+  background-color: #FFFFFF;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-section);
+  border-color: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+.btn-outline {
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+}
+
+.btn-lg {
+  padding: 14px 30px;
+  font-size: 1.05rem;
+}

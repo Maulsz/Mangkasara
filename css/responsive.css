@@ -1,0 +1,254 @@
+/**
+ * ==============================================================================
+ * MANGKASARA — STYLESHEET RESPONSIVE
+ * ==============================================================================
+ * File ini mengatur penyesuaian tata letak untuk berbagai ukuran perangkat:
+ * 1. Tablet & Layar Menengah (max-width: 1024px & max-width: 860px).
+ * 2. Mobile & Smartphone (max-width: 768px).
+ * 3. Smartphone Kecil (max-width: 480px).
+ *
+ * Prinsip:
+ * - Mencegah overflow horizontal (`overflow-x`).
+ * - Menjaga keterbacaan tipografi di layar kecil.
+ * - Memastikan area sentuh (touch targets) tombol nyaman digunakan di HP (min 44x44px).
+ * ==============================================================================
+ */
+
+/* -------------------------------------------------------------------------- */
+/* 1. TABLET & LAPTOP KECIL (MAX-WIDTH: 1024px)                               */
+/* -------------------------------------------------------------------------- */
+@media screen and (max-width: 1024px) {
+  .food-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .categories-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .pillars-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .detail-content-layout {
+    grid-template-columns: 1.5fr 1fr;
+    gap: 32px;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 2. TABLET POTRAIT & MOBILE BESAR (MAX-WIDTH: 860px)                        */
+/* -------------------------------------------------------------------------- */
+@media screen and (max-width: 860px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-floating-card {
+    left: 20px;
+    bottom: -15px;
+  }
+
+  .detail-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .detail-content-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 3. MOBILE SMARTPHONE (MAX-WIDTH: 768px)                                    */
+/* -------------------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+  /* Pengaturan Navigasi Drawer Mobile */
+  .btn-mobile-menu {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background-color: #FFFFFF;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 88px 28px 40px;
+    box-shadow: -10px 0 30px rgba(45, 38, 33, 0.15);
+    transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 99;
+  }
+
+  .nav-menu.is-open {
+    right: 0;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 20px;
+  }
+
+  .nav-link {
+    font-size: 1.15rem;
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .nav-link.active::after {
+    display: none;
+  }
+
+  .nav-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(45, 38, 33, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 98;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .nav-backdrop.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Grid Makanan Mobile (1 Kolom Penuh) */
+  .food-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* Grid Kategori Mobile (2 Kolom) */
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  /* Toolbar Explore di Mobile */
+  .explore-search-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .toolbar-actions {
+    width: 100%;
+  }
+
+  .toolbar-actions .btn {
+    flex: 1;
+  }
+
+  .category-filter-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .category-pills-list {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .btn-category-pill {
+    flex-shrink: 0;
+  }
+
+  /* Detail Halaman */
+  .detail-main-text {
+    padding: 24px 20px;
+  }
+
+  /* Modal Mobile */
+  .modal-dialog {
+    margin: 16px;
+  }
+
+  .modal-body {
+    padding: 20px;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .modal-actions .btn {
+    width: 100%;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 4. SMARTPHONE KECIL (MAX-WIDTH: 480px)                                     */
+/* -------------------------------------------------------------------------- */
+@media screen and (max-width: 480px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .section {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .hero-title {
+    font-size: 2.1rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .hero-floating-card {
+    position: static;
+    margin-top: 14px;
+    max-width: 100%;
+  }
+
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .editorial-quote-box {
+    padding: 32px 18px;
+  }
+
+  .editorial-text {
+    font-size: 1.15rem;
+  }
+}
