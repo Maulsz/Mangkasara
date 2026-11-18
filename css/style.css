@@ -5,8 +5,9 @@
  * File ini mendefinisikan:
  * 1. Design Tokens (Variabel CSS untuk warna, font, radius, dan bayangan).
  * 2. CSS Reset modern untuk konsistensi antar-browser.
- * 3. Tipografi hirarki (Playfair Display untuk judul, DM Sans untuk teks isi).
+ * 3. Tipografi hirarki editorial (Playfair Display untuk judul, DM Sans untuk teks isi).
  * 4. Komposisi layout container dan section grid.
+ * 5. Indikator garis progres navigasi & animasi entrance halus.
  * ==============================================================================
  */
 
@@ -18,11 +19,6 @@
 /* -------------------------------------------------------------------------- */
 /* 2. DESIGN TOKENS (CSS VARIABLES)                                           */
 /* -------------------------------------------------------------------------- */
-/*
-  CSS Custom Properties (:root) memungkinkan kita menggunakan nilai warna
-  yang seragam di seluruh aplikasi. Jika ada penyesuaian tema di kemudian hari,
-  tim hanya perlu memperbarui nilai variabel di blok ini.
-*/
 :root {
   /* Palet Warna Mandatori Sesuai PRD */
   --color-bg: #FBF9F5;              /* Warm cream: Latar belakang utama halaman */
@@ -49,25 +45,25 @@
   --container-max-width: 1200px;
   --header-height: 76px;
   
-  /* Efek Bayangan (Box Shadows) yang Halus */
-  --shadow-subtle: 0 2px 8px rgba(48, 40, 33, 0.04);
-  --shadow-card: 0 4px 20px rgba(48, 40, 33, 0.06);
-  --shadow-hover: 0 10px 30px rgba(189, 98, 73, 0.12);
-  --shadow-modal: 0 20px 40px rgba(45, 38, 33, 0.25);
+  /* Efek Bayangan Lembut & Halus (Restrained Shadows) */
+  --shadow-subtle: 0 1px 4px rgba(48, 40, 33, 0.03);
+  --shadow-card: 0 3px 12px rgba(48, 40, 33, 0.05);
+  --shadow-hover: 0 8px 24px rgba(189, 98, 73, 0.09);
+  --shadow-modal: 0 16px 40px rgba(45, 38, 33, 0.2);
 
-  /* Radius Sudut (Border Radius) yang Lembut */
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
+  /* Radius Sudut (Border Radius) Elegan */
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
   --radius-full: 9999px;
 
   /* Transisi Halus */
-  --transition-fast: 0.2s ease;
-  --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.18s ease;
+  --transition-normal: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* -------------------------------------------------------------------------- */
-/* 3. MODERN CSS RESET                                                        */
+/* 3. MODERN CSS RESET & AKSESIBILITAS                                        */
 /* -------------------------------------------------------------------------- */
 *,
 *::before,
@@ -136,7 +132,67 @@ ol {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 4. TIPOGRAFI HIRARKI (EDITORIAL CULINARY STYLE)                            */
+/* 4. INDIKATOR PROGRES NAVIGASI & ANIMASI ENTRANCE                           */
+/* -------------------------------------------------------------------------- */
+/*
+  Garis terracotta sangat tipis di bagian atas viewport saat navigasi antar-halaman.
+  Memberikan kepastian visual responsif tanpa menutupi konten (non-blocking).
+*/
+#page-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2.5px;
+  width: 0%;
+  background-color: var(--color-primary);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: width 0.28s cubic-bezier(0.1, 0.8, 0.2, 1), opacity 0.18s ease;
+}
+
+#page-progress-bar.is-active {
+  opacity: 1;
+}
+
+/* Animasi masuk konten halaman (halus, singkat, tanpa layout shift) */
+.page-content-enter {
+  animation: pageEntrance 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pageEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dukungan Aksesibilitas prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  .page-content-enter {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  #page-progress-bar {
+    transition: none !important;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 5. TIPOGRAFI HIRARKI (EDITORIAL CULINARY STYLE)                            */
 /* -------------------------------------------------------------------------- */
 h1, h2, h3, h4, .font-serif {
   font-family: var(--font-serif);
@@ -151,16 +207,16 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(1.8rem, 2.5vw + 0.8rem, 2.4rem);
+  font-size: clamp(1.75rem, 2.5vw + 0.8rem, 2.35rem);
   letter-spacing: -0.01em;
 }
 
 h3 {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
 }
 
 h4 {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
 }
 
 p {
@@ -181,13 +237,8 @@ p:last-child {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 5. STRUKTUR CONTAINER & SECTION                                            */
+/* 6. STRUKTUR CONTAINER & SECTION                                            */
 /* -------------------------------------------------------------------------- */
-/*
-  Container digunakan untuk membungkus konten utama agar tidak melebar
-  melebihi batas maksimal layar lebar (1200px) dan memiliki padding kiri-kanan
-  yang nyaman di layar mobile.
-*/
 .container {
   width: 100%;
   max-width: var(--container-max-width);
@@ -198,8 +249,8 @@ p:last-child {
 }
 
 .section {
-  padding-top: 72px;
-  padding-bottom: 72px;
+  padding-top: 64px;
+  padding-bottom: 64px;
 }
 
 .section-alt {
@@ -213,41 +264,44 @@ p:last-child {
   max-width: 680px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 48px;
+  margin-bottom: 44px;
 }
 
+/* Badge kategori/seksi editorial bersih (tanpa dekorasi berlebihan) */
 .section-badge {
   display: inline-block;
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--color-primary);
-  background-color: rgba(189, 98, 73, 0.08);
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
-  margin-bottom: 14px;
+  background-color: rgba(189, 98, 73, 0.07);
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+  border: 1px solid rgba(189, 98, 73, 0.14);
 }
 
 .section-title {
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .section-subtitle {
   color: var(--color-muted);
-  font-size: 1.05rem;
+  font-size: 1.02rem;
+  line-height: 1.6;
 }
 
 /* -------------------------------------------------------------------------- */
-/* 6. TOMBOL (BUTTONS)                                                        */
+/* 7. TOMBOL (BUTTONS)                                                        */
 /* -------------------------------------------------------------------------- */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 12px 24px;
-  font-size: 0.95rem;
+  gap: 8px;
+  padding: 11px 22px;
+  font-size: 0.92rem;
   font-weight: 500;
   border-radius: var(--radius-full);
   transition: all var(--transition-fast);
@@ -256,21 +310,21 @@ p:last-child {
 }
 
 .btn:focus-visible {
-  outline: 3px solid var(--color-primary-soft);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
 .btn-primary {
   background-color: var(--color-primary);
   color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(189, 98, 73, 0.25);
+  box-shadow: 0 2px 8px rgba(189, 98, 73, 0.2);
 }
 
 .btn-primary:hover {
   background-color: #A9533B;
   color: #FFFFFF;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(189, 98, 73, 0.35);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(189, 98, 73, 0.28);
 }
 
 .btn-secondary {
@@ -297,11 +351,11 @@ p:last-child {
 }
 
 .btn-sm {
-  padding: 8px 16px;
-  font-size: 0.85rem;
+  padding: 7px 14px;
+  font-size: 0.82rem;
 }
 
 .btn-lg {
-  padding: 14px 30px;
-  font-size: 1.05rem;
+  padding: 13px 26px;
+  font-size: 1rem;
 }

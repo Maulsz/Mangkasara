@@ -1,17 +1,19 @@
 /**
  * ==============================================================================
- * MANGKASARA — STYLESHEET KOMPONEN UI
+ * MANGKASARA — STYLESHEET KOMPONEN UI (REFINED EDITORIAL STYLE)
  * ==============================================================================
- * File ini mengatur gaya tampilan untuk komponen-komponen antarmuka:
+ * Mengatur gaya tampilan antarmuka yang bersih, elegan, dan profesional:
  * 1. Navbar & Header Navigasi.
- * 2. Food Card (Kartu Makanan) & Tag Kuliner.
- * 3. Category Card (Kartu Kategori).
- * 4. Hero Section & Media Komposisi.
- * 5. Explore Toolbar (Pencarian & Pill Filter Kategori).
- * 6. Modal / Pop-up Random Culinary.
- * 7. Halaman Detail Kuliner (Hero, Bahan, Cerita Budaya, Sumber).
- * 8. Halaman Favorit (Empty State & Manajemen Koleksi).
- * 9. Footer Editorial.
+ * 2. Hero Section & Media Komposisi Fotografi.
+ * 3. Pilar Pengenalan Nilai Budaya (Editorial Numbering).
+ * 4. Food Card (Kartu Makanan) & Badge Kategori Netral.
+ * 5. Kategori Kuliner Editorial (01 - 05, tanpa emoji).
+ * 6. Kutipan Budaya Editorial.
+ * 7. Explore Toolbar (Pencarian & Pill Filter Kategori).
+ * 8. Empty State Minimalis & Modal Random Culinary.
+ * 9. Halaman Detail Kuliner (Ensiklopedia).
+ * 10. Halaman Favorit (Koleksi Tersimpan).
+ * 11. Footer Editorial.
  * ==============================================================================
  */
 
@@ -22,7 +24,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: rgba(251, 249, 245, 0.95);
+  background-color: rgba(251, 249, 245, 0.96);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--color-border);
@@ -35,6 +37,7 @@
   align-items: center;
   justify-content: space-between;
   height: 100%;
+  position: relative;
 }
 
 /* Brand Wordmark Mangkasara */
@@ -46,17 +49,17 @@
 
 .brand-wordmark {
   font-family: var(--font-serif);
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--color-text);
   line-height: 1;
 }
 
 .brand-tagline {
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.15em;
   color: var(--color-primary);
   font-weight: 600;
   margin-top: 3px;
@@ -72,15 +75,15 @@
 .nav-list {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 24px;
 }
 
 .nav-link {
   position: relative;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 500;
   color: var(--color-muted);
-  padding: 8px 0;
+  padding: 6px 0;
   transition: color var(--transition-fast);
   display: inline-flex;
   align-items: center;
@@ -96,7 +99,6 @@
   font-weight: 600;
 }
 
-/* Garis bawah animasi untuk link aktif */
 .nav-link.active::after {
   content: '';
   position: absolute;
@@ -116,7 +118,7 @@
   min-width: 18px;
   height: 18px;
   padding: 0 5px;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
   color: #FFFFFF;
   background-color: var(--color-primary);
@@ -126,7 +128,7 @@
 
 /* Tombol Hamburger Menu Mobile */
 .btn-mobile-menu {
-  display: none; /* Disembunyikan di desktop */
+  display: none;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
@@ -144,7 +146,7 @@
   height: 2px;
   background-color: var(--color-text);
   border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
 .btn-mobile-menu.is-active span:nth-child(1) {
@@ -157,16 +159,12 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
-.nav-backdrop {
-  display: none;
-}
-
 /* -------------------------------------------------------------------------- */
 /* 2. HERO SECTION HOMEPAGE                                                   */
 /* -------------------------------------------------------------------------- */
 .hero-section {
-  padding-top: 56px;
-  padding-bottom: 72px;
+  padding-top: 52px;
+  padding-bottom: 68px;
   overflow: hidden;
 }
 
@@ -182,21 +180,21 @@
 }
 
 .hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.85rem;
+  display: inline-block;
+  font-size: 0.78rem;
   font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--color-primary);
   background-color: rgba(189, 98, 73, 0.08);
   border: 1px solid rgba(189, 98, 73, 0.18);
-  padding: 6px 16px;
-  border-radius: var(--radius-full);
-  margin-bottom: 20px;
+  padding: 5px 14px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 18px;
 }
 
 .hero-title {
-  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+  font-size: clamp(2.4rem, 4.2vw, 3.5rem);
   line-height: 1.15;
   margin-bottom: 20px;
   color: var(--color-text);
@@ -208,7 +206,7 @@
 }
 
 .hero-description {
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   color: var(--color-muted);
   line-height: 1.65;
   margin-bottom: 32px;
@@ -217,7 +215,7 @@
 .hero-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
@@ -233,64 +231,61 @@
   box-shadow: var(--shadow-card);
   border: 1px solid var(--color-border);
   background-color: var(--color-section);
-  aspect-ratio: 4 / 3.8;
+  aspect-ratio: 4 / 3.7;
 }
 
 .hero-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-image-wrapper:hover .hero-image {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
-/* Badge Mengambang pada Hero Media */
+/* Kartu Mengambang Minimalis pada Hero Media */
 .hero-floating-card {
   position: absolute;
-  bottom: -20px;
-  left: -20px;
+  bottom: -16px;
+  left: -16px;
   background-color: #FFFFFF;
-  padding: 14px 20px;
+  padding: 12px 18px;
   border-radius: var(--radius-md);
-  box-shadow: 0 10px 25px rgba(48, 40, 33, 0.1);
+  box-shadow: 0 8px 24px rgba(48, 40, 33, 0.08);
   border: 1px solid var(--color-border);
   display: flex;
   align-items: center;
   gap: 12px;
-  max-width: 260px;
+  max-width: 270px;
 }
 
-.floating-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-full);
-  background-color: rgba(189, 98, 73, 0.1);
-  color: var(--color-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
+.floating-accent-line {
+  width: 3px;
+  height: 32px;
+  border-radius: 2px;
+  background-color: var(--color-primary);
   flex-shrink: 0;
 }
 
 .floating-text h4 {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-family: var(--font-sans);
   font-weight: 700;
   margin-bottom: 2px;
+  color: var(--color-text);
 }
 
 .floating-text p {
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   color: var(--color-muted);
   margin: 0;
+  line-height: 1.4;
 }
 
 /* -------------------------------------------------------------------------- */
-/* 3. INTRODUCTION / PILLARS SECTION                                          */
+/* 3. INTRODUCTION / PILLARS SECTION (EDITORIAL NUMBERING)                    */
 /* -------------------------------------------------------------------------- */
 .pillars-grid {
   display: grid;
@@ -304,31 +299,31 @@
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-subtle);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  display: flex;
+  flex-direction: column;
 }
 
 .pillar-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card);
+  transform: translateY(-3px);
   border-color: var(--color-primary-soft);
+  box-shadow: var(--shadow-card);
 }
 
-.pillar-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: var(--radius-md);
-  background-color: var(--color-section);
+.pillar-num {
+  font-size: 1.6rem;
+  font-family: var(--font-serif);
+  font-weight: 700;
   color: var(--color-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
+  display: block;
+  letter-spacing: 0.04em;
 }
 
 .pillar-title {
   font-size: 1.25rem;
   margin-bottom: 10px;
+  color: var(--color-text);
 }
 
 .pillar-desc {
@@ -340,15 +335,10 @@
 /* -------------------------------------------------------------------------- */
 /* 4. FOOD CARD COMPONENT (KARTU KULINER)                                     */
 /* -------------------------------------------------------------------------- */
-/*
-  CSS Grid untuk kumpulan kartu makanan.
-  Menggunakan repeat(auto-fill, minmax(320px, 1fr)) agar jumlah kolom
-  menyesuaikan lebar layar secara fleksibel.
-*/
 .food-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 28px;
 }
 
 .food-card {
@@ -364,7 +354,7 @@
 }
 
 .food-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-hover);
   border-color: var(--color-primary-soft);
 }
@@ -387,76 +377,85 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .food-card:hover .food-card-image {
-  transform: scale(1.06);
+  transform: scale(1.03);
 }
 
+/* Lencana Kategori Refined (Editorial Minimalis) */
 .food-category-badge {
   position: absolute;
-  top: 14px;
-  left: 14px;
-  background-color: rgba(45, 38, 33, 0.85);
-  backdrop-filter: blur(4px);
-  color: #FFFFFF;
+  top: 12px;
+  left: 12px;
+  background-color: rgba(251, 249, 245, 0.94);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--color-primary);
   font-size: 0.72rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  padding: 5px 12px;
-  border-radius: var(--radius-full);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(233, 226, 217, 0.9);
   z-index: 2;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(48, 40, 33, 0.06);
 }
 
-/* Tombol Favorit (Love Icon) pada Card */
+/* Tombol Favorit (Love Icon) Refined */
 .btn-favorite-toggle {
   position: absolute;
   top: 12px;
   right: 12px;
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: var(--radius-full);
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid var(--color-border);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 8px rgba(48, 40, 33, 0.08);
   z-index: 2;
-  transition: transform var(--transition-fast), background-color var(--transition-fast);
+  transition: transform var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
 }
 
 .btn-favorite-toggle:hover {
-  transform: scale(1.1);
+  transform: scale(1.06);
   background-color: #FFFFFF;
+  border-color: var(--color-primary-soft);
 }
 
 .btn-favorite-toggle .heart-icon {
   fill: transparent;
-  stroke: var(--color-text);
+  stroke: var(--color-muted);
   stroke-width: 2;
-  transition: fill 0.25s ease, stroke 0.25s ease, transform 0.25s ease;
+  transition: fill 0.22s ease, stroke 0.22s ease, transform 0.22s ease;
 }
 
-/* Status Ketika Makanan Sudah Masuk Favorit */
+.btn-favorite-toggle:hover .heart-icon {
+  stroke: var(--color-primary);
+}
+
 .btn-favorite-toggle.is-favorite .heart-icon {
   fill: var(--color-danger);
   stroke: var(--color-danger);
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
 .food-card-content {
-  padding: 22px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   flex: 1 0 auto;
 }
 
 .food-card-title {
-  font-size: 1.28rem;
+  font-size: 1.25rem;
   margin-bottom: 8px;
   line-height: 1.3;
 }
@@ -473,7 +472,7 @@
   font-size: 0.88rem;
   color: var(--color-muted);
   line-height: 1.55;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -509,7 +508,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   font-weight: 600;
   color: var(--color-primary);
   transition: gap var(--transition-fast), color var(--transition-fast);
@@ -521,60 +520,123 @@
 }
 
 /* -------------------------------------------------------------------------- */
-/* 5. CATEGORY SECTION & CARDS                                                */
+/* 5. CATEGORY SECTION & EDITORIAL CARDS                                      */
 /* -------------------------------------------------------------------------- */
+#categories {
+  scroll-margin-top: calc(var(--header-height) + 24px);
+}
+
 .categories-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  gap: 18px;
 }
 
 .category-card {
   background-color: #FFFFFF;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: 24px 18px;
-  text-align: center;
+  padding: 24px 20px;
   text-decoration: none;
-  transition: all var(--transition-normal);
+  transition: transform var(--transition-normal), border-color var(--transition-fast), box-shadow var(--transition-normal);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  min-height: 220px;
+  position: relative;
 }
 
 .category-card:hover {
   transform: translateY(-4px);
-  border-color: var(--color-primary);
-  box-shadow: var(--shadow-card);
+  border-color: var(--color-primary-soft);
+  box-shadow: 0 8px 24px rgba(189, 98, 73, 0.08);
 }
 
-.category-icon-box {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-full);
-  background-color: var(--color-section);
+.category-card-top {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  margin-bottom: 14px;
-  transition: background-color var(--transition-fast);
+  justify-content: space-between;
+  margin-bottom: 16px;
 }
 
-.category-card:hover .category-icon-box {
-  background-color: rgba(189, 98, 73, 0.12);
-}
-
-.category-card-name {
-  font-size: 1.05rem;
+.category-index {
   font-family: var(--font-serif);
-  color: var(--color-text);
-  margin-bottom: 6px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.05em;
 }
 
 .category-card-count {
   font-size: 0.78rem;
+  font-weight: 500;
   color: var(--color-muted);
+  background-color: var(--color-section);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+.category-card-name {
+  font-size: 1.15rem;
+  font-family: var(--font-serif);
+  color: var(--color-text);
+  line-height: 1.3;
+  margin-bottom: 10px;
+  transition: color var(--transition-fast);
+}
+
+.category-card:hover .category-card-name {
+  color: var(--color-primary);
+}
+
+.category-card-desc {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+  margin-bottom: 18px;
+  flex: 1 0 auto;
+}
+
+.category-card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  padding-top: 12px;
+  border-top: 1px dashed var(--color-border);
+  transition: gap var(--transition-fast);
+}
+
+.category-card:hover .category-card-action {
+  gap: 10px;
+}
+
+.categories-footer-prompt {
+  margin-top: 40px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+  color: var(--color-muted);
+}
+
+.link-editorial-arrow {
+  color: var(--color-primary);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap var(--transition-fast), color var(--transition-fast);
+}
+
+.link-editorial-arrow:hover {
+  color: #A9533B;
+  gap: 10px;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -593,16 +655,16 @@
 
 .quote-symbol {
   font-family: var(--font-serif);
-  font-size: 4rem;
+  font-size: 3.5rem;
   color: var(--color-primary-soft);
   opacity: 0.35;
   line-height: 1;
-  margin-bottom: -16px;
+  margin-bottom: -12px;
 }
 
 .editorial-text {
   font-family: var(--font-serif);
-  font-size: 1.45rem;
+  font-size: 1.4rem;
   line-height: 1.6;
   color: var(--color-text);
   font-style: italic;
@@ -610,7 +672,7 @@
 }
 
 .editorial-author {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-weight: 600;
@@ -625,7 +687,7 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: 24px;
-  margin-bottom: 40px;
+  margin-bottom: 36px;
   box-shadow: var(--shadow-subtle);
 }
 
@@ -633,7 +695,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 
 .search-input-wrapper {
@@ -652,12 +714,12 @@
 
 .search-input {
   width: 100%;
-  height: 52px;
-  padding: 0 48px 0 50px;
+  height: 50px;
+  padding: 0 46px 0 48px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-full);
   background-color: var(--color-bg);
-  font-size: 1rem;
+  font-size: 0.98rem;
   color: var(--color-text);
   transition: all var(--transition-fast);
 }
@@ -666,12 +728,12 @@
   outline: none;
   border-color: var(--color-primary);
   background-color: #FFFFFF;
-  box-shadow: 0 0 0 4px rgba(189, 98, 73, 0.12);
+  box-shadow: 0 0 0 3px rgba(189, 98, 73, 0.12);
 }
 
 .btn-clear-search {
   position: absolute;
-  right: 16px;
+  right: 14px;
   top: 50%;
   transform: translateY(-50%);
   color: var(--color-muted);
@@ -681,13 +743,13 @@
   display: none;
   align-items: center;
   justify-content: center;
+  font-size: 0.9rem;
 }
 
 .btn-clear-search:hover {
   color: var(--color-text);
 }
 
-/* Tombol Aksi Samping Toolbar */
 .toolbar-actions {
   display: flex;
   gap: 12px;
@@ -705,13 +767,13 @@
 .category-pills-list {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
 .btn-category-pill {
-  padding: 8px 18px;
-  font-size: 0.88rem;
+  padding: 7px 16px;
+  font-size: 0.86rem;
   font-weight: 500;
   border-radius: var(--radius-full);
   background-color: var(--color-bg);
@@ -729,16 +791,16 @@
   background-color: var(--color-primary);
   color: #FFFFFF;
   border-color: var(--color-primary);
-  box-shadow: 0 3px 10px rgba(189, 98, 73, 0.28);
+  box-shadow: 0 2px 8px rgba(189, 98, 73, 0.22);
 }
 
 .btn-reset-filter {
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   color: var(--color-muted);
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 14px;
+  padding: 7px 14px;
   border-radius: var(--radius-full);
   border: 1px dashed var(--color-border);
   transition: all var(--transition-fast);
@@ -750,63 +812,59 @@
   background-color: rgba(189, 98, 73, 0.04);
 }
 
-/* Status Jumlah Hasil Pencarian */
 .explore-results-status {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 24px;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: var(--color-muted);
 }
 
 /* -------------------------------------------------------------------------- */
-/* 8. EMPTY STATE COMPONENT                                                   */
+/* 8. EMPTY STATE & MODAL RANDOM CULINARY                                     */
 /* -------------------------------------------------------------------------- */
 .empty-state {
   text-align: center;
-  padding: 64px 24px;
+  padding: 56px 24px;
   background-color: #FFFFFF;
   border-radius: var(--radius-lg);
   border: 1px dashed var(--color-border);
-  max-width: 560px;
+  max-width: 540px;
   margin: 32px auto;
 }
 
 .empty-state-icon {
-  width: 72px;
-  height: 72px;
+  width: 68px;
+  height: 68px;
   border-radius: var(--radius-full);
   background-color: var(--color-section);
   color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
-  margin: 0 auto 20px;
+  margin: 0 auto 18px;
 }
 
 .empty-state-title {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
+  font-size: 1.35rem;
+  margin-bottom: 8px;
 }
 
 .empty-state-desc {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: var(--color-muted);
-  margin-bottom: 24px;
+  margin-bottom: 22px;
   line-height: 1.6;
 }
 
-/* -------------------------------------------------------------------------- */
-/* 9. MODAL RANDOM CULINARY                                                   */
-/* -------------------------------------------------------------------------- */
+/* Modal Random Culinary */
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background-color: rgba(45, 38, 33, 0.65);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background-color: rgba(45, 38, 33, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   z-index: 200;
   display: none;
   align-items: center;
@@ -824,12 +882,12 @@
 .modal-dialog {
   background-color: #FFFFFF;
   border-radius: var(--radius-lg);
-  max-width: 520px;
+  max-width: 500px;
   width: 100%;
   overflow: hidden;
   box-shadow: var(--shadow-modal);
   border: 1px solid var(--color-border);
-  transform: scale(0.95);
+  transform: scale(0.96);
   transition: transform var(--transition-normal);
   position: relative;
 }
@@ -842,8 +900,8 @@
   position: absolute;
   top: 14px;
   right: 14px;
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border-radius: var(--radius-full);
   background-color: rgba(255, 255, 255, 0.9);
   color: var(--color-text);
@@ -853,6 +911,7 @@
   z-index: 5;
   box-shadow: var(--shadow-subtle);
   transition: all var(--transition-fast);
+  font-size: 0.9rem;
 }
 
 .modal-close-btn:hover {
@@ -875,12 +934,12 @@
 }
 
 .modal-body {
-  padding: 28px;
+  padding: 26px;
 }
 
 .modal-header-badge {
   display: inline-block;
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-weight: 600;
   text-transform: uppercase;
   color: var(--color-primary);
@@ -888,15 +947,15 @@
 }
 
 .modal-title {
-  font-size: 1.6rem;
-  margin-bottom: 12px;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
 }
 
 .modal-desc {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: var(--color-muted);
   line-height: 1.6;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 
 .modal-actions {
@@ -905,19 +964,19 @@
 }
 
 /* -------------------------------------------------------------------------- */
-/* 10. FOOD DETAIL PAGE STYLING                                               */
+/* 9. FOOD DETAIL PAGE STYLING                                               */
 /* -------------------------------------------------------------------------- */
 .detail-breadcrumb-bar {
-  padding: 20px 0;
+  padding: 18px 0;
   border-bottom: 1px solid var(--color-border);
-  margin-bottom: 36px;
+  margin-bottom: 34px;
 }
 
 .breadcrumb-list {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   color: var(--color-muted);
 }
 
@@ -934,13 +993,13 @@
   font-weight: 500;
 }
 
-/* Detail Hero Layout (2 Kolom) */
+/* Detail Hero Layout */
 .detail-hero-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  gap: 44px;
   align-items: start;
-  margin-bottom: 56px;
+  margin-bottom: 52px;
 }
 
 .detail-media-container {
@@ -968,29 +1027,30 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .detail-category-badge {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--color-primary);
   background-color: rgba(189, 98, 73, 0.08);
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(189, 98, 73, 0.16);
 }
 
 .btn-detail-favorite {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 16px;
+  padding: 7px 15px;
   border-radius: var(--radius-full);
   background-color: #FFFFFF;
   border: 1px solid var(--color-border);
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 500;
   transition: all var(--transition-fast);
 }
@@ -1002,7 +1062,7 @@
 
 .btn-detail-favorite.is-favorite {
   background-color: var(--color-danger-bg);
-  border-color: rgba(192, 57, 43, 0.3);
+  border-color: rgba(192, 57, 43, 0.25);
   color: var(--color-danger);
 }
 
@@ -1012,30 +1072,29 @@
 }
 
 .detail-title {
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
   line-height: 1.2;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .detail-lead {
-  font-size: 1.12rem;
+  font-size: 1.1rem;
   color: var(--color-muted);
   line-height: 1.65;
-  margin-bottom: 28px;
+  margin-bottom: 26px;
 }
 
-/* Box Karakteristik Cita Rasa */
 .detail-characteristics-card {
   background-color: var(--color-section);
   border: 1px solid var(--color-border);
-  border-left: 4px solid var(--color-primary);
+  border-left: 3px solid var(--color-primary);
   border-radius: var(--radius-md);
-  padding: 20px;
-  margin-bottom: 24px;
+  padding: 18px 20px;
+  margin-bottom: 22px;
 }
 
 .detail-characteristics-card h4 {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--color-primary);
@@ -1043,30 +1102,29 @@
 }
 
 .detail-characteristics-card p {
-  font-size: 0.95rem;
+  font-size: 0.94rem;
   color: var(--color-text);
   line-height: 1.55;
   margin: 0;
 }
 
-/* Detail Content Section (Deskripsi, Bahan, Sejarah, Sumber) */
 .detail-content-layout {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 48px;
-  margin-bottom: 64px;
+  gap: 44px;
+  margin-bottom: 60px;
 }
 
 .detail-main-text {
   background-color: #FFFFFF;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: 36px;
+  padding: 34px;
   box-shadow: var(--shadow-subtle);
 }
 
 .detail-section-block {
-  margin-bottom: 36px;
+  margin-bottom: 34px;
 }
 
 .detail-section-block:last-child {
@@ -1074,20 +1132,19 @@
 }
 
 .detail-heading {
-  font-size: 1.45rem;
+  font-size: 1.4rem;
   margin-bottom: 16px;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--color-border);
 }
 
 .detail-prose p {
-  font-size: 1.02rem;
+  font-size: 1rem;
   line-height: 1.75;
   color: var(--color-text);
   margin-bottom: 16px;
 }
 
-/* Box Khusus Sejarah & Budaya */
 .detail-history-box {
   background-color: var(--color-section);
   border-radius: var(--radius-md);
@@ -1095,48 +1152,42 @@
   border: 1px solid var(--color-border);
 }
 
-.detail-history-box h4 {
+.detail-history-box h3 {
   color: var(--color-primary);
   margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  font-size: 1.25rem;
 }
 
-/* Sidebar Bahan Utama & Sumber */
 .detail-sidebar {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 26px;
 }
 
 .sidebar-box {
   background-color: #FFFFFF;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: 24px;
+  padding: 22px;
   box-shadow: var(--shadow-subtle);
 }
 
 .sidebar-box-title {
   font-size: 1.15rem;
   margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
 .ingredients-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 9px;
 }
 
 .ingredient-item {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: var(--color-text);
   padding-bottom: 8px;
   border-bottom: 1px dashed var(--color-border);
@@ -1148,8 +1199,8 @@
 }
 
 .ingredient-bullet {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: var(--radius-full);
   background-color: var(--color-primary);
   flex-shrink: 0;
@@ -1162,10 +1213,10 @@
 }
 
 .source-item {
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   color: var(--color-muted);
   line-height: 1.5;
-  padding-left: 14px;
+  padding-left: 12px;
   position: relative;
 }
 
@@ -1177,50 +1228,50 @@
 }
 
 /* -------------------------------------------------------------------------- */
-/* 11. FOOTER                                                                 */
+/* 10. FOOTER                                                                 */
 /* -------------------------------------------------------------------------- */
 .site-footer {
   background-color: var(--color-footer);
   color: var(--color-footer-text);
-  padding-top: 64px;
-  padding-bottom: 32px;
+  padding-top: 56px;
+  padding-bottom: 30px;
   margin-top: auto;
 }
 
 .footer-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  gap: 48px;
-  margin-bottom: 48px;
+  gap: 44px;
+  margin-bottom: 44px;
 }
 
 .footer-brand h3 {
   font-family: var(--font-serif);
-  font-size: 1.8rem;
+  font-size: 1.75rem;
   color: #FFFFFF;
-  letter-spacing: 0.1em;
-  margin-bottom: 6px;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
 }
 
 .footer-tagline {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--color-primary-soft);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .footer-desc {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: rgba(247, 242, 234, 0.7);
   line-height: 1.6;
   max-width: 420px;
 }
 
 .footer-heading {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: #FFFFFF;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   font-family: var(--font-sans);
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -1229,28 +1280,28 @@
 .footer-links {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .footer-links a {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: rgba(247, 242, 234, 0.75);
   transition: color var(--transition-fast);
 }
 
 .footer-links a:hover {
   color: #FFFFFF;
-  padding-left: 4px;
+  padding-left: 3px;
 }
 
 .footer-bottom {
-  padding-top: 28px;
+  padding-top: 24px;
   border-top: 1px solid rgba(247, 242, 234, 0.12);
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 16px;
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   color: rgba(247, 242, 234, 0.6);
 }

@@ -20,8 +20,6 @@
     ============================================================================
     NAVBAR / HEADER NAVIGASI UTAMA
     ============================================================================
-    Navbar berisi identitas brand Mangkasara, menu navigasi utama (Beranda,
-    Jelajah Kuliner, Favorit), serta tombol toggle menu untuk layar mobile.
   -->
   <header class="site-header">
     <div class="container nav-container">
@@ -43,7 +41,7 @@
         <span></span>
       </button>
 
-      <!-- Menu Navigasi Utama -->
+      <!-- Menu Navigasi Utama (Dropdown Horizontal di Mobile) -->
       <nav class="nav-menu" aria-label="Navigasi Utama">
         <ul class="nav-list">
           <li>
@@ -55,7 +53,6 @@
           <li>
             <a href="favorites.html" class="nav-link">
               <span>Favorit</span>
-              <!-- Badge jumlah favorit otomatis dihitung oleh navbar.js -->
               <span class="favorites-count-badge" style="display: none;">0</span>
             </a>
           </li>
@@ -64,25 +61,17 @@
     </div>
   </header>
 
-  <!-- Latar belakang gelap saat menu mobile terbuka -->
-  <div class="nav-backdrop"></div>
-
   <main>
     <!--
       ==========================================================================
       HERO SECTION (BAGIAN UTAMA BERANDA)
       ==========================================================================
-      Layout dua kolom di desktop yang menyandingkan pesan utama produk dengan
-      fotografi kuliner asli Makassar dari aset tim (Coto Makassar).
     -->
     <section class="hero-section" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <!-- Kolom Teks & Aksi -->
         <div class="hero-content">
-          <div class="hero-badge">
-            <span aria-hidden="true">🍲</span>
-            <span>Ensiklopedia Kuliner Tradisional</span>
-          </div>
+          <span class="section-badge">Ensiklopedia Kuliner Tradisional</span>
           <h1 id="hero-title" class="hero-title">
             Discover the Taste of <span>Makassar</span>
           </h1>
@@ -91,15 +80,16 @@
             Temukan kekayaan rempah otentik, kisah sejarah, dan cita rasa legendaris Sulawesi Selatan.
           </p>
           <div class="hero-actions">
-            <a href="explore.html" class="btn btn-primary btn-lg">
+            <!-- CTA Utama: Scroll halus ke bagian Kategori di Beranda -->
+            <a href="#categories" class="btn btn-primary btn-lg" id="hero-btn-explore">
               <span>Jelajahi Kuliner</span>
-              <svg class="arrow-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7" />
+              <svg class="arrow-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 5v14M19 12l-7 7-7-7" />
               </svg>
             </a>
-            <a href="explore.html?random=true" class="btn btn-secondary btn-lg">
-              <span aria-hidden="true">🎲</span>
-              <span>Pilihan Acak</span>
+            <!-- CTA Alternatif: Langsung menuju seluruh koleksi di Explore -->
+            <a href="explore.html" class="btn btn-secondary btn-lg">
+              <span>Lihat Seluruh Koleksi</span>
             </a>
           </div>
         </div>
@@ -114,9 +104,9 @@
               onerror="this.onerror=null; this.src='assets/images/placeholder-food.svg';"
             />
           </div>
-          <!-- Kartu floating estetis -->
+          <!-- Kartu floating minimalis -->
           <div class="hero-floating-card">
-            <div class="floating-icon" aria-hidden="true">✨</div>
+            <div class="floating-accent-line" aria-hidden="true"></div>
             <div class="floating-text">
               <h4>Coto Makassar</h4>
               <p>Ikon kuliner legendaris sejak abad ke-16</p>
@@ -128,10 +118,8 @@
 
     <!--
       ==========================================================================
-      SECTION PILAR & PENGENALAN PRODUK
+      SECTION PILAR & PENGENALAN PRODUK (EDITORIAL NUMBERING)
       ==========================================================================
-      Menjelaskan tujuan dan identitas Mangkasara sebagai platform dokumentasi
-      dan ensiklopedia kuliner, bukan aplikasi pemesanan atau direktori restoran.
     -->
     <section class="section section-alt" aria-labelledby="pillars-heading">
       <div class="container">
@@ -139,13 +127,13 @@
           <span class="section-badge">Mengenal Mangkasara</span>
           <h2 id="pillars-heading" class="section-title">Harmoni Rasa & Cerita Warisan Budaya</h2>
           <p class="section-subtitle">
-            Mangkasara hadir untuk melestarikan dan memperkenalkan kekayaan kuliner tradisional Makassar kepada generasi muda dan wisatawan.
+            Mangkasara hadir untuk melestarikan dan mendokumentasikan kekayaan kuliner tradisional Makassar kepada generasi muda dan pecinta kuliner Nusantara.
           </p>
         </div>
 
         <div class="pillars-grid">
           <div class="pillar-card">
-            <div class="pillar-icon" aria-hidden="true">🌿</div>
+            <span class="pillar-num font-serif">01</span>
             <h3 class="pillar-title">Keaslian Cita Rasa</h3>
             <p class="pillar-desc">
               Dokumentasi bahan-bahan rempah lokal pilihan dan karakteristik rasa unik dari hidangan berkuah hingga kudapan manis.
@@ -153,7 +141,7 @@
           </div>
 
           <div class="pillar-card">
-            <div class="pillar-icon" aria-hidden="true">📜</div>
+            <span class="pillar-num font-serif">02</span>
             <h3 class="pillar-title">Cerita & Latar Budaya</h3>
             <p class="pillar-desc">
               Memahami latar belakang sejarah dan tradisi di balik sajian kuliner yang bersumber dari catatan sejarah terpercaya.
@@ -161,7 +149,7 @@
           </div>
 
           <div class="pillar-card">
-            <div class="pillar-icon" aria-hidden="true">🔍</div>
+            <span class="pillar-num font-serif">03</span>
             <h3 class="pillar-title">Eksplorasi Interaktif</h3>
             <p class="pillar-desc">
               Kemudahan mencari hidangan berdasarkan nama, menyaring kategori, menyimpan favorit, serta menemukan rekomendasi acak.
@@ -173,28 +161,29 @@
 
     <!--
       ==========================================================================
-      SECTION KULINER PILIHAN (FEATURED CULINARY)
+      SECTION KATEGORI KULINER (EDITORIAL 01 - 05)
       ==========================================================================
-      Menampilkan hidangan yang ditandai featured: true dari dataset makanan.
-      Elemen #featured-food-list akan diisi secara dinamis oleh JavaScript.
+      Titik penjelajahan utama saat pengguna menekan tombol "Jelajahi Kuliner".
     -->
-    <section class="section" aria-labelledby="featured-heading">
+    <section id="categories" class="section" aria-labelledby="categories-heading">
       <div class="container">
         <div class="section-header">
-          <span class="section-badge">Pilihan Editor</span>
-          <h2 id="featured-heading" class="section-title">Kuliner Pilihan Makassar</h2>
+          <span class="section-badge">Jelajahi Ragam</span>
+          <h2 id="categories-heading" class="section-title">Lima Kategori Kuliner</h2>
           <p class="section-subtitle">
-            Cicipi kelezatan hidangan paling ikonik yang menjadi kebanggaan masyarakat Makassar.
+            Pilih salah satu kategori untuk memulai eksplorasi hidangan khas Makassar.
           </p>
         </div>
 
-        <!-- Kontainer kartu kuliner unggulan (diisi oleh home.js) -->
-        <div id="featured-food-list" class="food-grid"></div>
+        <!-- Kontainer kartu kategori editorial (diisi oleh home.js) -->
+        <div id="category-list" class="categories-grid"></div>
 
-        <div style="text-align: center; margin-top: 48px;">
-          <a href="explore.html" class="btn btn-outline btn-lg">
-            <span>Lihat Seluruh 25 Kuliner</span>
-            <svg class="arrow-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Prompt navigasi ke seluruh koleksi -->
+        <div class="categories-footer-prompt">
+          <span>Ingin melihat seluruh hidangan sekaligus?</span>
+          <a href="explore.html" class="link-editorial-arrow">
+            <span>Buka Seluruh 25 Kuliner</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </a>
@@ -204,23 +193,29 @@
 
     <!--
       ==========================================================================
-      SECTION KATEGORI KULINER
+      SECTION KULINER PILIHAN (FEATURED CULINARY)
       ==========================================================================
-      Menampilkan 5 kategori utama. Menekan salah satu kategori akan mengarahkan
-      ke halaman Explore dengan kategori tersebut terpilih secara otomatis.
     -->
-    <section class="section section-alt" aria-labelledby="categories-heading">
+    <section class="section section-alt" aria-labelledby="featured-heading">
       <div class="container">
         <div class="section-header">
-          <span class="section-badge">Jelajahi Ragam</span>
-          <h2 id="categories-heading" class="section-title">Lima Kategori Kuliner</h2>
+          <span class="section-badge">Pilihan Editor</span>
+          <h2 id="featured-heading" class="section-title">Kuliner Pilihan Makassar</h2>
           <p class="section-subtitle">
-            Dari hidangan sup berkuah gurih pekat hingga kudapan legit pembungkus daun pisang.
+            Cicipi kelezatan hidangan paling ikonik yang menjadi kebanggaan masyarakat Makassar.
           </p>
         </div>
 
-        <!-- Kontainer kartu kategori (diisi oleh home.js) -->
-        <div id="category-list" class="categories-grid"></div>
+        <div id="featured-food-list" class="food-grid"></div>
+
+        <div style="text-align: center; margin-top: 44px;">
+          <a href="explore.html" class="btn btn-outline btn-lg">
+            <span>Lihat Seluruh 25 Kuliner</span>
+            <svg class="arrow-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -228,7 +223,6 @@
       ==========================================================================
       SECTION EDITORIAL / KUTIPAN BUDAYA
       ==========================================================================
-      Memperkuat kesan editorial dan penghormatan terhadap tradisi kuliner lokal.
     -->
     <section class="section" aria-label="Kutipan Budaya Makassar">
       <div class="container">
@@ -249,13 +243,10 @@
     ============================================================================
     FOOTER EDITORIAL
     ============================================================================
-    Bagian penutup halaman yang berisi identitas brand, tagline, tautan cepat,
-    serta pernyataan hak cipta dan pelestarian budaya.
   -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <!-- Kolom Brand & Tagline -->
         <div class="footer-brand">
           <h3 class="font-serif">MANGKASARA</h3>
           <div class="footer-tagline">Discover the Taste of Makassar</div>
@@ -264,7 +255,6 @@
           </p>
         </div>
 
-        <!-- Kolom Navigasi Halaman -->
         <div class="footer-nav">
           <h4 class="footer-heading">Halaman</h4>
           <ul class="footer-links">
@@ -274,7 +264,6 @@
           </ul>
         </div>
 
-        <!-- Kolom Kategori Kuliner -->
         <div class="footer-categories">
           <h4 class="footer-heading">Kategori</h4>
           <ul class="footer-links">
@@ -287,7 +276,6 @@
         </div>
       </div>
 
-      <!-- Baris Hak Cipta Bawah -->
       <div class="footer-bottom">
         <div>
           &copy; 2026 <strong>Mangkasara</strong>. Hak Cipta Dilindungi.
@@ -299,16 +287,11 @@
     </div>
   </footer>
 
-  <!--
-    ============================================================================
-    SKRIP JAVASCRIPT PROYEK
-    ============================================================================
-    Disusun secara terstruktur mulai dari data master, utilitas penyimpanan,
-    komponen antarmuka, hingga logika spesifik halaman beranda.
-  -->
+  <!-- Skrip JavaScript Proyek -->
   <script src="js/data/categories.js"></script>
   <script src="js/data/foods.js"></script>
   <script src="js/utils/storage.js"></script>
+  <script src="js/components/page-transition.js"></script>
   <script src="js/components/food-card.js"></script>
   <script src="js/components/navbar.js"></script>
   <script src="js/pages/home.js"></script>

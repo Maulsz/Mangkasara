@@ -3,13 +3,14 @@
 > **Nama Produk:** Mangkasara  
 > **Tagline:** _Discover the Taste of Makassar_  
 > **Jenis Produk:** Platform Eksplorasi dan Ensiklopedia Kuliner Tradisional Makassar  
+> **Desain:** Modern Culinary Editorial & Cultural Documentation  
 > **Status:** Frontend MVP (Semester 1 Selesai & Berfungsi Penuh)
 
 ---
 
 ## 1. Tentang Proyek & Visi Produk
 
-**Mangkasara** adalah nama brand untuk platform digital yang didedikasikan untuk mendokumentasikan, mengenalkan, dan membantu masyarakat menjelajahi kekayaan kuliner tradisional khas Makassar, Sulawesi Selatan.
+**Mangkasara** adalah platform digital yang didedikasikan untuk mendokumentasikan, mengenalkan, dan membantu masyarakat menjelajahi kekayaan kuliner tradisional khas Makassar, Sulawesi Selatan.
 
 Konsep produk menggabungkan dua pengalaman utama:
 1. **Eksplorasi Kuliner (Culinary Discovery)**: Pengguna dapat menjelajahi seluruh koleksi hidangan, mencari makanan berdasarkan nama, menyaring berdasarkan lima kategori utama, mendapatkan rekomendasi acak (Random Culinary), serta menyimpan hidangan ke dalam koleksi favorit.
@@ -32,7 +33,13 @@ Mangkasara berfokus murni pada dokumentasi budaya dan pengetahuan kuliner. Platf
 
 ## 2. Identitas Visual & Design System
 
-Desain antarmuka Mangkasara mengusung gaya **editorial kuliner modern**: elegan, hangat, bersih, dan berakar pada budaya lokal dengan tipografi yang kuat serta penonjolan fotografi makanan. Visual dirancang terinspirasi dari referensi terpilih tim (`reference/dapur-kita-reference.jpg`) dengan identitas orisinil Mangkasara.
+Desain antarmuka Mangkasara mengusung estetika **Modern Culinary Editorial & Cultural Documentation**: terinspirasi dari majalah kuliner independen berkualitas tinggi (*curated culinary publication*), anggun, bersih, dan berakar pada budaya lokal dengan tipografi yang kuat serta penonjolan fotografi makanan. 
+
+Prinsip Visual Refinement:
+- **Bebas Emoji & Ikon Dekoratif Berlebih:** Menghilangkan ikon emoji pada tombol, kartu, dan lencana agar tampilan matang dan profesional.
+- **Hierarki Tipografi & Whitespace:** Memanfaatkan kontras font serif dan sans-serif untuk memandu pandangan pengguna.
+- **Bayangan & Sudut Restrained:** Menghindari sudut kartu yang terlalu membulat dan bayangan tebal. Menggunakan border halus (`--color-border`) dan radius yang seimbang.
+- **Fotografi Sebagai Titik Fokus:** Visual fotografi makanan diposisikan sebagai subjek utama eksplorasi.
 
 ### Palet Warna (Design Tokens)
 Ditetapkan dalam variabel CSS (`:root` di `css/style.css`):
@@ -63,7 +70,7 @@ Kode sumber disusun rapi dan modular agar mudah dipelajari serta dikembangkan ol
 ```text
 mangkasara/
 │
-├── index.html                   # Halaman 01: Beranda (Hero, Filosofi, Pilihan Editor, Kategori)
+├── index.html                   # Halaman 01: Beranda (Hero, Filosofi, Kategori Editorial, Pilihan Editor)
 ├── explore.html                 # Halaman 02: Jelajah Kuliner (Search, Filter, Reset, Random Modal)
 ├── detail.html                  # Halaman 03: Detail Kuliner (Ensiklopedia, Sejarah, Bahan, Terkait)
 ├── favorites.html               # Halaman 04: Koleksi Favorit (LocalStorage, Hapus Semua, Empty State)
@@ -82,9 +89,9 @@ mangkasara/
 │   └── dapur-kita-reference.jpg # Akses referensi visual root
 │
 ├── css/
-│   ├── style.css                # Design tokens, reset, base typography, container layout
-│   ├── components.css           # Styling komponen (navbar, card, modal, breadcrumb, footer)
-│   └── responsive.css           # Media queries responsif (Desktop, Tablet, Mobile)
+│   ├── style.css                # Design tokens, reset, typography, progress bar, entrance animation
+│   ├── components.css           # Styling komponen (navbar, editorial cards, modal, toolbar, footer)
+│   └── responsive.css           # Media queries responsif & mobile dropdown navbar
 │
 ├── js/
 │   ├── data/
@@ -96,14 +103,15 @@ mangkasara/
 │   │   └── filters.js           # Logika filter gabungan nama + kategori & fungsi Random
 │   │
 │   ├── components/
-│   │   ├── navbar.js            # Interaktivitas navbar, active state, mobile drawer, counter badge
+│   │   ├── page-transition.js   # Indikator progres tipis terracotta & page entrance animation
+│   │   ├── navbar.js            # Interaktivitas navbar, active state, mobile dropdown, counter badge
 │   │   └── food-card.js         # Generator template HTML kartu kuliner & event delegation favorit
 │   │
 │   └── pages/
-│       ├── home.js              # Controller halaman Beranda
+│       ├── home.js              # Controller Beranda, editorial categories & smooth scroll CTA
 │       ├── explore.js           # Controller halaman Explore & Random Culinary Modal
 │       ├── detail.js            # Controller halaman Detail Kuliner & penanganan ID
-│       └── favorites.js         # Controller halaman Favorit & empty state
+│       └── favorites.js         # Controller halaman Favorit & transisi penghapusan kartu
 │
 ├── front-end-PRD.md             # Dokumen spesifikasi kebutuhan produk (PRD)
 └── README.md                    # Dokumentasi lengkap proyek & petunjuk pengembangan
@@ -111,48 +119,58 @@ mangkasara/
 
 ---
 
-## 4. Halaman yang Diimplementasikan
+## 4. Halaman yang Diimplementasikan & Refinement UI/UX
 
 ### 1. Beranda (`index.html`)
-- **Navbar Wordmark:** Logo tipografis Mangkasara dengan tagline *Discover the Taste of Makassar*.
-- **Hero Section:** Tata letak editorial 2 kolom (teks headline + foto asli Coto Makassar dari aset tim berbalut kartu mengambang).
-- **Pengenalan Mangkasara:** Tiga pilar utama (Keaslian Cita Rasa, Cerita & Budaya, Eksplorasi Interaktif).
-- **Kuliner Pilihan (Featured):** Menampilkan hidangan pilihan bertanda `featured: true` langsung dari dataset tanpa duplikasi kode.
-- **Kategori Kuliner:** Menampilkan 5 kartu kategori dengan jumlah hidangan yang dapat diklik untuk langsung menuju halaman Explore dengan kategori tersebut terseleksi.
-- **Kutipan Budaya:** Kutipan editorial mengenai perjumpaan hasil laut Selat Makassar dan jalur rempah Nusantara.
-- **Footer:** Identitas, navigasi sitemap, dan hak cipta.
+- **Hero CTA Scroll Behavior:** Menekan tombol utama *"Jelajahi Kuliner"* akan menggulirkan halaman secara halus (*smooth scroll*) langsung menuju seksi Kategori (`#categories`) sebagai titik penjelajahan awal pengguna, dengan memperhitungkan ketinggian sticky header (`scroll-margin-top`). Tombol sekunder *"Lihat Seluruh Koleksi"* tersedia bagi pengguna yang ingin langsung menuju seluruh katalog di `explore.html`. Tautan navbar tetap mengarah ke `explore.html`.
+- **Kategori Kuliner Editorial:** 5 kategori disajikan dalam kartu editorial dengan penomoran indeks (`01` - `05`), nama kategori dalam font serif anggun, jumlah hidangan, deskripsi peran kuliner, dan tautan eksplorasi. Wadah emoji melingkar dihilangkan sepenuhnya.
+- **Pilar Filosofi (Editorial Numbering):** Pengenalan 3 pilar produk (Keaslian Cita Rasa, Cerita & Budaya, Eksplorasi Interaktif) ditampilkan dengan nomor besar berkarakter majalah kuliner.
+- **Hero Media & Floating Card:** Menampilkan fotografi Coto Makassar dengan kartu informasi minimalis bergaris aksen terracotta.
+- **Kuliner Pilihan (Featured):** Menampilkan hidangan bertanda `featured: true` langsung dari dataset master.
 
 ### 2. Jelajah Kuliner (`explore.html`)
 - **Pencarian Real-Time:** Mencari nama makanan secara instan, tidak membedakan huruf besar/kecil (`toLowerCase()`), dan memotong spasi kosong (`trim()`).
 - **Penyaringan 5 Kategori:** Pilihan tombol pill ("Semua" dan 5 kategori otentik).
 - **Filter Kombinasi:** Pencarian nama dan filter kategori bekerja secara simultan (keduanya harus terpenuhi).
-- **Tombol Reset Filter:** Membersihkan input teks pencarian dan mengembalikan kategori ke "Semua".
+- **Tombol Reset Filter:** Membersihkan input teks pencarian dan mengembalikan kategori ke "Semua" dengan ikon reset SVG bersih.
 - **Status Hasil Pencarian:** Menampilkan jumlah makanan yang ditemukan secara dinamis.
-- **Empty State Ramah:** Menampilkan ilustrasi dan pesan jelas jika tidak ada makanan yang sesuai kriteria pencarian, lengkap dengan tombol untuk mereset filter.
-- **Random Culinary (Pilihan Acak):** Menampilkan modal pop-up yang memilih satu hidangan secara acak dengan tombol "Lihat Detail Lengkap" dan "Pilih Lainnya" untuk mengulang undian.
-- **Dukungan Parameter URL:** Membaca parameter `?category=X` saat pengguna berpindah dari kategori di Beranda.
+- **Empty State Bersih:** Menampilkan ilustrasi kaca pembesar SVG minimalis jika tidak ada makanan yang sesuai kriteria pencarian, lengkap dengan tombol reset.
+- **Random Culinary (Pilihan Acak):** Modal pop-up dengan tombol dadu SVG bersih untuk memilih hidangan secara spontan.
 
 ### 3. Detail Kuliner (`detail.html?id=X`)
 - **URL Query Parameter:** Membaca parameter ID makanan dari query string URL.
-- **Penanganan Error (Not Found State):** Jika ID tidak ditemukan atau tidak valid, menampilkan pesan ramah dan tombol kembali ke Explore tanpa membuat halaman crash.
-- **Media & Karakteristik:** Foto hidangan (dengan fallback gambar otomatis jika foto belum ada), lencana kategori, nama hidangan, deskripsi singkat, tombol favorit interaktif, dan kotak profil cita rasa.
-- **Deskripsi Lengkap:** Ulasan lengkap hidangan.
-- **Bahan Utama:** Daftar bahan-bahan masakan dalam bentuk list terstruktur.
-- **Sejarah & Budaya (Kondisional):** Bagian sejarah HANYA ditampilkan jika makanan memiliki data sejarah terverifikasi (nilai `history` bukan `null`). Jika `null`, elemen disembunyikan sepenuhnya.
-- **Referensi Sumber (Kondisional):** Bagian daftar sumber HANYA ditampilkan jika data `sources` berisi item referensi.
-- **Kuliner Terkait:** Merekomendasikan makanan lain dalam kategori yang sama (tanpa menyertakan hidangan yang sedang dibuka).
+- **Penanganan Error (Not Found State):** Menampilkan pesan ramah dengan ikon SVG jika ID tidak ditemukan.
+- **Ensiklopedia Terverifikasi:** Deskripsi lengkap, karakteristik cita rasa, dan daftar bahan utama.
+- **Sejarah & Budaya (Kondisional):** Bagian sejarah HANYA ditampilkan jika makanan memiliki data sejarah terverifikasi (nilai `history` bukan `null`). Judul menggunakan tipografi murni tanpa emoji.
+- **Referensi Sumber (Kondisional):** Bagian daftar sumber HANYA ditampilkan jika data `sources` terisi.
+- **Kuliner Terkait:** Rekomendasi makanan dalam kategori yang sama (mengecualikan hidangan yang sedang dibuka).
 
 ### 4. Koleksi Favorit (`favorites.html`)
 - **Integrasi LocalStorage:** Mengambil daftar ID tersimpan pada key `mangkasara-favorites`.
-- **Manajemen Koleksi:** Menampilkan seluruh kartu makanan yang disimpan pengguna.
-- **Hapus Item Langsung:** Menekan tombol love pada kartu akan langsung menghapus item tersebut dari koleksi dan memperbarui antarmuka seketika.
-- **Hapus Semua:** Tombol untuk membersihkan seluruh favorit sekaligus dengan konfirmasi ramah.
-- **Empty State Dinamis:** Jika koleksi kosong (atau jika item terakhir baru saja dihapus), tampilan otomatis berubah menjadi pesan ramah dengan tombol CTA menuju Explore.
-- **Proteksi Data Rusak:** Dibungkus blok `try...catch` sehingga data JSON yang tidak valid di browser tidak akan menghentikan jalannya aplikasi.
+- **Transisi Penghapusan Halus (Smooth Removal):** Saat tombol love pada kartu favorit diklik, kartu melakukan transisi fade-out dan scale-down halus sebelum DOM diperbarui, mencegah perubahan tampilan yang mendadak.
+- **Empty State Dinamis:** Menampilkan pesan ramah berikon hati SVG minimalis dengan tombol CTA menuju Explore saat koleksi kosong.
+- **Hapus Semua:** Tombol pembersih seluruh koleksi dengan dialog konfirmasi.
 
 ---
 
-## 5. Taksonomi & Koleksi 25 Kuliner Tradisional
+## 5. Fitur Navigasi & Pengalaman Transisi Halaman
+
+### Redesain Navigasi Mobile (Dropdown Horizontal)
+Navigasi mobile telah diperbarui dari side drawer kanan menjadi **dropdown horizontal langsung di bawah navbar**:
+- **Struktur Bersih:** Navbar tetap di atas dengan brand di kiri dan hamburger button di kanan.
+- **Panel Dropdown:** Saat tombol ditekan, menu turun secara halus langsung di bawah navbar (`top: var(--header-height)`), membentang selebar layar dengan opsi menu bertingkat.
+- **Tanpa Backdrop Gelap & Tanpa Body Lock:** Scroll halaman tetap bebas dan tidak terkunci.
+- **Penutupan Otomatis:** Dropdown menutup saat link diklik, saat area luar diklik, atau saat pengguna menekan tombol `Escape`. Status `aria-expanded` diperbarui secara akurat untuk aksesibilitas.
+
+### Indikator Progres Navigasi Halaman (`page-transition.js`)
+- **Garis Progres Tipis Terracotta:** Garis tipis 2.5px di bagian paling atas layar bergerak halus saat pengguna mengklik tautan internal antar-halaman.
+- **Non-Blocking & Cerdas:** Tidak mengganggu pembukaan tab baru (`target="_blank"`), tombol kombinasi (Ctrl/Cmd/Shift), tautan jangkar internal (`#categories`), maupun tautan eksternal.
+- **Animasi Masuk (Page Entrance):** Konten halaman baru masuk dengan fade-in dan pergeseran vertikal halus 5px.
+- **Aksesibilitas:** Sepenuhnya mendukung kueri media `prefers-reduced-motion: reduce`.
+
+---
+
+## 6. Taksonomi & Koleksi 25 Kuliner Tradisional
 
 Seluruh 25 hidangan tradisional Makassar yang tercantum dalam PRD telah diimplementasikan dalam dataset JavaScript (`js/data/foods.js`):
 
@@ -193,14 +211,6 @@ Seluruh 25 hidangan tradisional Makassar yang tercantum dalam PRD telah diimplem
 
 ---
 
-## 6. Standarisasi Kontrak Data (PRD vs README)
-
-Terdapat dua perbedaan minor pada draf dokumentasi awal yang telah distandarisasi secara resmi dalam implementasi:
-1. **Nama Properti Sumber Informasi:** Pada contoh README awal tertulis `source: []`, sedangkan pada PRD dan Master Prompt tertulis `sources: []`. Implementasi disepakati dan distandarisasi menggunakan nama jamak **`sources`** (tipe Array of string) sesuai spesifikasi PRD.
-2. **Nama Kategori 03:** Pada draf awal disebut "Olahan Ikan", distandarisasi menjadi **"Olahan Ikan & Seafood"** (`slug: "olahan-ikan-seafood"`) agar mencakup kekayaan kepiting, udang, dan biota laut Selat Makassar lainnya.
-
----
-
 ## 7. Inventaris Foto & Alur Manajemen Foto Masa Depan
 
 ### Inventaris Foto Saat Ini:
@@ -225,18 +235,17 @@ Arsitektur Mangkasara dirancang agar tim dapat menambahkan foto baru **tanpa per
 
 ## 8. Panduan Menjalankan Proyek Secara Lokal
 
-Website Mangkasara dibangun murni menggunakan standar web (HTML5, CSS3, dan Vanilla JavaScript). Seluruh skrip dirancang tanpa ketergantungan modul tertutup, sehingga dapat dibuka langsung:
+Website Mangkasara dibangun murni menggunakan standar web (HTML5, CSS3, dan Vanilla JavaScript):
 
 ### Cara 1: Langsung Membuka File (Tanpa Server)
-Klik ganda file `index.html` pada File Explorer / Finder di komputer Anda untuk membukanya langsung di peramban web (Google Chrome, Microsoft Edge, Mozilla Firefox, atau Safari). Seluruh fitur (pencarian, navigasi, LocalStorage favorit, modal) dapat berfungsi langsung.
+Klik ganda file `index.html` pada File Explorer / Finder di komputer Anda untuk membukanya langsung di peramban web (Google Chrome, Microsoft Edge, Mozilla Firefox, atau Safari). Seluruh fitur dapat berfungsi langsung.
 
 ### Cara 2: Menggunakan Live Server (VS Code)
 1. Buka folder proyek `mangkasara` di Visual Studio Code.
 2. Pasang ekstensi **Live Server**.
-3. Klik kanan pada file `index.html` dan pilih **Open with Live Server** (biasanya berjalan di `http://127.0.0.1:5500`).
+3. Klik kanan pada file `index.html` dan pilih **Open with Live Server** (`http://127.0.0.1:5500`).
 
 ### Cara 3: Menggunakan Python / Node Server Bawaan
-Jika Anda memiliki terminal:
 ```bash
 # Menggunakan Python 3:
 python -m http.server 8000
@@ -244,49 +253,35 @@ python -m http.server 8000
 # Atau menggunakan Node npx:
 npx serve .
 ```
-Lalu buka alamat `http://localhost:8000` di browser Anda.
 
 ---
 
 ## 9. Struktur Fungsi Penting JavaScript
 
-Semua fungsi di dalam codebase dilengkapi dokumentasi komentar JSDoc dalam bahasa Indonesia:
-
-- **`js/data/foods.js`**:
-  - `getFoodById(id)`: Mengambil objek makanan berdasarkan ID numerik.
-  - `getFeaturedFoods()`: Menyaring makanan unggulan bertanda `featured: true`.
-  - `getFoodsByCategory(categoryId)`: Mengambil hidangan berdasarkan kategori tertentu.
-  - `getRelatedFoods(currentFoodId, categoryId, limit)`: Mengambil hidangan rekomendasi serupa dengan mengecualikan hidangan yang sedang dibuka.
-  - `getFoodImage(food)`: Mengembalikan path foto atau fallback placeholder jika foto kosong.
-
-- **`js/utils/storage.js`**:
-  - `getFavorites()`: Membaca array ID favorit dari LocalStorage secara aman dengan try-catch.
-  - `isFavorite(foodId)`: Memeriksa apakah hidangan berstatus favorit.
-  - `addFavorite(foodId)`: Menambahkan ID ke daftar favorit (mencegah duplikasi).
-  - `removeFavorite(foodId)`: Menghapus ID dari daftar favorit.
-  - `toggleFavorite(foodId)`: Mengganti status favorit secara instan.
-  - `getFavoriteFoods()`: Mengambil array objek makanan lengkap yang ada di daftar favorit.
-  - `clearAllFavorites()`: Menghapus seluruh riwayat favorit dari LocalStorage.
-
-- **`js/utils/filters.js`**:
-  - `filterFoods(foodsList, searchTerm, selectedCategory)`: Menyaring array makanan secara simultan berdasarkan kata kunci nama dan ID kategori.
-  - `getRandomFood(foodsList)`: Memilih satu makanan secara acak menggunakan `Math.random()`.
-
-- **`js/components/food-card.js`**:
-  - `createFoodCardHTML(food)`: Menghasilkan string template kartu kuliner.
-  - `attachFavoriteButtonListeners(container, callback)`: Menerapkan teknik *Event Delegation* untuk menangani klik tombol favorit.
-
+- **`js/components/page-transition.js`**:
+  - `initPageTransitions()`: Memasang indikator progres tipis terracotta di atas layar dan mendeteksi navigasi tautan internal tanpa menghalangi navigasi browser.
 - **`js/components/navbar.js`**:
-  - `highlightActiveNavLink()`: Menandai menu navigasi aktif sesuai URL.
-  - `initMobileMenu()`: Mengatur buka-tutup drawer navigasi di HP.
-  - `updateNavbarFavoritesCount()`: Menghitung dan menampilkan badge jumlah favorit.
+  - `highlightActiveNavLink()`: Menandai menu aktif sesuai URL halaman saat ini.
+  - `initMobileMenu()`: Mengontrol buka-tutup dropdown horizontal mobile di bawah navbar.
+  - `updateNavbarFavoritesCount()`: Menghitung dan memperbarui badge favorit di navbar.
+- **`js/components/food-card.js`**:
+  - `createFoodCardHTML(food)`: Menghasilkan template kartu kuliner editorial.
+  - `attachFavoriteButtonListeners(container, callback)`: Menerapkan event delegation untuk menangani tombol favorit.
+- **`js/pages/home.js`**:
+  - `renderCategoriesGrid()`: Merender 5 kategori kuliner format editorial (01 - 05).
+  - `setupHomepageScrollCTA()`: Menangani smooth scroll tombol "Jelajahi Kuliner" ke `#categories`.
+- **`js/utils/filters.js`**:
+  - `filterFoods(foodsList, searchTerm, selectedCategory)`: Filter kombinasi nama dan ID kategori.
+  - `getRandomFood(foodsList)`: Mengambil hidangan acak spontan.
+- **`js/utils/storage.js`**:
+  - `getFavorites()`, `addFavorite()`, `removeFavorite()`, `toggleFavorite()`, `isFavorite()`, `clearAllFavorites()`: Manajemen aman LocalStorage (`mangkasara-favorites`).
 
 ---
 
 ## 10. Rencana Pengembangan Backend (Semester Berikutnya)
 
 ### Prinsip Arsitektur Migrasi
-Browser **tidak boleh mengakses MySQL secara langsung**. Pada semester berikutnya, alur arsitektur yang akan diterapkan adalah:
+Browser **tidak boleh mengakses MySQL secara langsung**. Pada semester berikutnya:
 
 ```text
 Frontend (HTML/CSS/JS)
@@ -307,20 +302,9 @@ MySQL Database Server
 4. **`food_tags`**: `id` (PK), `food_id` (FK), `tag_name`
 5. **`food_sources`**: `id` (PK), `food_id` (FK), `source_name`
 6. **`users`**: `id` (PK), `name`, `email` (Unique), `password_hash`, `created_at`
-7. **`favorites`**: `id` (PK), `user_id` (FK), `food_id` (FK), `created_at` (Unique kombinasi `user_id` + `food_id`)
-
-### Rancangan Endpoint REST API
-- `GET /api/foods`: Mengambil seluruh daftar kuliner
-- `GET /api/foods/:id`: Mengambil detail satu makanan
-- `GET /api/categories`: Mengambil seluruh daftar kategori
-- `GET /api/foods?search=:term&category=:id`: Filter kuliner di level database
-- `GET /api/foods/random`: Mengambil satu kuliner acak (`ORDER BY RAND() LIMIT 1`)
-- `POST /api/auth/register` & `POST /api/auth/login`: Autentikasi akun pengguna
-- `GET /api/favorites`: Mengambil kuliner favorit pengguna yang sedang login
-- `POST /api/favorites`: Menambahkan makanan ke favorit akun
-- `DELETE /api/favorites/:foodId`: Menghapus makanan dari favorit akun
+7. **`favorites`**: `id` (PK), `user_id` (FK), `food_id` (FK), `created_at`
 
 ---
 
 ## 11. Hak Cipta & Lisensi
-Proyek Mangkasara dikembangkan untuk tujuan edukasi, pelestarian budaya, dan dokumentasi kuliner khas Kota Makassar, Sulawesi Selatan. Seluruh dokumentasi resep dan sejarah dirangkum dari berbagai publikasi dinas kebudayaan dan literatur terpercaya Nusantara.
+Proyek Mangkasara dikembangkan untuk tujuan edukasi, pelestarian budaya, dan dokumentasi kuliner khas Kota Makassar, Sulawesi Selatan. Seluruh dokumentasi dirangkum dari publikasi kebudayaan terpercaya Nusantara.

@@ -2,39 +2,29 @@
  * ==============================================================================
  * MANGKASARA — SCRIPT HALAMAN BERANDA (HOME.JS)
  * ==============================================================================
- * File ini menangani interaksi dan rendering data khusus pada halaman Beranda:
- * 1. Mengambil dan menampilkan kuliner pilihan (`featured: true`) dari dataset.
- * 2. Mengambil dan menampilkan daftar 5 kategori kuliner ke dalam grid kartu.
- * 3. Menghubungkan tombol love/favorit pada setiap kartu makanan.
+ * Mengontrol interaksi pada halaman Beranda:
+ * 1. Menampilkan kuliner unggulan (`featured: true`) dari dataset.
+ * 2. Menampilkan 5 kategori kuliner dengan tampilan editorial (tanpa emoji berlebih).
+ * 3. Menangani aksi tombol CTA "Jelajahi Kuliner" untuk scroll halus ke bagian kategori.
  * ==============================================================================
  */
 
 /**
  * Inisialisasi utama untuk halaman Beranda.
- *
- * Mengapa fungsi ini diperlukan:
- * Bertindak sebagai controller utama saat halaman `index.html` dibuka.
  */
 function initHomePage() {
   renderFeaturedFoods();
   renderCategoriesGrid();
+  setupHomepageScrollCTA();
 }
 
 /**
  * Menampilkan daftar kuliner unggulan ke dalam elemen `#featured-food-list`.
- *
- * Alur Logika:
- * 1. Panggil `getFeaturedFoods()` dari `js/data/foods.js` untuk menyaring makanan bertanda featured.
- * 2. Ambil elemen DOM kontainer dengan `document.getElementById('featured-food-list')`.
- * 3. Jika elemen ditemukan, petakan setiap item makanan menjadi string HTML menggunakan `createFoodCardHTML()`.
- * 4. Masukkan string HTML ke dalam kontainer melalui `innerHTML`.
- * 5. Pasang event listener untuk tombol favorit menggunakan `attachFavoriteButtonListeners()`.
  */
 function renderFeaturedFoods() {
   const container = document.getElementById("featured-food-list");
   if (!container) return;
 
-  // Ambil hanya makanan yang ditandai featured: true
   const featuredFoods = typeof getFeaturedFoods === "function" ? getFeaturedFoods() : [];
 
   if (featuredFoods.length === 0) {
@@ -46,25 +36,24 @@ function renderFeaturedFoods() {
     return;
   }
 
-  // Gabungkan seluruh HTML kartu makanan
   container.innerHTML = featuredFoods
     .map((food) => createFoodCardHTML(food))
     .join("");
 
-  // Pasang listener klik favorit
   if (typeof attachFavoriteButtonListeners === "function") {
     attachFavoriteButtonListeners(container);
   }
 }
 
 /**
- * Menampilkan 5 kartu kategori kuliner ke dalam elemen `#category-list`.
+ * Menampilkan 5 kartu kategori kuliner ke dalam elemen `#category-list`
+ * dengan format editorial modern.
  *
- * Alur Logika:
- * 1. Ambil data master kategori dari array `categories` (`js/data/categories.js`).
- * 2. Hitung jumlah hidangan pada setiap kategori menggunakan `foods.filter()`.
- * 3. Buat kartu tautan menuju `explore.html?category={id}`.
- * 4. Masukkan ke dalam DOM.
+ * Perubahan Refinement:
+ * - Menghilangkan wadah ikon emoji melingkar yang terlalu besar.
+ * - Menampilkan penomoran editorial indeks (01 - 05).
+ * - Menampilkan nama kategori dengan tipografi serif elegan dan jumlah hidangan.
+ * - Mempertahankan tautan ke `explore.html?category={id}`.
  */
 function renderCategoriesGrid() {
   const container = document.getElementById("category-list");
@@ -74,24 +63,64 @@ function renderCategoriesGrid() {
     return;
   }
 
-  const categoryCardsHTML = categories.map((cat) => {
-    // Hitung berapa banyak hidangan di kategori ini dari data foods
+  const categoryCardsHTML = categories.map((cat, index) => {
     const itemCount = typeof foods !== "undefined" && Array.isArray(foods)
       ? foods.filter((f) => f.categoryId === cat.id).length
       : 0;
 
+    const formattedIndex = String(index + 1).padStart(2, "0");
+
     return `
       <a href="explore.html?category=${cat.id}" class="category-card" title="Jelajahi kategori ${cat.name}">
-        <div class="category-icon-box" aria-hidden="true">
-          ${cat.icon || "🍽️"}
+        <div class="category-card-top">
+          <span class="category-index font-serif">${formattedIndex}</span>
+          <span class="category-card-count">${itemCount} Hidangan</span>
         </div>
-        <h3 class="category-card-name">${cat.name}</h3>
-        <span class="category-card-count">${itemCount} Hidangan</span>
+        <h3 class="category-card-name font-serif">${cat.name}</h3>
+        <p class="category-card-desc">${cat.description || ""}</p>
+        <div class="category-card-action">
+          <span>Eksplorasi</span>
+          <svg class="category-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </div>
       </a>
     `;
   }).join("");
 
   container.innerHTML = categoryCardsHTML;
+}
+
+/**
+ * Mengatur interaksi tombol CTA "Jelajahi Kuliner" pada hero section.
+ *
+ * Kebutuhan:
+ * - Saat tombol ditekan, halaman bergulir halus (smooth scroll) ke section `#categories`.
+ * - Memperhitungkan ketinggian sticky navbar (scroll-margin-top).
+ * - Menghormati preferensi prefers-reduced-motion pengguna.
+ */
+function setupHomepageScrollCTA() {
+  const heroExploreBtn = document.getElementById("hero-btn-explore");
+  if (!heroExploreBtn) return;
+
+  heroExploreBtn.addEventListener("click", (e) => {
+    const targetSection = document.getElementById("categories");
+    if (!targetSection) return;
+
+    e.preventDefault();
+
+    const isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    targetSection.scrollIntoView({
+      behavior: isReducedMotion ? "auto" : "smooth",
+      block: "start"
+    });
+
+    // Perbarui URL hash secara halus tanpa meloncat mendadak
+    if (window.history && window.history.pushState) {
+      window.history.pushState(null, "", "#categories");
+    }
+  });
 }
 
 // Jalankan skrip saat halaman siap

@@ -2,13 +2,13 @@
  * ==============================================================================
  * MANGKASARA — SCRIPT HALAMAN EXPLORE (EXPLORE.JS)
  * ==============================================================================
- * File ini mengontrol seluruh interaktivitas halaman Explore Kuliner:
+ * Mengontrol seluruh interaktivitas halaman Explore Kuliner:
  * 1. Menampilkan koleksi 25 hidangan tradisional Makassar.
  * 2. Pencarian teks real-time berdasarkan nama makanan (case-insensitive & trimmed).
  * 3. Penyaringan berdasarkan tombol kategori (Pill filter).
  * 4. Kombinasi pencarian dan kategori secara simultan (keduanya harus terpenuhi).
  * 5. Tombol Reset untuk mengembalikan semua filter ke kondisi awal.
- * 6. Tampilan Empty State jika tidak ada kuliner yang cocok.
+ * 6. Tampilan Empty State editorial bersih jika tidak ada kuliner yang cocok.
  * 7. Fitur Modal Random Culinary (Pilihan Acak) dengan tombol coba lagi.
  * 8. Membaca parameter URL (`?category=X`) saat berpindah dari halaman Beranda.
  * ==============================================================================
@@ -20,12 +20,6 @@ let currentSelectedCategory = "all";
 
 /**
  * Inisialisasi utama untuk halaman Explore.
- *
- * Alur Logika:
- * 1. Baca query parameter dari URL (`window.location.search`) jika pengguna datang dari Beranda.
- * 2. Render tombol-tombol pill kategori secara dinamis dari data `categories`.
- * 3. Pasang event listener pada input pencarian, tombol reset, dan tombol random.
- * 4. Lakukan rendering awal daftar makanan.
  */
 function initExplorePage() {
   parseUrlParameters();
@@ -37,9 +31,6 @@ function initExplorePage() {
 
 /**
  * Membaca parameter dari query string URL browser.
- *
- * Method yang digunakan:
- * - `URLSearchParams(window.location.search)`: Standar Web API untuk membaca parameter seperti `?category=2`.
  */
 function parseUrlParameters() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -61,11 +52,6 @@ function parseUrlParameters() {
 
 /**
  * Menampilkan daftar tombol pill filter kategori di toolbar.
- *
- * Alur Logika:
- * 1. Buat tombol pertama: "Semua" (value: "all").
- * 2. Iterasi array `categories` untuk membuat tombol kategori 1 sampai 5.
- * 3. Beri class `active` pada tombol yang cocok dengan `currentSelectedCategory`.
  */
 function renderCategoryPills() {
   const container = document.getElementById("category-pills-list");
@@ -73,7 +59,6 @@ function renderCategoryPills() {
 
   if (typeof categories === "undefined" || !Array.isArray(categories)) return;
 
-  // Tombol opsi "Semua"
   const isAllActive = currentSelectedCategory === "all" ? "active" : "";
   let pillsHTML = `
     <button 
@@ -85,7 +70,6 @@ function renderCategoryPills() {
     </button>
   `;
 
-  // Tombol untuk setiap kategori master
   categories.forEach((cat) => {
     const isActive = String(currentSelectedCategory) === String(cat.id) ? "active" : "";
     pillsHTML += `
@@ -104,10 +88,6 @@ function renderCategoryPills() {
 
 /**
  * Memasang event listener untuk interaksi pencarian dan filter.
- *
- * Method yang digunakan:
- * - `addEventListener('input')`: Mendeteksi setiap ketikan huruf oleh pengguna.
- * - `addEventListener('click')`: Mendeteksi klik pada tombol kategori dan reset.
  */
 function setupFilterEventListeners() {
   const searchInput = document.getElementById("search-input");
@@ -120,7 +100,6 @@ function setupFilterEventListeners() {
     searchInput.addEventListener("input", (e) => {
       currentSearchTerm = e.target.value;
 
-      // Tampilkan tombol silang (clear) jika input memiliki isi
       if (clearSearchBtn) {
         clearSearchBtn.style.display = currentSearchTerm.length > 0 ? "flex" : "none";
       }
@@ -153,7 +132,6 @@ function setupFilterEventListeners() {
 
       currentSelectedCategory = catId;
 
-      // Perbarui status class active pada tombol-tombol pill
       const allPills = categoryPillsContainer.querySelectorAll(".btn-category-pill");
       allPills.forEach((btn) => btn.classList.remove("active"));
       pillBtn.classList.add("active");
@@ -170,11 +148,6 @@ function setupFilterEventListeners() {
 
 /**
  * Mengatur ulang seluruh filter pencarian dan kategori ke kondisi awal.
- *
- * Sesuai kebutuhan PRD:
- * - Menghapus teks pada input pencarian.
- * - Mengembalikan pilihan kategori ke "Semua".
- * - Menampilkan kembali seluruh 25 hidangan.
  */
 function resetAllFilters() {
   currentSearchTerm = "";
@@ -190,7 +163,6 @@ function resetAllFilters() {
     clearSearchBtn.style.display = "none";
   }
 
-  // Kembalikan highlight pill ke "Semua"
   const allPills = document.querySelectorAll(".btn-category-pill");
   allPills.forEach((btn) => {
     if (btn.getAttribute("data-category-id") === "all") {
@@ -205,13 +177,6 @@ function resetAllFilters() {
 
 /**
  * Memperbarui tampilan daftar kartu kuliner berdasarkan filter saat ini.
- *
- * Alur Logika:
- * 1. Panggil `filterFoods(foods, currentSearchTerm, currentSelectedCategory)` dari `js/utils/filters.js`.
- * 2. Hitung jumlah hasil yang ditemukan dan perbarui teks status.
- * 3. Jika hasil kosong (length === 0), tampilkan komponen Empty State yang rapi.
- * 4. Jika hasil ada, ubah setiap data makanan menjadi food card HTML.
- * 5. Pasang listener favorit pada food cards.
  */
 function updateFoodDisplay() {
   const container = document.getElementById("explore-food-list");
@@ -223,10 +188,8 @@ function updateFoodDisplay() {
     return;
   }
 
-  // Panggil fungsi filter kombinasi (Search + Kategori)
   const filteredResults = filterFoods(foods, currentSearchTerm, currentSelectedCategory);
 
-  // Perbarui teks status jumlah hasil
   if (statusContainer) {
     const totalCount = filteredResults.length;
     let statusText = `Menampilkan <strong>${totalCount}</strong> kuliner tradisional`;
@@ -247,15 +210,20 @@ function updateFoodDisplay() {
     statusContainer.innerHTML = `<span>${statusText}</span>`;
   }
 
-  // Kondisi EMPTY STATE jika tidak ada makanan yang lolos filter
+  // Empty State bersih dan editorial (ikon SVG minimalis)
   if (filteredResults.length === 0) {
     container.innerHTML = `
       <div class="empty-state" style="grid-column: 1 / -1;">
-        <div class="empty-state-icon" aria-hidden="true">🔍</div>
+        <div class="empty-state-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </div>
         <h3 class="empty-state-title">Kuliner Tidak Ditemukan</h3>
         <p class="empty-state-desc">
-          Tidak ada kuliner yang cocok dengan kriteria pencarian Anda. 
-          Silakan coba kata kunci lain atau bersihkan filter.
+          Tidak ada kuliner yang cocok dengan kata kunci atau kategori yang dipilih.
+          Silakan coba kata kunci lain atau bersihkan filter Anda.
         </p>
         <button type="button" class="btn btn-primary" onclick="resetAllFilters()">
           <span>Kembalikan Semua Kuliner</span>
@@ -265,12 +233,10 @@ function updateFoodDisplay() {
     return;
   }
 
-  // Tampilkan kumpulan kartu makanan
   container.innerHTML = filteredResults
     .map((food) => createFoodCardHTML(food))
     .join("");
 
-  // Pasang listener klik favorit
   if (typeof attachFavoriteButtonListeners === "function") {
     attachFavoriteButtonListeners(container);
   }
@@ -278,13 +244,6 @@ function updateFoodDisplay() {
 
 /**
  * Mengatur fitur Modal Random Culinary (Pilihan Spontan).
- *
- * Alur Logika:
- * 1. Dengarkan klik pada tombol `#btn-random-culinary`.
- * 2. Pilih satu makanan secara acak menggunakan `getRandomFood(foods)`.
- * 3. Isi informasi makanan tersebut ke dalam modal HTML.
- * 4. Buka modal dengan class `.is-open`.
- * 5. Pengguna dapat menekan "Pilih Lainnya" untuk mengambil acak yang lain tanpa menutup modal.
  */
 function setupRandomCulinaryModal() {
   const openBtn = document.getElementById("btn-random-culinary");
@@ -303,7 +262,6 @@ function setupRandomCulinaryModal() {
     const randomFood = getRandomFood(foods);
     if (!randomFood) return;
 
-    // Render data makanan acak ke elemen-elemen di dalam modal
     const categoryObj = typeof getCategoryById === "function"
       ? getCategoryById(randomFood.categoryId)
       : null;
@@ -332,14 +290,11 @@ function setupRandomCulinaryModal() {
     if (modalDesc) modalDesc.textContent = randomFood.shortDescription || randomFood.characteristics;
     if (modalDetailLink) modalDetailLink.href = `detail.html?id=${randomFood.id}`;
 
-    // Tampilkan modal
     modalBackdrop.classList.add("is-open");
-    document.body.style.overflow = "hidden";
   }
 
   function closeModal() {
     modalBackdrop.classList.remove("is-open");
-    document.body.style.overflow = "";
   }
 
   openBtn.addEventListener("click", showRandomCulinary);
@@ -352,14 +307,12 @@ function setupRandomCulinaryModal() {
     tryAgainBtn.addEventListener("click", showRandomCulinary);
   }
 
-  // Tutup jika klik pada area gelap di luar kotak modal
   modalBackdrop.addEventListener("click", (e) => {
     if (e.target === modalBackdrop) {
       closeModal();
     }
   });
 
-  // Tutup dengan tombol Escape
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && modalBackdrop.classList.contains("is-open")) {
       closeModal();
@@ -367,13 +320,6 @@ function setupRandomCulinaryModal() {
   });
 }
 
-/**
- * Mencegah celah keamanan XSS saat menampilkan teks input pengguna kembali ke HTML.
- *
- * Parameter:
- * @param {string} str - Teks mentah.
- * @returns {string} Teks yang telah di-escape karakternya.
- */
 function escapeHTML(str) {
   return str
     .replace(/&/g, "&amp;")
@@ -383,7 +329,6 @@ function escapeHTML(str) {
     .replace(/'/g, "&#039;");
 }
 
-// Jalankan skrip saat halaman selesai dimuat
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", initExplorePage);
 } else {

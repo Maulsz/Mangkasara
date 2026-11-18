@@ -2,32 +2,19 @@
  * ==============================================================================
  * MANGKASARA — KOMPONEN FOOD CARD (KARTU KULINER)
  * ==============================================================================
- * File ini bertanggung jawab untuk menghasilkan (render) elemen visual kartu makanan
- * secara konsisten di seluruh halaman (Beranda, Explore, Detail - Kuliner Terkait, dan Favorit).
- *
- * Mengapa komponen ini dipisahkan:
- * Prinsip DRY (Don't Repeat Yourself). Dengan memusatkan struktur HTML kartu makanan
- * di satu fungsi, perubahan tampilan kartu di masa depan cukup dilakukan di file ini saja.
+ * Bertanggung jawab menghasilkan template HTML kartu kuliner yang rapi, elegan,
+ * dan terfokus pada keindahan fotografi makanan tanpa dekorasi visual berlebih.
  * ==============================================================================
  */
 
 /**
  * Menghasilkan string HTML untuk satu kartu kuliner.
  *
- * Mengapa fungsi ini diperlukan:
- * Mengubah objek data makanan menjadi elemen visual yang dapat disisipkan ke dalam DOM.
- *
  * Parameter:
  * @param {object} food - Objek data kuliner yang akan ditampilkan.
  *
  * Return:
  * @returns {string} String HTML yang merepresentasikan satu food card.
- *
- * Method dan Alur Logika:
- * 1. Panggil `getCategoryById(food.categoryId)` untuk mendapatkan nama kategori.
- * 2. Panggil `getFoodImage(food)` untuk mendapatkan path gambar yang aman (ada fallback jika null).
- * 3. Panggil `isFavorite(food.id)` untuk mengecek status favorit pengguna di LocalStorage.
- * 4. Susun string HTML menggunakan template literals (backtick ``).
  */
 function createFoodCardHTML(food) {
   if (!food) return "";
@@ -38,19 +25,19 @@ function createFoodCardHTML(food) {
     : null;
   const categoryName = category ? category.name : "Kuliner Makassar";
 
-  // Ambil path gambar dengan fallback placeholder
+  // Ambil path gambar dengan fallback placeholder yang aman
   const imageSrc = typeof getFoodImage === "function"
     ? getFoodImage(food)
     : (food.image || "assets/images/placeholder-food.svg");
 
-  // Cek apakah makanan ini sudah difavoritkan
+  // Cek status favorit pengguna di LocalStorage
   const isFav = typeof isFavorite === "function" ? isFavorite(food.id) : false;
   const favActiveClass = isFav ? "is-favorite" : "";
   const favAriaLabel = isFav
     ? `Hapus ${food.name} dari favorit`
-    : `Tambah ${food.name} ke favorit`;
+    : `Simpan ${food.name} ke favorit`;
 
-  // Render tag rasa/bahan jika ada (maksimal 2 tag agar kartu rapi)
+  // Render tag bahan/metode jika ada (maksimal 2 tag agar rapi)
   const tagsHTML = Array.isArray(food.tags)
     ? food.tags.slice(0, 2).map((tag) => `<span class="food-tag">${tag}</span>`).join("")
     : "";
@@ -73,9 +60,9 @@ function createFoodCardHTML(food) {
           class="btn-favorite-toggle ${favActiveClass}" 
           data-favorite-id="${food.id}" 
           aria-label="${favAriaLabel}"
-          title="Simpan ke Favorit"
+          title="${isFav ? 'Hapus dari Favorit' : 'Simpan ke Favorit'}"
         >
-          <svg class="heart-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+          <svg class="heart-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
           </svg>
         </button>
@@ -98,7 +85,7 @@ function createFoodCardHTML(food) {
           </div>
           <a href="detail.html?id=${food.id}" class="btn-card-detail">
             <span>Pelajari</span>
-            <svg class="arrow-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="arrow-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </a>
@@ -109,22 +96,17 @@ function createFoodCardHTML(food) {
 }
 
 /**
- * Menempelkan event listener global untuk seluruh tombol favorit di dalam container.
- *
- * Mengapa teknik Event Delegation ini digunakan:
- * Saat daftar makanan diperbarui (misal karena pencarian atau filter kategori),
- * elemen food card baru akan dibuat ulang. Dengan memasang listener pada elemen induk (delegation),
- * kita tidak perlu repot memasang ulang event listener pada setiap tombol satu per satu.
+ * Menempelkan event listener global untuk seluruh tombol favorit di dalam container
+ * menggunakan teknik Event Delegation.
  *
  * Parameter:
  * @param {HTMLElement} containerElement - Elemen induk yang menampung kartu makanan.
- * @param {Function} [onToggleCallback] - Fungsi opsional yang dipanggil setelah status favorit berubah (berguna untuk me-refresh halaman favorites).
+ * @param {Function} [onToggleCallback] - Callback yang dipanggil setelah status favorit berubah.
  */
 function attachFavoriteButtonListeners(containerElement, onToggleCallback) {
   if (!containerElement) return;
 
   containerElement.addEventListener("click", (event) => {
-    // Cari apakah elemen yang diklik atau leluhurnya adalah tombol favorit
     const btn = event.target.closest(".btn-favorite-toggle");
     if (!btn) return;
 
@@ -141,17 +123,19 @@ function attachFavoriteButtonListeners(containerElement, onToggleCallback) {
     if (isNowFav) {
       btn.classList.add("is-favorite");
       btn.setAttribute("aria-label", "Hapus dari favorit");
+      btn.setAttribute("title", "Hapus dari Favorit");
     } else {
       btn.classList.remove("is-favorite");
-      btn.setAttribute("aria-label", "Tambah ke favorit");
+      btn.setAttribute("aria-label", "Simpan ke favorit");
+      btn.setAttribute("title", "Simpan ke Favorit");
     }
 
-    // Panggil callback jika ada (misal untuk me-render ulang halaman favorit)
+    // Panggil callback jika ada (misal untuk me-refresh halaman favorites)
     if (typeof onToggleCallback === "function") {
-      onToggleCallback(Number(foodId), isNowFav);
+      onToggleCallback(Number(foodId), isNowFav, btn.closest(".food-card"));
     }
 
-    // Perbarui badge jumlah favorit di navbar jika ada fungsi pembaru
+    // Perbarui badge jumlah favorit di navbar
     if (typeof updateNavbarFavoritesCount === "function") {
       updateNavbarFavoritesCount();
     }

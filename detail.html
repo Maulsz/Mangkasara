@@ -58,18 +58,11 @@
     </div>
   </header>
 
-  <div class="nav-backdrop"></div>
-
   <main>
-    <!--
-      Kontainer utama konten detail makanan.
-      Jika ID kuliner tidak ditemukan di dataset, fungsi renderNotFound()
-      pada detail.js akan mengganti isi elemen ini dengan pesan error yang ramah.
-    -->
     <div id="detail-content-area" class="container">
       <!--
         ========================================================================
-        BREADCRUMB & NAVIGASI KEMBALI
+        BREADCRUMB & NAVIGASI
         ========================================================================
       -->
       <div class="detail-breadcrumb-bar">
@@ -90,7 +83,6 @@
         ========================================================================
       -->
       <section class="detail-hero-grid" aria-labelledby="detail-food-title">
-        <!-- Kolom Foto Kuliner -->
         <div class="detail-media-container">
           <img 
             id="detail-food-image" 
@@ -100,14 +92,12 @@
           />
         </div>
 
-        <!-- Kolom Info Header & Aksi Favorit -->
         <div class="detail-info">
           <div class="detail-meta-row">
             <a id="detail-category-badge" href="explore.html" class="detail-category-badge">
               Kategori Kuliner
             </a>
 
-            <!-- Tombol Favorit Interaktif Halaman Detail -->
             <button 
               type="button" 
               id="btn-detail-fav-toggle" 
@@ -124,7 +114,6 @@
           <h1 id="detail-food-title" class="detail-title font-serif">Nama Kuliner</h1>
           <p id="detail-food-lead" class="detail-lead">Ringkasan deskripsi kuliner.</p>
 
-          <!-- Kartu Karakteristik & Cita Rasa -->
           <div class="detail-characteristics-card">
             <h4>Karakteristik & Cita Rasa</h4>
             <p id="detail-food-characteristics">Memuat karakteristik rasa...</p>
@@ -140,7 +129,6 @@
       <div class="detail-content-layout">
         <!-- Kolom Kiri: Deskripsi Lengkap & Cerita Sejarah Budaya -->
         <div class="detail-main-text">
-          <!-- Blok Deskripsi Lengkap -->
           <div class="detail-section-block">
             <h2 class="detail-heading font-serif">Tentang Hidangan Ini</h2>
             <div id="detail-food-description" class="detail-prose">
@@ -156,20 +144,17 @@
           <div id="detail-history-block" class="detail-section-block" style="display: none;">
             <div class="detail-history-box">
               <h3 class="font-serif">
-                <span aria-hidden="true">🏛️</span>
                 <span>Sejarah & Latar Belakang Budaya</span>
               </h3>
-              <p id="detail-food-history" class="detail-prose" style="margin-top: 10px;"></p>
+              <p id="detail-food-history" class="detail-prose" style="margin-top: 8px;"></p>
             </div>
           </div>
         </div>
 
         <!-- Kolom Kanan: Bahan Utama & Referensi Sumber -->
         <aside class="detail-sidebar" aria-label="Informasi Bahan dan Sumber">
-          <!-- Kotak Bahan-Bahan Utama -->
           <div class="sidebar-box">
             <h3 class="sidebar-box-title font-serif">
-              <span aria-hidden="true">🧂</span>
               <span>Bahan Utama</span>
             </h3>
             <ul id="detail-ingredients-list" class="ingredients-list">
@@ -184,7 +169,6 @@
           -->
           <div id="detail-sources-block" class="sidebar-box" style="display: none;">
             <h3 class="sidebar-box-title font-serif">
-              <span aria-hidden="true">📖</span>
               <span>Referensi & Sumber</span>
             </h3>
             <ul id="detail-sources-list" class="sources-list"></ul>
@@ -198,17 +182,16 @@
         ========================================================================
       -->
       <section class="section" style="padding-top: 24px; border-top: 1px solid var(--color-border);" aria-labelledby="related-heading">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
           <div>
             <span class="section-badge">Kategori Serupa</span>
-            <h2 id="related-heading" class="font-serif" style="font-size: 1.8rem;">Kuliner Terkait</h2>
+            <h2 id="related-heading" class="font-serif" style="font-size: 1.75rem;">Kuliner Terkait</h2>
           </div>
           <a href="explore.html" class="btn btn-secondary btn-sm">
             <span>Lihat Semua Kuliner</span>
           </a>
         </div>
 
-        <!-- Grid kuliner terkait (diisi oleh detail.js) -->
         <div id="related-foods-grid" class="food-grid"></div>
       </section>
     </div>
@@ -262,6 +245,7 @@
   <script src="js/data/categories.js"></script>
   <script src="js/data/foods.js"></script>
   <script src="js/utils/storage.js"></script>
+  <script src="js/components/page-transition.js"></script>
   <script src="js/components/food-card.js"></script>
   <script src="js/components/navbar.js"></script>
   <script src="js/pages/detail.js"></script>

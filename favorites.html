@@ -58,8 +58,6 @@
     </div>
   </header>
 
-  <div class="nav-backdrop"></div>
-
   <main class="section">
     <div class="container">
       <!--
@@ -67,18 +65,18 @@
         HEADER HALAMAN FAVORIT
         ========================================================================
       -->
-      <div style="display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 20px; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid var(--color-border);">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 20px; margin-bottom: 34px; padding-bottom: 22px; border-bottom: 1px solid var(--color-border);">
         <div>
           <span class="section-badge">Koleksi Tersimpan</span>
-          <h1 class="section-title" style="margin-bottom: 8px;">Kuliner Favorit Saya</h1>
+          <h1 class="section-title" style="margin-bottom: 6px;">Kuliner Favorit Saya</h1>
           <p class="section-subtitle" style="margin: 0;">
-            Kumpulan kuliner tradisional Makassar yang Anda simpan di perangkat ini.
+            Daftar kuliner tradisional Makassar yang Anda simpan di perangkat ini.
           </p>
         </div>
 
         <!-- Indikator Jumlah & Tombol Bersihkan Semua -->
-        <div style="display: flex; align-items: center; gap: 16px;">
-          <span id="favorites-total-count" class="badge" style="font-size: 0.95rem; font-weight: 600; color: var(--color-primary); background-color: rgba(189, 98, 73, 0.08); padding: 8px 16px; border-radius: var(--radius-full);">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <span id="favorites-total-count" style="font-size: 0.92rem; font-weight: 600; color: var(--color-primary); background-color: rgba(189, 98, 73, 0.08); padding: 7px 16px; border-radius: var(--radius-full); border: 1px solid rgba(189, 98, 73, 0.16);">
             0 Hidangan
           </span>
 
@@ -98,9 +96,6 @@
         ========================================================================
         GRID KULINER FAVORIT
         ========================================================================
-        Elemen kontainer yang akan diisi oleh favorites.js berdasarkan ID
-        yang tersimpan di LocalStorage ('mangkasara-favorites').
-        Jika kosong, akan otomatis menampilkan Empty State.
       -->
       <div id="favorites-food-list" class="food-grid"></div>
     </div>
@@ -154,6 +149,7 @@
   <script src="js/data/categories.js"></script>
   <script src="js/data/foods.js"></script>
   <script src="js/utils/storage.js"></script>
+  <script src="js/components/page-transition.js"></script>
   <script src="js/components/food-card.js"></script>
   <script src="js/components/navbar.js"></script>
   <script src="js/pages/favorites.js"></script>

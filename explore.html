@@ -58,8 +58,6 @@
     </div>
   </header>
 
-  <div class="nav-backdrop"></div>
-
   <main class="section">
     <div class="container">
       <!--
@@ -67,7 +65,7 @@
         HEADER HALAMAN EXPLORE
         ========================================================================
       -->
-      <div class="section-header" style="text-align: left; max-width: 100%; margin-bottom: 32px;">
+      <div class="section-header" style="text-align: left; max-width: 100%; margin-bottom: 30px;">
         <span class="section-badge">Koleksi Lengkap</span>
         <h1 class="section-title">Jelajahi Kuliner Makassar</h1>
         <p class="section-subtitle" style="max-width: 720px;">
@@ -79,13 +77,12 @@
         ========================================================================
         EXPLORE TOOLBAR (PENCARIAN, FILTER KATEGORI, RESET, RANDOM)
         ========================================================================
-        Area kontrol interaktif pengguna untuk menyaring dan menemukan makanan.
       -->
       <div class="explore-toolbar">
         <!-- Baris 1: Kolom Input Pencarian dan Tombol Random Culinary -->
         <div class="explore-search-row">
           <div class="search-input-wrapper">
-            <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="11" cy="11" r="8" />
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
@@ -115,7 +112,12 @@
               class="btn btn-secondary" 
               title="Pilih satu makanan acak"
             >
-              <span aria-hidden="true">🎲</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="4" ry="4" />
+                <circle cx="8" cy="8" r="1.5" fill="currentColor" />
+                <circle cx="16" cy="16" r="1.5" fill="currentColor" />
+                <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+              </svg>
               <span>Pilihan Acak</span>
             </button>
           </div>
@@ -123,7 +125,6 @@
 
         <!-- Baris 2: Tombol Pill Kategori dan Tombol Reset Filter -->
         <div class="category-filter-wrapper">
-          <!-- Tombol-tombol pill kategori digenerate oleh explore.js -->
           <div id="category-pills-list" class="category-pills-list" role="tablist" aria-label="Filter Kategori"></div>
 
           <button 
@@ -132,7 +133,10 @@
             class="btn-reset-filter" 
             title="Kembalikan semua filter ke awal"
           >
-            <span aria-hidden="true">↺</span>
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+              <path d="M3 3v5h5" />
+            </svg>
             <span>Reset Filter</span>
           </button>
         </div>
@@ -151,8 +155,6 @@
         ========================================================================
         GRID DAFTAR MAKANAN (FOOD GRID)
         ========================================================================
-        Elemen kontainer yang akan diisi secara dinamis oleh updateFoodDisplay()
-        di explore.js. Menampilkan kartu makanan atau Empty State jika tidak ada hasil.
       -->
       <div id="explore-food-list" class="food-grid"></div>
     </div>
@@ -162,7 +164,6 @@
     ============================================================================
     MODAL RANDOM CULINARY (REKOMENDASI ACAK)
     ============================================================================
-    Dialog pop-up yang muncul ketika pengguna menekan tombol "Pilihan Acak".
   -->
   <div id="random-modal-backdrop" class="modal-backdrop" aria-hidden="true">
     <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-food-title">
@@ -192,7 +193,9 @@
             </svg>
           </a>
           <button type="button" id="btn-random-try-again" class="btn btn-secondary">
-            <span aria-hidden="true">🔄</span>
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+            </svg>
             <span>Pilih Lainnya</span>
           </button>
         </div>
@@ -249,6 +252,7 @@
   <script src="js/data/foods.js"></script>
   <script src="js/utils/storage.js"></script>
   <script src="js/utils/filters.js"></script>
+  <script src="js/components/page-transition.js"></script>
   <script src="js/components/food-card.js"></script>
   <script src="js/components/navbar.js"></script>
   <script src="js/pages/explore.js"></script>
