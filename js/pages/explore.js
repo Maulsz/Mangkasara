@@ -236,10 +236,6 @@ function updateFoodDisplay() {
   container.innerHTML = filteredResults
     .map((food) => createFoodCardHTML(food))
     .join("");
-
-  if (typeof attachFavoriteButtonListeners === "function") {
-    attachFavoriteButtonListeners(container);
-  }
 }
 
 /**

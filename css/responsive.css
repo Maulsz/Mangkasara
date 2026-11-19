@@ -224,12 +224,31 @@
   .modal-actions .btn {
     width: 100%;
   }
+
+  /* Responsive Coming Soon Placeholder */
+  .coming-soon-wrapper {
+    padding: 38px 20px;
+  }
+
+  .coming-soon-roadmap-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .coming-soon-actions .btn {
+    width: 100%;
+  }
 }
 
 /* -------------------------------------------------------------------------- */
 /* 4. SMARTPHONE KECIL (MAX-WIDTH: 480px)                                     */
 /* -------------------------------------------------------------------------- */
 @media screen and (max-width: 480px) {
+  .brand-logo {
+    height: 36px;
+    max-width: 140px;
+  }
+
   .container {
     padding-left: 16px;
     padding-right: 16px;

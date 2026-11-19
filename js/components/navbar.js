@@ -5,8 +5,11 @@
  * File ini mengatur interaktivitas navigasi:
  * 1. Menandai link menu aktif (active state) sesuai halaman yang sedang dibuka.
  * 2. Mengatur pembukaan dan penutupan dropdown menu mobile langsung di bawah navbar.
- * 3. Menghitung dan memperbarui badge jumlah kuliner favorit di navbar.
- * 4. Mendukung navigasi keyboard (Escape untuk menutup) dan deteksi klik di luar menu.
+ * 3. Mendukung navigasi keyboard (Escape untuk menutup) dan deteksi klik di luar menu.
+ *
+ * Catatan Arsitektur Semester 1:
+ * Fitur Favorit aktif (LocalStorage/Database) ditangguhkan ke Semester 2 sesuai PRD v3.0.
+ * Tidak ada badge counter aktif di navbar pada Semester 1.
  * ==============================================================================
  */
 
@@ -16,7 +19,6 @@
 function initNavbar() {
   highlightActiveNavLink();
   initMobileMenu();
-  updateNavbarFavoritesCount();
 }
 
 /**
@@ -58,8 +60,8 @@ function highlightActiveNavLink() {
 /**
  * Mengatur aksi buka-tutup dropdown menu mobile tepat di bawah navbar.
  *
- * Desain Baru:
- * - Menggunakan dropdown horizontal di bawah bar navbar (bukan side drawer kanan).
+ * Desain Bersih:
+ * - Menggunakan dropdown horizontal di bawah bar navbar.
  * - Tidak menggunakan backdrop gelap layar penuh.
  * - Tidak mengunci scroll pada elemen body.
  * - Menutup otomatis ketika klik di luar, tekan Escape, atau klik tautan.
@@ -113,19 +115,10 @@ function initMobileMenu() {
 }
 
 /**
- * Memperbarui angka indikator (badge) favorit yang ada di sebelah menu "Favorit".
+ * Fungsi pembantu yang dipertahankan sebagai no-op yang aman untuk Semester 1.
  */
 function updateNavbarFavoritesCount() {
-  const badgeElements = document.querySelectorAll(".favorites-count-badge");
-  if (!badgeElements.length) return;
-
-  const count = typeof getFavorites === "function" ? getFavorites().length : 0;
-
-  badgeElements.forEach((badge) => {
-    badge.textContent = count;
-    // Sembunyikan badge jika 0 agar tampilan tetap bersih dan minimalis
-    badge.style.display = count > 0 ? "inline-flex" : "none";
-  });
+  // Tidak ada badge favorit aktif di Semester 1
 }
 
 // Jalankan inisialisasi navbar otomatis saat halaman selesai dimuat

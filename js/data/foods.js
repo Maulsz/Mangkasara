@@ -154,7 +154,7 @@ const foods = [
     ],
     characteristics: "Perpaduan rasa gurih kaldu sapi dengan manis-lembut singkong goreng yang menyerap kuah secara nikmat.",
     history: null,
-    image: null,
+    image: "assets/images/sop-ubi.jpg",
     tags: ["Daging sapi", "Rebus", "Gurih"],
     sources: [
       "Arsip Kuliner Rakyat Kota Makassar"
@@ -179,7 +179,7 @@ const foods = [
     ],
     characteristics: "Cita rasa dominan asam menyegarkan berpadu gurih ikan laut alami dan sedikit sengatan pedas cabai rawit.",
     history: "Berasal dari kata 'pallu' (memasak) dan 'mara' (kering/mengecil atau rasa kecut/segar). Hidangan ini mencerminkan kearifan masyarakat pesisir Makassar dalam mengolah hasil laut segar dengan rempah sederhana yang menghilangkan aroma amis ikan.",
-    image: null,
+    image: "assets/images/pallu-mara.png",
     tags: ["Ikan", "Rebus", "Asam", "Pedas"],
     sources: [
       "Pusat Studi Makanan Tradisional Universitas Hasanuddin"
@@ -227,7 +227,7 @@ const foods = [
     ],
     characteristics: "Gurih asin yang kuat dengan semburat aroma kunyit yang menonjolkan kesegaran alami ikan.",
     history: "Dahulu merupakan cara nelayan Makassar mengawetkan hasil tangkapan ikan agar tidak lekas basi sebelum adanya mesin pendingin modern.",
-    image: null,
+    image: "assets/images/pallu-cela.jpg",
     tags: ["Ikan", "Rebus", "Gurih"],
     sources: [
       "Etnografi Masyarakat Pesisir Makassar"
@@ -381,7 +381,7 @@ const foods = [
     ],
     characteristics: "Daging ikan yang manis segar beraroma asap alami, sangat nikmat ketika dicocol ke sambal pedas-asam.",
     history: null,
-    image: null,
+    image: "assets/images/juku-tunu.jpg",
     tags: ["Ikan", "Seafood", "Bakar", "Gurih", "Pedas"],
     sources: [
       "Tradisi Pesisir Bahari Makassar"
@@ -428,7 +428,7 @@ const foods = [
     ],
     characteristics: "Gurih alami, lembut berlemak di bagian perut, serta aroma khas panggangan arang.",
     history: null,
-    image: null,
+    image: "assets/images/bandeng-bakar.jpg",
     tags: ["Ikan", "Bakar", "Gurih"],
     sources: [
       "Dinas Kebudayaan Kota Makassar"
@@ -504,7 +504,7 @@ const foods = [
     ],
     characteristics: "Lembut di dalam, sedikit garing di bagian dasar cetakan, dengan perpaduan rasa manis lembut dan gurih kelapa.",
     history: "Kue warisan tempo dulu yang hingga kini masih lestari dijajakan menggunakan gerobak khas dengan corong kayu bakar di sudut-sudut jalanan Kota Makassar.",
-    image: null,
+    image: "assets/images/baroncong.jpg",
     tags: ["Bakar", "Manis", "Gurih"],
     sources: [
       "Arsip Dokumentasi Budaya Kota Makassar"
@@ -554,7 +554,7 @@ const foods = [
     ],
     characteristics: "Tekstur super lembut seperti puding sutra yang meleleh di lidah dengan rasa manis legit alami pisang dan gurih santan.",
     history: "Dahulu Barongko merupakan hidangan penutup penjamuan khusus para raja dan bangsawan Bugis-Makassar, serta menjadi hantaran wajib adat dalam prosesi lamaran dan pernikahan adat ('erang-erang').",
-    image: null,
+    image: "assets/images/barongko.jpg",
     tags: ["Pisang", "Kukus", "Manis"],
     sources: [
       "Dinas Kebudayaan Sulawesi Selatan",
@@ -629,7 +629,7 @@ const foods = [
     ],
     characteristics: "Rasa manis alami pisang yang empuk berpadu dengan gurih santan bubur sumsum yang lembut serta sensasi dingin manis sirup.",
     history: "Dapat dinikmati dalam keadaan dingin dengan es serut di siang hari yang terik, maupun disajikan hangat di pagi hari atau musim hujan.",
-    image: null,
+    image: "assets/images/pallu-butung.jpg",
     tags: ["Pisang", "Rebus", "Manis"],
     sources: [
       "Kajian Warisan Kuliner Tradisional Makassar"
@@ -652,7 +652,7 @@ const foods = [
     ],
     characteristics: "Tekstur empuk basah dengan rasa manis pekat yang legit dan aroma khas telur berpadu gurih renyah kenari.",
     history: "Merupakan kue prestisius yang selalu disajikan dalam wadah bosara pada upacara pernikahan adat bangsawan Bugis-Makassar sebagai simbol kehidupan rumah tangga yang manis dan kaya berkah.",
-    image: null,
+    image: "assets/images/cucuru-bayao.jpg",
     tags: ["Kukus", "Rebus", "Manis"],
     sources: [
       "Adat dan Tradisi Bugis Makassar — Direktorat Jenderal Kebudayaan"
@@ -684,7 +684,26 @@ const foods = [
  */
 function getFoodById(id) {
   const numericId = Number(id);
-  return foods.find((food) => food.id === numericId);
+  if (!isNaN(numericId) && numericId > 0) {
+    const foundById = foods.find((food) => food.id === numericId);
+    if (foundById) return foundById;
+  }
+  // Dukung pencarian berdasarkan slug jika parameter berupa teks (contoh: "coto-makassar")
+  return foods.find((food) => food.slug === String(id));
+}
+
+/**
+ * Mencari satu objek makanan berdasarkan slug teks ramah-URL.
+ *
+ * Parameter:
+ * @param {string} slug - Slug makanan (contoh: "coto-makassar").
+ *
+ * Return:
+ * @returns {object|undefined} Objek makanan yang cocok, atau undefined jika tidak ditemukan.
+ */
+function getFoodBySlug(slug) {
+  if (!slug) return undefined;
+  return foods.find((food) => food.slug === String(slug));
 }
 
 /**
@@ -774,6 +793,7 @@ if (typeof module !== "undefined" && module.exports) {
   module.exports = {
     foods,
     getFoodById,
+    getFoodBySlug,
     getFeaturedFoods,
     getFoodsByCategory,
     getRelatedFoods,

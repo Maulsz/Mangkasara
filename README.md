@@ -488,11 +488,37 @@ Do not automatically classify every food from South Sulawesi as traditional Maka
 
 ---
 
-## 9. IMAGE ASSETS
+## 9. IMAGE ASSETS & BRAND IDENTITY
 
-The team has collected food photography assets for the project.
+The team has collected official brand and food photography assets for the project.
 
-Existing team images should be prioritized over random stock photos.
+### 9.1 Brand Logo & Favicon
+
+- **Path:** `assets/logo-1.png`
+- **Spesifikasi:** Format 32-bit RGBA (1402 x 475 px) dengan latar transparan.
+- **Implementasi:** Digunakan sebagai logo utama pada navbar seluruh halaman website dan favicon browser (`<link rel="icon" type="image/png" href="assets/logo-1.png" />`).
+- **Warna Identitas:** Menampilkan aksen terracotta `#BD6249` dan warna teks gelap `#302821`.
+
+### 9.2 Food Photography Mapping
+
+Sebanyak 13 dari 25 hidangan tradisional telah memiliki dokumentasi foto asli tim:
+
+| ID | Nama Kuliner | Kategori | Path Foto | Status |
+|---|---|---|---|---|
+| 01 | Coto Makassar | Hidangan Berkuah | `assets/images/coto.jpg` | Foto Tim |
+| 05 | Sop Ubi | Hidangan Berkuah | `assets/images/sop-ubi.jpg` | Foto Tim |
+| 06 | Pallumara | Hidangan Berkuah | `assets/images/pallu-mara.png` | Foto Tim |
+| 08 | Pallu Ce'la | Hidangan Berkuah | `assets/images/pallu-cela.jpg` | Foto Tim |
+| 14 | Juku' Tunu | Olahan Ikan & Seafood | `assets/images/juku-tunu.jpg` | Foto Tim |
+| 16 | Bandeng Bakar | Olahan Ikan & Seafood | `assets/images/bandeng-bakar.jpg` | Foto Tim |
+| 17 | Jalangkote | Camilan & Jajanan | `assets/images/jalangkote.jpg` | Foto Tim |
+| 19 | Baroncong | Camilan & Jajanan | `assets/images/baroncong.jpg` | Foto Tim |
+| 21 | Barongko | Kue & Hidangan Manis | `assets/images/barongko.jpg` | Foto Tim |
+| 22 | Pisang Epe | Kue & Hidangan Manis | `assets/images/pisang-epe.jpg` | Foto Tim |
+| 23 | Es Pisang Ijo | Kue & Hidangan Manis | `assets/images/pisang-hijo.jpg` | Foto Tim |
+| 24 | Pallu Butung | Kue & Hidangan Manis | `assets/images/pallu-butung.jpg` | Foto Tim |
+| 25 | Cucuru Bayao | Kue & Hidangan Manis | `assets/images/cucuru-bayao.jpg` | Foto Tim |
+| - | 12 Hidangan Lainnya | Berbagai Kategori | `assets/images/placeholder-food.svg` | Fallback SVG |
 
 When adding or updating food images:
 

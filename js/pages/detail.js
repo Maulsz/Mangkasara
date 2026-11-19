@@ -35,7 +35,6 @@ function initDetailPage() {
 
   renderFoodDetail(food);
   renderRelatedFoods(food);
-  setupDetailFavoriteButton(food);
 }
 
 /**
@@ -183,48 +182,6 @@ function renderRelatedFoods(currentFood) {
   container.innerHTML = relatedList
     .map((food) => createFoodCardHTML(food))
     .join("");
-
-  if (typeof attachFavoriteButtonListeners === "function") {
-    attachFavoriteButtonListeners(container);
-  }
-}
-
-/**
- * Mengatur aksi tombol Favorit utama pada halaman Detail.
- */
-function setupDetailFavoriteButton(food) {
-  const btn = document.getElementById("btn-detail-fav-toggle");
-  if (!btn) return;
-
-  function updateBtnUI() {
-    const isFav = typeof isFavorite === "function" ? isFavorite(food.id) : false;
-    const btnText = btn.querySelector(".btn-fav-text");
-
-    if (isFav) {
-      btn.classList.add("is-favorite");
-      btn.setAttribute("aria-label", `Hapus ${food.name} dari favorit`);
-      btn.setAttribute("title", "Hapus dari Favorit");
-      if (btnText) btnText.textContent = "Tersimpan di Favorit";
-    } else {
-      btn.classList.remove("is-favorite");
-      btn.setAttribute("aria-label", `Simpan ${food.name} ke favorit`);
-      btn.setAttribute("title", "Simpan ke Favorit");
-      if (btnText) btnText.textContent = "Simpan ke Favorit";
-    }
-  }
-
-  updateBtnUI();
-
-  btn.addEventListener("click", () => {
-    if (typeof toggleFavorite === "function") {
-      toggleFavorite(food.id);
-      updateBtnUI();
-
-      if (typeof updateNavbarFavoritesCount === "function") {
-        updateNavbarFavoritesCount();
-      }
-    }
-  });
 }
 
 if (document.readyState === "loading") {

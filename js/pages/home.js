@@ -39,10 +39,6 @@ function renderFeaturedFoods() {
   container.innerHTML = featuredFoods
     .map((food) => createFoodCardHTML(food))
     .join("");
-
-  if (typeof attachFavoriteButtonListeners === "function") {
-    attachFavoriteButtonListeners(container);
-  }
 }
 
 /**

@@ -88,10 +88,36 @@ function getRandomFood(foodsList) {
   return foodsList[randomIndex];
 }
 
+/**
+ * Menyaring makanan berdasarkan kata kunci nama saja.
+ *
+ * Parameter:
+ * @param {Array} foodsList - Array kumpulan objek makanan.
+ * @param {string} searchTerm - Kata kunci nama makanan.
+ * @returns {Array} Array makanan yang nama cocok.
+ */
+function searchFoodsByName(foodsList, searchTerm = "") {
+  return filterFoods(foodsList, searchTerm, "all");
+}
+
+/**
+ * Menyaring makanan berdasarkan ID kategori saja.
+ *
+ * Parameter:
+ * @param {Array} foodsList - Array kumpulan objek makanan.
+ * @param {string|number} categoryId - ID kategori ("all", 1, 2, dst).
+ * @returns {Array} Array makanan dalam kategori tersebut.
+ */
+function filterFoodsByCategory(foodsList, categoryId = "all") {
+  return filterFoods(foodsList, "", categoryId);
+}
+
 // Mendukung ekspor modul jika dijalankan di Node.js / module bundler
 if (typeof module !== "undefined" && module.exports) {
   module.exports = {
     filterFoods,
-    getRandomFood
+    getRandomFood,
+    searchFoodsByName,
+    filterFoodsByCategory
   };
 }
