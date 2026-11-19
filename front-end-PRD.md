@@ -1,512 +1,433 @@
-# PRODUCT REQUIREMENTS DOCUMENT
+# PRODUCT REQUIREMENTS DOCUMENT (PRD)
 
 # MANGKASARA — FRONTEND
 
 **Product:** Mangkasara  
-**Tagline:** Discover the Taste of Makassar  
-**Version:** 2.0  
+**Tagline:** Discover the Taste of Makassar.  
+**Version:** 3.0  
 **Platform:** Responsive Website  
-**Development Stage:** Frontend MVP  
-**Technology:** HTML, CSS, Vanilla JavaScript  
-**Data Source:** Local JavaScript Dummy Data
+**Development Stage:** Frontend MVP — Semester 1  
+**Technology Stack:** HTML, CSS, Vanilla JavaScript  
+**Data Source:** Local JavaScript Dummy Data  
+**Future Backend:** PHP and MySQL — Semester 2
 
 ---
 
-# 1. INSTRUCTIONS FOR ANTIGRAVITY AGENT
+## 1. PROJECT OVERVIEW
 
-You are working as a frontend developer for Mangkasara, a culinary exploration and encyclopedia website focused on traditional Makassar cuisine.
+Mangkasara is a culinary exploration and encyclopedia website focused on traditional food from Makassar, South Sulawesi.
 
-Your responsibility is to implement the frontend based on this document and the existing project assets.
+The website helps users discover traditional Makassar culinary heritage through food collections, categories, descriptions, ingredients, characteristics, and cultural information.
 
-Before writing code:
+Mangkasara combines two main concepts:
+
+1. **Culinary Exploration:** Users can browse, search, filter, and discover traditional Makassar foods.
+2. **Culinary Encyclopedia:** Users can read information about each food, including its description, ingredients, characteristics, and historical or cultural background when reliable information is available.
+
+Mangkasara is an educational and informational website, not a food marketplace or food delivery platform.
+
+### 1.1 Project Goals
+
+- Introduce traditional Makassar culinary heritage.
+- Make information about traditional foods easier to discover.
+- Provide a simple and comfortable browsing experience.
+- Present culinary information through an organized and attractive interface.
+- Build a frontend foundation that can be connected to a PHP and MySQL backend in the next semester.
+
+### 1.2 Target Users
+
+- Students and young people interested in local culinary culture.
+- Local residents who want to explore traditional Makassar foods.
+- Tourists and visitors interested in Makassar culinary heritage.
+- General users looking for information about traditional Makassar dishes.
+
+---
+
+## 2. DEVELOPMENT SCOPE
+
+The project is divided into two development stages according to the academic semester.
+
+### 2.1 Semester 1 — Frontend MVP
+
+The first semester focuses on building the website interface and frontend functionality.
+
+**Technology:**
+
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- Local JavaScript data
+- Responsive web design
+
+**Data handling:**
+
+All food and category data will initially come from local JavaScript files. The website does not require a database or backend during this stage.
+
+**Features included:**
+
+- Homepage.
+- Food catalog.
+- Food search.
+- Category filtering.
+- Food detail page.
+- Random food discovery.
+- Responsive navigation.
+- Responsive layout.
+- Favorites page placeholder.
+
+### 2.2 Semester 2 — Backend Integration
+
+The second semester will focus on connecting the existing frontend to a backend system.
+
+**Planned technology:**
+
+- PHP
+- MySQL
+- JavaScript Fetch API
+- XAMPP for local development
+
+**Planned features:**
+
+- Database integration.
+- Dynamic food and category data.
+- PHP endpoints returning JSON.
+- Admin food management (CRUD).
+- Favorites functionality.
+- User authentication, if included in the final project scope.
+
+These features are future plans and must not be implemented during the current frontend-only stage.
+
+---
+
+## 3. INSTRUCTIONS FOR THE ANTIGRAVITY AGENT
+
+You are working as a frontend developer for Mangkasara.
+
+Your responsibility is to inspect, understand, and implement the frontend based on this PRD, the existing project files, and the provided visual references.
+
+### 3.1 Before Writing or Modifying Code
 
 1. Inspect the entire existing project directory.
-2. Inspect the existing HTML, CSS, JavaScript, and asset files.
-3. Locate the food photography assets already collected by the team.
-4. Review the provided visual reference.
-5. Understand the existing project structure before modifying anything.
-6. Preserve useful existing code and assets.
-7. Do not install unnecessary dependencies.
-8. Do not implement backend functionality during this semester.
+2. Review all HTML, CSS, and JavaScript files.
+3. Inspect the existing project structure and understand how files are connected.
+4. Inspect the `assets` directory recursively.
+5. Identify the food photography assets already collected by the team.
+6. Review the visual references provided in the project.
+7. Understand the existing design and functionality before making changes.
+8. Identify duplicated, unused, or unnecessary JavaScript code.
+9. Preserve useful existing code and assets whenever possible.
 
-Do not stop after producing a design mockup. Implement the functional website.
+### 3.2 Development Rules
 
-## Mandatory Brand Requirements
+- Do not rebuild the project from scratch without a clear reason.
+- Do not replace the existing visual identity with a different design.
+- Do not install unnecessary dependencies.
+- Do not use React, Vue, Angular, Node.js, Express, or other frameworks.
+- Use HTML, CSS, and Vanilla JavaScript only.
+- Do not implement backend functionality during this semester.
+- Do not connect to a database.
+- Do not introduce unnecessary JavaScript abstractions.
+- Keep the code readable and understandable for beginner-level developers.
+- Use reusable functions only when they provide a clear benefit.
+- Avoid duplicated code where a simple reusable component is appropriate.
+- Do not add features outside the defined project scope.
 
-The brand name is **MANGKASARA**.
+### 3.3 Code Documentation
 
-The name must appear visibly in the actual frontend:
+Write useful comments in JavaScript and CSS where they help explain the implementation.
 
-- Navbar brand/wordmark.
-- Homepage identity.
-- Footer.
-- Browser document title.
-- Metadata where applicable.
+For important JavaScript functions, explain:
 
-Use the tagline:
+- What the function does.
+- Why the function is needed.
+- Which parameters it receives, if any.
+- Which DOM elements or data it interacts with.
+- Which JavaScript methods or concepts it uses.
+
+Comments should help students understand and modify the code. Avoid excessive comments that merely repeat the code.
+
+### 3.4 Implementation Requirement
+
+Do not stop after producing a mockup or static design.
+
+Implement the actual frontend functionality defined in this document and test the website across all pages.
+
+---
+
+## 4. MANDATORY BRAND REQUIREMENTS
+
+The official project name is **MANGKASARA**.
+
+The tagline is:
 
 **Discover the Taste of Makassar.**
 
-Do not leave:
+The brand name must appear consistently in:
 
-- Dapur Kita.
-- RasaNusa.
-- Placeholder brand names.
-- Generic "Food Website" branding.
+- Navbar brand or wordmark.
+- Homepage identity.
+- Footer.
+- Browser document title.
+- Relevant metadata.
 
-If no logo file exists, create a clean typographic wordmark using text and CSS.
+Do not leave any previous placeholder brand names such as Dapur Kita or RasaNusa in the final interface.
 
----
-
-# 2. PRODUCT DEFINITION
-
-Mangkasara is a platform that combines culinary exploration and culinary knowledge.
-
-Users must be able to:
-
-1. Discover traditional Makassar food.
-2. Browse foods by category.
-3. Search for a specific food.
-4. Read detailed culinary information.
-5. Save favorite foods.
-6. Discover a random culinary recommendation.
-
-This is not:
-
-- A food ordering platform.
-- A restaurant directory.
-- A food marketplace.
-- A delivery application.
+Maintain consistent naming, tone, and visual identity throughout the website.
 
 ---
 
-# 3. DESIGN SYSTEM
+## 5. DESIGN REQUIREMENTS
 
-Use the team's selected Dapur Kita reference as the visual direction.
+### 5.1 Design Direction
 
-The final website must have a warm, editorial, elegant, and modern appearance.
+Use the existing visual reference as the primary design direction.
 
-## 3.1 Color Tokens
+The visual identity should feel:
 
-```css
-:root {
-  --color-bg: #fbf9f5;
-  --color-section: #f5efe6;
-  --color-primary: #bd6249;
-  --color-primary-soft: #d18a70;
-  --color-text: #302821;
-  --color-muted: #82786f;
-  --color-border: #e9e2d9;
-  --color-footer: #2d2621;
-  --color-footer-text: #f7f2ea;
-}
-```
+- Warm.
+- Editorial.
+- Clean.
+- Modern.
+- Cultural.
+- Comfortable to read.
+- Focused on food photography.
 
-Use the colors consistently.
+The design should present traditional Makassar cuisine in a way that feels welcoming and informative.
 
-Do not introduce unrelated bright colors.
+### 5.2 Color Palette
 
-## 3.2 Typography
+Use the following colors as the primary design tokens. Existing project values may be preserved when they already match the intended appearance.
 
-- Playfair Display: headings and editorial titles.
-- DM Sans: body text, navigation, buttons, labels.
+| Token        | Color     | Purpose                      |
+| ------------ | --------- | ---------------------------- |
+| Background   | `#FBF9F5` | Main page background         |
+| Section      | `#F5EFE6` | Alternate section background |
+| Primary      | `#BD6249` | Main accent and buttons      |
+| Primary Soft | `#D18A70` | Secondary accent             |
+| Text         | `#302821` | Main text                    |
+| Muted        | `#82786F` | Secondary text               |
+| Border       | `#E9E2D9` | Borders and separators       |
+| Footer       | `#2D2621` | Footer background            |
+| Footer Text  | `#F7F2EA` | Footer content               |
 
-Use suitable fallbacks.
+### 5.3 Typography
 
-## 3.3 Visual Guidelines
+- Heading font: Playfair Display.
+- Body font: DM Sans.
 
-- Large and high-quality food photography.
-- Warm cream backgrounds.
-- Terracotta accents.
-- Dark brown text.
-- Soft rounded corners.
-- Subtle shadows.
-- Clear typography hierarchy.
-- Generous spacing.
-- Consistent card dimensions.
-- Responsive navigation.
+Maintain a clear typography hierarchy between headings, descriptions, labels, and supporting information.
 
-Avoid:
+### 5.4 Layout and Components
 
-- Excessive gradients.
-- Excessive animations.
-- Too many decorative elements.
-- Oversized text on mobile.
-- Inconsistent card layouts.
+Maintain the existing design direction:
 
----
+- Simple navigation bar.
+- Spacious editorial layout.
+- Large food photography.
+- Two-column hero section on desktop.
+- Clean food cards.
+- Rounded card corners.
+- Consistent spacing.
+- Clear content hierarchy.
+- Dark footer.
+- Responsive layouts for mobile, tablet, and desktop.
 
-# 4. FOOD IMAGE ASSETS — IMPORTANT
+### 5.5 Design Preservation
 
-The team has already collected food photographs.
+The current visual design must remain consistent.
 
-These photographs are available inside the project directory.
+Do not arbitrarily change:
 
-You MUST inspect the existing asset folders before implementing the food cards and detail pages.
+- Main color palette.
+- Typography direction.
+- Layout structure.
+- Card appearance.
+- Navbar style.
+- Footer style.
+- Spacing system.
+- Food image presentation.
 
-Required workflow:
-
-1. Find all image files recursively.
-2. Identify image filenames and dimensions where possible.
-3. Create an internal asset inventory.
-4. Match each image to the corresponding food.
-5. Use local asset paths in the JavaScript food data.
-6. Use the same image consistently in cards and detail pages.
-7. Preserve the original image files.
-
-Do not:
-
-- Replace available team photographs with random internet images.
-- Use unrelated food photographs.
-- Invent image filenames.
-- Delete original assets.
-- Assume an image represents a food without checking it.
-
-If an image cannot be confidently identified, leave the mapping unresolved and report it.
-
-If there are no suitable images for a particular food, use a neutral fallback state.
+Only make visual adjustments when required by the actual functionality or responsiveness.
 
 ---
 
-# 5. SITEMAP
+## 6. WEBSITE STRUCTURE
 
-Implement these four primary pages:
+Mangkasara consists of four main pages.
 
-```text
-Home
-├── Explore Culinary
-│   └── Food Detail
-└── Favorites
-```
+### 6.1 Homepage — `index.html`
 
-Suggested files:
+**Purpose:** Introduce Mangkasara and encourage users to explore traditional Makassar cuisine.
 
-- index.html
-- explore.html
-- detail.html
-- favorites.html
+**Required sections:**
 
-The navigation must work between all pages.
+1. Navbar.
+2. Hero section.
+3. Featured culinary section.
+4. Culinary category section.
+5. Editorial or cultural introduction section.
+6. Footer.
 
----
+**Functional requirements:**
 
-# 6. PAGE REQUIREMENTS
+- Navbar links navigate to the correct pages.
+- Featured food cards navigate to their detail pages.
+- Category cards navigate to the Explore page with the corresponding category selected, when supported by the existing implementation.
+- Main call-to-action navigates to the Explore page.
 
-## PAGE 01 — HOMEPAGE
+### 6.2 Explore Page — `explore.html`
 
-Purpose:
-Introduce Mangkasara and encourage users to explore traditional Makassar cuisine.
+**Purpose:** Allow users to browse and discover the culinary collection.
 
-Required sections:
+**Required elements:**
 
-### A. Navbar
+- Page heading and introduction.
+- Search input.
+- Category filter.
+- Food catalog.
+- Random culinary button.
+- Empty state when no food matches the search or filter.
 
-- Mangkasara wordmark.
-- Home navigation.
-- Explore navigation.
-- Favorites navigation.
-- Mobile navigation menu.
+**Functional requirements:**
 
-### B. Hero Section
+1. Display all available food data.
+2. Search foods by name.
+3. Filter foods by category.
+4. Allow search and category filtering to work together.
+5. Provide a reset option when appropriate.
+6. Display an empty state when no results are found.
+7. Random culinary button selects a food from the available collection and directs users to its detail page.
 
-- Headline introducing traditional Makassar cuisine.
-- Short supporting description.
-- Primary CTA: Explore Culinary.
-- Food photography from the team's assets.
-- Editorial two-column layout on desktop.
-- Stacked layout on mobile.
+Search and filtering must work with the local JavaScript data.
 
-Suggested headline:
+### 6.3 Food Detail Page — `detail.html`
 
-"Discover the Taste of Makassar"
+**Purpose:** Present detailed information about one selected traditional food.
 
-Suggested description:
-
-"Explore the rich flavors, stories, and culinary heritage of traditional Makassar cuisine."
-
-### C. Introduction Section
-
-Explain the purpose of Mangkasara.
-
-### D. Featured Culinary
-
-Display selected food items.
-
-Each food card must include:
+**Required information:**
 
 - Food image.
 - Food name.
-- Category label.
+- Category.
 - Short description.
-- Link to detail page.
+- Full description.
+- Ingredients.
+- Characteristics.
+- Historical or cultural story, when reliable information is available.
+- Sources or references when available.
+- Related foods, if supported by the available data.
 
-Only foods marked `featured: true` should appear here.
+**Functional requirements:**
 
-### E. Category Section
+1. Read the selected food identifier from the URL.
+2. Find the matching food in the local data.
+3. Display the corresponding food information.
+4. Display a clear invalid or unavailable state if the food identifier does not exist.
+5. Related food cards should navigate to their respective detail pages.
 
-Display the five main categories.
+Example URL:
 
-Clicking a category must navigate to Explore with that category selected.
+`detail.html?id=coto-makassar`
 
-### F. Editorial Section
+The identifier format may follow the existing project implementation, provided it is consistent.
 
-Provide a short introduction to Makassar culinary heritage.
+### 6.4 Favorites Page — `favorites.html`
 
-Do not invent historical facts.
+**Purpose:** Reserve a dedicated page for a future favorites feature.
 
-### G. Footer
+For the current semester, this page is a **Coming Soon / To Be Continued placeholder**.
 
-Must display:
+**Required interface:**
 
-- Mangkasara.
-- Tagline.
-- Navigation links.
-- Copyright information.
+- Page title: Favorites.
+- Short explanation that the feature is planned for a future development stage.
+- A visually consistent Coming Soon state.
+- Navigation back to Explore or Home.
 
-Acceptance criteria:
+**Important restrictions:**
 
-- Brand name is visible.
-- All sections render correctly.
-- Featured cards use actual food data.
-- Navigation and CTA work.
-- Responsive layout works.
+Do not implement the following during the current semester:
+
+- Add to favorites.
+- Remove from favorites.
+- Favorite state management.
+- LocalStorage-based favorites.
+- Session-based favorites.
+- User accounts.
+- Favorites database.
+- Active favorite buttons or heart interactions.
+
+If the existing food cards contain favorite buttons or heart icons, make sure they do not imply an active feature. Remove or visually disable them while preserving the card design.
+
+Do not create unnecessary `favorites.js` or `storage.js` functionality for a feature that is not being implemented. Inspect existing files and remove or leave unused code only after checking its dependencies.
 
 ---
 
-## PAGE 02 — EXPLORE CULINARY
+## 7. CULINARY DATA REQUIREMENTS
 
-Purpose:
-Allow users to browse and discover the entire culinary collection.
+### 7.1 Data Source
 
-Required components:
+For the current semester, culinary data must be stored in local JavaScript files.
 
-1. Page title.
-2. Short introduction.
-3. Search input.
-4. Category filter.
-5. Food card grid.
-6. Random Culinary button.
-7. Empty state.
+Suggested files:
 
-### Search Behavior
+- `js/data/foods.js`
+- `js/data/categories.js`
 
-Search must:
+The implementation may preserve the existing file organization if it is already functional.
 
-- Search food names.
-- Ignore uppercase/lowercase differences.
-- Trim unnecessary whitespace.
-- Update displayed results.
+### 7.2 Food Data Structure
+
+Use a consistent object structure for every food entry.
 
 Example:
-Searching `coto` should find Coto Makassar.
-
-### Category Filter
-
-The category filter must use these exact categories:
-
-| ID  | Category              |
-| --- | --------------------- |
-| 1   | Hidangan Berkuah      |
-| 2   | Makanan Utama         |
-| 3   | Olahan Ikan & Seafood |
-| 4   | Camilan & Jajanan     |
-| 5   | Kue & Hidangan Manis  |
-
-Provide an "Semua" option that displays all foods.
-
-### Combined Search and Category Filtering
-
-Search and category filtering MUST work together.
-
-Example:
-
-- Selected category: Hidangan Berkuah.
-- Search keyword: coto.
-
-Expected result:
-
-- Coto Makassar.
-
-The result must satisfy BOTH conditions.
-
-Conceptual logic:
 
 ```js
-const filteredFoods = foods.filter((food) => {
-  const matchesSearch = food.name
-    .toLowerCase()
-    .includes(searchTerm.toLowerCase());
-
-  const matchesCategory =
-    selectedCategory === "all" || food.categoryId === Number(selectedCategory);
-
-  return matchesSearch && matchesCategory;
-});
+{
+  id: "coto-makassar",
+  name: "Coto Makassar",
+  categoryId: "hidangan-berkuah",
+  shortDescription: "Hidangan berkuah khas Makassar.",
+  description: "Deskripsi lengkap mengenai makanan.",
+  ingredients: [
+    "Daging sapi",
+    "Jeroan",
+    "Kacang tanah"
+  ],
+  characteristics: "Kuah kaya rempah dengan cita rasa gurih.",
+  history: null,
+  image: "assets/images/coto-makassar.webp",
+  tags: ["Daging sapi", "Berkuah", "Gurih"],
+  sources: [],
+  featured: true
+}
 ```
 
-### Reset Filter
+This is an example structure. Adapt property names to the existing implementation when necessary, but maintain consistency across all food objects.
 
-Provide a reset control.
+### 7.3 Data Accuracy
 
-It must:
+- Do not invent historical facts.
+- Do not invent cultural origins.
+- Do not present uncertain information as established fact.
+- Use reliable references when documenting history or cultural background.
+- If historical information cannot be verified, leave it unavailable rather than fabricating it.
+- Keep descriptions informative and easy to understand.
+- Use consistent category assignments.
 
-- Clear search input.
-- Reset category to "Semua".
-- Display the complete collection again.
+### 7.4 Culinary Scope
 
-### Empty State
+The website focuses specifically on traditional Makassar culinary heritage.
 
-If there are no results, display a clear message.
+Do not automatically include every food from South Sulawesi.
 
-Example:
+Foods from other regions or ethnic culinary traditions must only be included when their relationship to Makassar culinary heritage has been verified.
 
-"No culinary items found. Try another keyword or category."
+### 7.5 Initial Culinary Collection
 
-Do not leave an empty blank area.
+The following is an initial editorial collection, not an official cultural classification.
 
-Acceptance criteria:
-
-- Search works.
-- Category filtering works.
-- Both filters work simultaneously.
-- Reset restores all results.
-- Empty state appears when appropriate.
-
----
-
-## PAGE 03 — FOOD DETAIL
-
-Purpose:
-Provide complete information about a selected culinary item.
-
-Access example:
-
-```text
-detail.html?id=1
-```
-
-Required content:
-
-1. Food image.
-2. Food name.
-3. Category.
-4. Short description.
-5. Full description.
-6. Main ingredients.
-7. Taste or culinary characteristics.
-8. History/story, if verified.
-9. Information sources, if available.
-10. Related foods.
-11. Favorite button.
-12. Back to Explore navigation.
-
-### Data Handling
-
-Read the food ID from the URL query parameter.
-
-Find the matching food object from the dummy dataset.
-
-If the ID does not exist:
-
-- Show a friendly not-found message.
-- Provide a button to return to Explore.
-
-Optional fields:
-
-- Do not display empty history sections.
-- Do not display undefined values.
-- Do not display empty source lists.
-
-### Related Foods
-
-Display other foods from the same category.
-
-Do not display the current food as a related item.
-
-Acceptance criteria:
-
-- Correct food is displayed based on ID.
-- Invalid IDs are handled.
-- Optional content is handled.
-- Favorite button works.
-- Related food links work.
-
----
-
-## PAGE 04 — FAVORITES
-
-Purpose:
-Allow users to save and revisit culinary items.
-
-Use LocalStorage.
-
-Storage key:
-
-```js
-const FAVORITES_KEY = "mangkasara-favorites";
-```
-
-Storage format:
-
-```json
-[1, 4, 7]
-```
-
-Store food IDs, not complete food objects.
-
-Required behavior:
-
-- Add a food to favorites.
-- Remove a food from favorites.
-- Display all saved foods.
-- Persist favorites after refresh.
-- Navigate from favorite cards to detail pages.
-- Display an empty state if there are no favorites.
-
-Suggested empty state:
-
-"Your favorite culinary collection is still empty."
-
-Provide an Explore CTA.
-
-Acceptance criteria:
-
-- Favorites can be added.
-- Favorites can be removed.
-- Data persists after refresh.
-- Empty state works.
-- Invalid stored data does not crash the page.
-
----
-
-# 7. RANDOM CULINARY
-
-Purpose:
-Give users a spontaneous way to discover traditional Makassar cuisine.
-
-Behavior:
-
-1. User clicks "Discover Random Culinary".
-2. JavaScript chooses one available food.
-3. Display the selected food.
-4. Provide a button to view its details.
-5. Allow the user to try again.
-
-Do not select an invalid ID.
-
-If the collection is empty, show a friendly message.
-
----
-
-# 8. CULINARY TAXONOMY
-
-Every food must have exactly ONE primary category.
-
-Use these five categories.
-
-## CATEGORY 01 — HIDANGAN BERKUAH
-
-Initial food list:
+**Hidangan Berkuah**
 
 - Coto Makassar
 - Pallubasa
@@ -517,36 +438,28 @@ Initial food list:
 - Pallu Kaloa
 - Pallu Ce'la
 
-## CATEGORY 02 — MAKANAN UTAMA
-
-Initial food list:
+**Makanan Utama**
 
 - Mie Titi
 - Songkolo Bagadang
 - Kaddo Minyak
 - Bassang
 
-## CATEGORY 03 — OLAHAN IKAN & SEAFOOD
-
-Initial food list:
+**Olahan Ikan & Seafood**
 
 - Juku' Parape
 - Juku' Tunu
 - Juku' Kambu
 - Bandeng Bakar
 
-## CATEGORY 04 — CAMILAN & JAJANAN
-
-Initial food list:
+**Camilan & Jajanan**
 
 - Jalangkote
 - Gogoso
 - Baroncong
 - Tarajong
 
-## CATEGORY 05 — KUE & HIDANGAN MANIS
-
-Initial food list:
+**Kue & Hidangan Manis**
 
 - Barongko
 - Pisang Epe
@@ -554,271 +467,277 @@ Initial food list:
 - Pallu Butung
 - Cucuru Bayao
 
-IMPORTANT CONTENT RULES:
-
-- This list is an initial editorial curation, not an official cultural classification.
-- Verify every food before including it as traditional Makassar cuisine.
-- Do not automatically include all South Sulawesi dishes.
-- Do not assume every food sold in Makassar originated from Makassar.
-- Do not invent historical information.
-- Record reliable references for food descriptions and historical claims.
-- If an item's cultural association is uncertain, flag it for team review.
+Verify the cultural association of each entry before publishing it.
 
 ---
 
-# 9. TAGGING SYSTEM
+## 8. IMAGE AND ASSET REQUIREMENTS
 
-Primary category and food tags are different.
+The team has already collected food photography assets.
 
-Each food has one primary category, but it may have multiple tags.
+These existing assets must be inspected and prioritized.
 
-Suggested tags:
+### Rules
 
-### Main Ingredient
+1. Inspect the entire `assets` directory recursively.
+2. Identify available images and their formats.
+3. Match each image to the correct food.
+4. Use existing team photography as the primary image source.
+5. Do not replace available team images with random stock photos.
+6. Do not assume an image represents a particular food based only on its filename.
+7. Do not invent image filenames or paths.
+8. Preserve original image files.
+9. Report images that cannot be confidently matched.
+10. Use a consistent image presentation across cards and detail pages.
 
-- Daging sapi
-- Ikan
-- Ayam
-- Pisang
-- Beras
-- Seafood
-
-### Cooking Method
-
-- Rebus
-- Bakar
-- Goreng
-- Kukus
-
-### Taste
-
-- Gurih
-- Manis
-- Pedas
-- Asam
-
-Tags are optional for the MVP.
-
-Do not create additional category filters for tags unless explicitly approved.
+If a food does not have a suitable image, use an appropriate fallback rather than an unrelated image.
 
 ---
 
-# 10. JAVASCRIPT DATA STRUCTURE
+## 9. JAVASCRIPT ARCHITECTURE
 
-Use a consistent data contract.
+Use Vanilla JavaScript and keep the implementation understandable.
 
-Example:
+The existing project structure should be inspected before changing it.
 
-```js
-{
-  id: 1,
-  slug: "coto-makassar",
-  name: "Coto Makassar",
-  categoryId: 1,
-  shortDescription: "Hidangan berkuah tradisional Makassar.",
-  description: "Deskripsi lengkap berdasarkan sumber.",
-  ingredients: [
-    "Daging sapi",
-    "Jeroan",
-    "Kacang tanah"
-  ],
-  characteristics: "Gurih dan kaya rempah.",
-  history: null,
-  image: "assets/images/coto-makassar.webp",
-  tags: ["Daging sapi", "Rebus", "Gurih"],
-  sources: [],
-  featured: true
-}
-```
-
-Category data:
-
-```js
-{
-  id: 1,
-  name: "Hidangan Berkuah",
-  slug: "hidangan-berkuah"
-}
-```
-
-Rules:
-
-- Every food must have a unique ID.
-- Every food must have a valid categoryId.
-- Every image path must refer to an existing asset.
-- Ingredients must be an array.
-- Tags must be an array.
-- History may be null.
-- Featured must be a boolean.
-- Keep the data separate from UI rendering.
-
----
-
-# 11. SUGGESTED PROJECT STRUCTURE
+The current project may contain:
 
 ```text
-mangkasara/
-│
-├── index.html
-├── explore.html
-├── detail.html
-├── favorites.html
-│
-├── assets/
-│   ├── images/
-│   ├── icons/
-│   └── fonts/
-│
-├── css/
-│   ├── style.css
-│   ├── components.css
-│   └── responsive.css
-│
-└── js/
-    ├── data/
-    │   ├── foods.js
-    │   └── categories.js
-    │
-    ├── utils/
-    │   ├── storage.js
-    │   └── filters.js
-    │
-    ├── components/
-    │   ├── navbar.js
-    │   └── food-card.js
-    │
-    └── pages/
-        ├── home.js
-        ├── explore.js
-        ├── detail.js
-        └── favorites.js
+js/
+├── components/
+├── data/
+│   ├── categories.js
+│   └── foods.js
+├── pages/
+│   ├── detail.js
+│   ├── explore.js
+│   ├── favorites.js
+│   └── home.js
+└── utils/
+    ├── filters.js
+    └── storage.js
 ```
 
-This is a suggested structure. Adapt it to the existing project when appropriate.
+This is the current visible structure and should be treated as a starting point, not a requirement to preserve every file.
 
-Do not unnecessarily rewrite an existing working project.
+### 9.1 Responsibilities
+
+**Data files**
+
+- Store local food and category information.
+- Export data for use by page scripts.
+
+**Components**
+
+- Contain reusable UI functions when necessary.
+- Example: a food card renderer.
+
+**Page scripts**
+
+- Handle functionality specific to each page.
+- `home.js`: homepage content.
+- `explore.js`: catalog, search, category filtering, and random discovery.
+- `detail.js`: selected food detail.
+- `favorites.js`: only if needed to display the Coming Soon placeholder.
+
+**Utilities**
+
+- Contain genuinely shared helper functions.
+- Avoid creating utilities that are not needed.
+
+### 9.2 JavaScript Guidelines
+
+- Prefer simple functions with clear responsibilities.
+- Use `const` by default and `let` when reassignment is required.
+- Use array methods when they make the logic clearer.
+- Use event listeners for user interactions.
+- Use DOM methods to update page content.
+- Avoid unnecessary global variables.
+- Avoid duplicated filtering logic.
+- Avoid unnecessary storage logic.
+- Avoid excessive abstraction.
+
+Use ES Modules if the existing project architecture supports them. Do not mix incompatible module systems.
+
+Run the project through a local development server such as VS Code Live Server. Do not rely on opening HTML files directly through `file://` when using ES Modules.
+
+### 9.3 Future Backend Compatibility
+
+Keep data rendering separate from the source of the data where practical.
+
+The food card and detail rendering logic should be reusable when data later comes from a PHP JSON API.
+
+Do not implement the PHP API now.
 
 ---
 
-# 12. RESPONSIVE REQUIREMENTS
+## 10. FUTURE BACKEND PLAN — SEMESTER 2
 
-Desktop:
+This section documents the intended direction only.
 
-- Full navigation bar.
-- Two-column hero.
-- Multi-column food card grid.
-- Large food imagery.
+### 10.1 Planned Architecture
 
-Tablet:
+The future architecture is:
 
-- Adjust grid columns.
-- Reduce section spacing.
-- Maintain readable typography.
+```text
+Frontend
+HTML + CSS + JavaScript
+        |
+        | fetch()
+        v
+PHP API
+        |
+        | SQL query
+        v
+MySQL Database
+        |
+        | Query result
+        v
+PHP JSON Response
+        |
+        v
+JavaScript renders the data
+```
 
-Mobile:
+The browser must not connect directly to MySQL.
 
-- Mobile navigation.
-- Single-column hero.
-- Two-column or single-column card grid depending on available width.
-- Full-width search input.
-- Comfortable touch targets.
+PHP will handle database communication and return data to the frontend, preferably in JSON format.
+
+### 10.2 Planned Database Tables
+
+Potential tables:
+
+| Table              | Purpose                                             |
+| ------------------ | --------------------------------------------------- |
+| `categories`       | Stores culinary categories                          |
+| `foods`            | Stores food information                             |
+| `food_ingredients` | Stores food ingredients                             |
+| `users`            | Stores user accounts, if authentication is included |
+| `favorites`        | Stores user-to-food favorite relationships          |
+
+Additional tables may be introduced if the final requirements need them.
+
+### 10.3 Planned API Examples
+
+These are conceptual endpoint examples:
+
+- `GET /api/foods.php`
+- `GET /api/food.php?id=1`
+- `GET /api/categories.php`
+- `GET /api/random-food.php`
+- `GET /api/favorites.php`
+- `POST /api/favorites.php`
+- `DELETE /api/favorites.php`
+
+Admin CRUD endpoints may also be added.
+
+The final endpoint structure will be determined during the backend semester.
+
+### 10.4 Backend Security Considerations
+
+During backend implementation:
+
+- Use PDO or an appropriate database access method.
+- Use prepared statements for user-provided values.
+- Validate incoming data on the server.
+- Do not trust user IDs supplied directly by the browser.
+- Protect admin operations.
+- Handle errors properly.
+- Return appropriate HTTP status codes.
+- Store passwords securely if authentication is implemented.
+
+---
+
+## 11. RESPONSIVE DESIGN REQUIREMENTS
+
+The website must work on:
+
+- Desktop.
+- Tablet.
+- Mobile phones.
+
+Requirements:
+
 - No horizontal overflow.
+- Text remains readable.
+- Images scale appropriately.
+- Food cards adapt to smaller screens.
+- Navigation remains usable on mobile.
+- Buttons and inputs remain easy to interact with.
+- Detail content must remain organized on small screens.
+
+Preserve the desktop design direction while adapting the layout for smaller screens.
 
 ---
 
-# 13. ACCESSIBILITY
+## 12. FUNCTIONAL ACCEPTANCE CRITERIA
 
-- Use semantic HTML.
-- Add alt text to meaningful food images.
-- Provide visible keyboard focus.
-- Use labels for form inputs.
-- Ensure sufficient text contrast.
-- Buttons must have clear accessible labels.
-- Do not communicate status only through color.
+The implementation is considered complete when the following requirements are satisfied.
 
----
+### Homepage
 
-# 14. OUT OF SCOPE
+- [ ] Mangkasara branding is visible.
+- [ ] Hero section displays correctly.
+- [ ] Featured food cards display correctly.
+- [ ] Category navigation works.
+- [ ] Main navigation works.
+- [ ] Footer displays correctly.
 
-Do NOT implement:
+### Explore
 
-- Backend API.
-- MySQL connection.
-- Real authentication.
-- Login and register.
-- Admin dashboard.
-- Food CRUD interface.
-- Food ordering.
-- Payment.
-- Restaurant directory.
-- User comments.
-- User rating system.
-- Online image upload.
+- [ ] Food catalog displays local data.
+- [ ] Search works by food name.
+- [ ] Category filtering works.
+- [ ] Search and filtering work together.
+- [ ] Reset behavior works.
+- [ ] Empty state displays correctly.
+- [ ] Random food discovery works.
+- [ ] Food cards navigate to the correct detail page.
 
-These features belong to future backend development.
+### Food Detail
 
----
+- [ ] Food information matches the selected identifier.
+- [ ] Image displays correctly.
+- [ ] Ingredients and descriptions display correctly.
+- [ ] Missing information is handled gracefully.
+- [ ] Invalid identifiers display a proper unavailable state.
+- [ ] Related food links work when available.
 
-# 15. IMPLEMENTATION ORDER
+### Favorites
 
-Follow this order:
+- [ ] Favorites page exists.
+- [ ] Coming Soon message is displayed.
+- [ ] No active favorite functionality is present.
+- [ ] No LocalStorage favorites implementation is present.
 
-1. Inspect project files and existing assets.
-2. Identify and map food photographs.
-3. Establish Mangkasara branding and design tokens.
-4. Build shared navbar and footer.
-5. Build reusable food cards and category cards.
-6. Implement homepage.
-7. Implement dummy food and category data.
-8. Implement Explore page.
-9. Implement search and combined category filtering.
-10. Implement Food Detail.
-11. Implement Favorites using LocalStorage.
-12. Implement Random Culinary.
-13. Implement responsive layouts.
-14. Test all navigation and interactions.
-15. Report completion and any unresolved asset/content mapping.
+### General
 
-Do not skip asset inspection.
+- [ ] All navigation links work.
+- [ ] No broken image paths.
+- [ ] No major console errors.
+- [ ] Layout works on mobile, tablet, and desktop.
+- [ ] Existing visual identity is preserved.
+- [ ] No backend or database functionality is implemented.
 
 ---
 
-# 16. ACCEPTANCE CRITERIA
+## 13. FINAL IMPLEMENTATION REPORT
 
-The frontend is considered complete only when:
+After completing the implementation, provide a short report containing:
 
-- Mangkasara appears visibly throughout the frontend.
-- The selected visual reference is followed.
-- Existing food photographs are used appropriately.
-- Homepage is complete.
-- Explore page is functional.
-- Search works.
-- Category filtering works.
-- Combined search and category filtering works.
-- Reset filter works.
-- Food detail is based on the selected food ID.
-- Invalid food IDs are handled.
-- Favorites persist using LocalStorage.
-- Random Culinary works.
-- Related foods work.
-- Responsive layouts work.
-- No major console errors remain.
-- No important buttons are decorative or non-functional.
-- No unsupported culinary history is presented as fact.
+1. Summary of changes.
+2. Files created.
+3. Files modified.
+4. Files removed, including the reason for removal.
+5. Existing assets reused.
+6. Assets that could not be matched.
+7. Features implemented.
+8. Features intentionally left for Semester 2.
+9. Testing results.
+10. Known limitations or remaining issues.
+
+Do not claim that a feature works unless it has actually been tested.
 
 ---
 
-# 17. FINAL AGENT REPORT
-
-After implementation, provide a short report containing:
-
-1. Pages implemented.
-2. Features completed.
-3. Project structure created or modified.
-4. Food images discovered and mapped.
-5. Images that could not be identified.
-6. Features that remain incomplete.
-7. Testing performed.
-8. Known bugs or limitations.
-
-Do not claim a feature is complete unless it has been implemented and tested.
+**END OF DOCUMENT**
