@@ -64,8 +64,7 @@
     <section class="hero-section" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <!-- Kolom Teks & Aksi -->
-        <div class="hero-content">
-          <!-- <span class="section-badge">Ensiklopedia Kuliner Tradisional</span> -->
+        <div class="hero-content fade-up">
           <h1 id="hero-title" class="hero-title">
             Discover the Taste of <span>Makassar</span>
           </h1>
@@ -90,18 +89,10 @@
         </div>
 
         <!-- Kolom Fotografi Kuliner Asli -->
-        <div class="hero-media">
+        <div class="hero-media fade-up" data-delay="1">
           <div class="hero-image-wrapper">
             <img src="assets/images/coto.jpg" alt="Hidangan Coto Makassar kuah kental kaya rempah" class="hero-image"
               onerror="this.onerror=null; this.src='assets/images/placeholder-food.svg';" />
-          </div>
-          <!-- Kartu floating minimalis -->
-          <div class="hero-floating-card">
-            <div class="floating-accent-line" aria-hidden="true"></div>
-            <div class="floating-text">
-              <h4>Coto Makassar</h4>
-              <p>Ikon kuliner legendaris sejak abad ke-16</p>
-            </div>
           </div>
         </div>
       </div>
@@ -114,8 +105,7 @@
     -->
     <section class="section section-alt" aria-labelledby="pillars-heading">
       <div class="container">
-        <div class="section-header">
-          <!-- <span class="section-badge">Mengenal Mangkasara</span> -->
+        <div class="section-header fade-up">
           <h2 id="pillars-heading" class="section-title">Harmoni Rasa & Cerita Warisan Budaya</h2>
           <p class="section-subtitle">
             Mangkasara hadir untuk melestarikan dan mendokumentasikan kekayaan kuliner tradisional Makassar kepada
@@ -124,7 +114,7 @@
         </div>
 
         <div class="pillars-grid">
-          <div class="pillar-card">
+          <div class="pillar-card fade-up" data-delay="1">
             <span class="pillar-num font-serif">01</span>
             <h3 class="pillar-title">Keaslian Cita Rasa</h3>
             <p class="pillar-desc">
@@ -133,7 +123,7 @@
             </p>
           </div>
 
-          <div class="pillar-card">
+          <div class="pillar-card fade-up" data-delay="2">
             <span class="pillar-num font-serif">02</span>
             <h3 class="pillar-title">Cerita & Latar Budaya</h3>
             <p class="pillar-desc">
@@ -142,7 +132,7 @@
             </p>
           </div>
 
-          <div class="pillar-card">
+          <div class="pillar-card fade-up" data-delay="3">
             <span class="pillar-num font-serif">03</span>
             <h3 class="pillar-title">Eksplorasi Interaktif</h3>
             <p class="pillar-desc">
@@ -162,8 +152,7 @@
     -->
     <section id="categories" class="section" aria-labelledby="categories-heading">
       <div class="container">
-        <div class="section-header">
-          <!-- <span class="section-badge">Jelajahi Ragam</span> -->
+        <div class="section-header fade-up">
           <h2 id="categories-heading" class="section-title">Lima Kategori Kuliner</h2>
           <p class="section-subtitle">
             Pilih salah satu kategori untuk memulai eksplorasi hidangan khas Makassar.
@@ -174,7 +163,7 @@
         <div id="category-list" class="categories-grid"></div>
 
         <!-- Prompt navigasi ke seluruh koleksi -->
-        <div class="categories-footer-prompt">
+        <div class="categories-footer-prompt fade-up">
           <span>Ingin melihat seluruh hidangan sekaligus?</span>
           <a href="explore.html" class="link-editorial-arrow">
             <span>Buka Seluruh 25 Kuliner</span>
@@ -194,8 +183,7 @@
     -->
     <section class="section section-alt" aria-labelledby="featured-heading">
       <div class="container">
-        <div class="section-header">
-          <!-- <span class="section-badge">Pilihan Editor</span> -->
+        <div class="section-header fade-up">
           <h2 id="featured-heading" class="section-title">Kuliner Pilihan Makassar</h2>
           <p class="section-subtitle">
             Cicipi kelezatan hidangan paling ikonik yang menjadi kebanggaan masyarakat Makassar.
@@ -204,7 +192,7 @@
 
         <div id="featured-food-list" class="food-grid"></div>
 
-        <div style="text-align: center; margin-top: 44px;">
+        <div style="text-align: center; margin-top: 44px;" class="fade-up">
           <a href="explore.html" class="btn btn-outline btn-lg">
             <span>Lihat Seluruh 25 Kuliner</span>
             <svg class="arrow-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
@@ -223,7 +211,7 @@
     -->
     <section class="section" aria-label="Kutipan Budaya Makassar">
       <div class="container">
-        <div class="editorial-quote-box">
+        <div class="editorial-quote-box fade-up">
           <div class="quote-symbol" aria-hidden="true">“</div>
           <p class="editorial-text">
             Dapur tradisional Makassar adalah perjumpaan harmonis antara kekayaan hasil laut Selat Makassar yang
@@ -244,10 +232,12 @@
   -->
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-grid">
+      <div class="footer-grid fade-up">
         <div class="footer-brand">
-          <h3 class="font-serif">MANGKASARA</h3>
-          <div class="footer-tagline">Discover the Taste of Makassar</div>
+          <a href="index.html" class="footer-brand-link" aria-label="Mangkasara Beranda">
+            <img src="assets/logo-1.png" alt="Mangkasara" class="footer-logo" />
+          </a>
+          <span class="footer-tagline">DISCOVER THE TASTE OF MAKASSAR</span>
           <p class="footer-desc">
             Platform eksplorasi dan ensiklopedia kuliner tradisional Makassar. Mengabadikan cita rasa otentik, resep
             turun-temurun, dan cerita budaya Nusantara.

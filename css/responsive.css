@@ -14,6 +14,15 @@
 /* 1. TABLET & LAPTOP KECIL (MAX-WIDTH: 1024px)                               */
 /* -------------------------------------------------------------------------- */
 @media screen and (max-width: 1024px) {
+  .site-header {
+    height: 76px;
+  }
+
+  .brand-logo {
+    height: 58px;
+    max-width: 200px;
+  }
+
   .food-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
@@ -53,11 +62,6 @@
     justify-content: center;
   }
 
-  .hero-floating-card {
-    left: 16px;
-    bottom: -12px;
-  }
-
   .detail-hero-grid {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -83,6 +87,20 @@
 /* 3. MOBILE SMARTPHONE (MAX-WIDTH: 768px) — DROPDOWN DI BAWAH NAVBAR        */
 /* -------------------------------------------------------------------------- */
 @media screen and (max-width: 768px) {
+  .site-header {
+    height: 72px;
+  }
+
+  .brand-logo {
+    height: 52px;
+    max-width: 180px;
+  }
+
+  .footer-logo {
+    height: 50px;
+    max-width: 175px;
+  }
+
   .btn-mobile-menu {
     display: flex;
   }
@@ -244,9 +262,18 @@
 /* 4. SMARTPHONE KECIL (MAX-WIDTH: 480px)                                     */
 /* -------------------------------------------------------------------------- */
 @media screen and (max-width: 480px) {
+  .site-header {
+    height: 68px;
+  }
+
   .brand-logo {
-    height: 36px;
-    max-width: 140px;
+    height: 46px;
+    max-width: 155px;
+  }
+
+  .footer-logo {
+    height: 44px;
+    max-width: 150px;
   }
 
   .container {
@@ -265,12 +292,6 @@
 
   .hero-actions .btn {
     width: 100%;
-  }
-
-  .hero-floating-card {
-    position: static;
-    margin-top: 14px;
-    max-width: 100%;
   }
 
   .categories-grid {

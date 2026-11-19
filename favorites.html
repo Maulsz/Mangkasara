@@ -65,14 +65,14 @@
         Pada Semester 1, halaman berstatus Coming Soon dan tidak menerapkan
         penyimpanan aktif LocalStorage atau database.
       -->
-      <div class="coming-soon-wrapper">
+      <div class="coming-soon-wrapper fade-up">
         <div class="coming-soon-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
             <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
           </svg>
         </div>
 
-        <span class="coming-soon-badge">Rencana Pengembangan — Semester 2</span>
+        <span class="coming-soon-category">Rencana Pengembangan — Semester 2</span>
 
         <h1 class="coming-soon-title font-serif">Koleksi Favorit Segera Hadir</h1>
 
@@ -94,19 +94,19 @@
           </div>
 
           <div class="coming-soon-roadmap-grid">
-            <div class="coming-soon-step">
+            <div class="coming-soon-step fade-up" data-delay="1">
               <div class="coming-soon-step-num">01</div>
               <div class="coming-soon-step-title">Basis Data MySQL</div>
               <p class="coming-soon-step-desc">Tabel <code>users</code> dan <code>favorites</code> untuk menyimpan relasi data secara aman dan persisten.</p>
             </div>
 
-            <div class="coming-soon-step">
+            <div class="coming-soon-step fade-up" data-delay="2">
               <div class="coming-soon-step-num">02</div>
               <div class="coming-soon-step-title">PHP JSON API</div>
               <p class="coming-soon-step-desc">Endpoint <code>/api/favorites.php</code> yang melayani permintaan GET, POST, dan DELETE dengan prepared statements.</p>
             </div>
 
-            <div class="coming-soon-step">
+            <div class="coming-soon-step fade-up" data-delay="3">
               <div class="coming-soon-step-num">03</div>
               <div class="coming-soon-step-title">Integrasi Antarmuka</div>
               <p class="coming-soon-step-desc">Frontend JavaScript akan terhubung dinamis menggunakan fetch() tanpa perlu reload seluruh halaman.</p>
@@ -137,10 +137,12 @@
   -->
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-grid">
+      <div class="footer-grid fade-up">
         <div class="footer-brand">
-          <h3 class="font-serif">MANGKASARA</h3>
-          <div class="footer-tagline">Discover the Taste of Makassar</div>
+          <a href="index.html" class="footer-brand-link" aria-label="Mangkasara Beranda">
+            <img src="assets/logo-1.png" alt="Mangkasara" class="footer-logo" />
+          </a>
+          <span class="footer-tagline">DISCOVER THE TASTE OF MAKASSAR</span>
           <p class="footer-desc">
             Platform eksplorasi dan ensiklopedia kuliner tradisional Makassar. Mengabadikan cita rasa otentik, resep turun-temurun, dan cerita budaya Nusantara.
           </p>

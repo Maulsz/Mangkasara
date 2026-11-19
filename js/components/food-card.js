@@ -3,12 +3,13 @@
  * MANGKASARA — KOMPONEN FOOD CARD (KARTU KULINER)
  * ==============================================================================
  * Bertanggung jawab menghasilkan template HTML kartu kuliner yang rapi, elegan,
- * dan terfokus pada keindahan fotografi makanan tanpa dekorasi visual berlebih.
+ * dan terfokus pada keindahan fotografi makanan tanpa dekorasi badge berlebih.
  *
- * Catatan Arsitektur Semester 1:
- * Sesuai spesifikasi PRD v3.0, fitur favorit aktif (LocalStorage/Database)
- * ditangguhkan ke Semester 2. Kartu kuliner berfokus menyajikan fotografi,
- * nama, deskripsi singkat, kategori, tag rasa/bahan, dan tautan ke halaman detail.
+ * Refinement Visual:
+ * - Menghilangkan badge melayang (floating badge) pada foto agar fotografi tampil murni.
+ * - Menampilkan kategori kuliner melalui tipografi overline yang elegan di dalam konten.
+ * - Menghilangkan tag/pil dekoratif di footer untuk memberikan ruang bernapas editorial.
+ * - Terintegrasi dengan sistem animasi fade-up awal (Page Load Only).
  * ==============================================================================
  */
 
@@ -17,11 +18,12 @@
  *
  * Parameter:
  * @param {object} food - Objek data kuliner yang akan ditampilkan.
+ * @param {number} [index=0] - Indeks kartu untuk efek stagger delay animasi fade-up.
  *
  * Return:
  * @returns {string} String HTML yang merepresentasikan satu food card.
  */
-function createFoodCardHTML(food) {
+function createFoodCardHTML(food, index = 0) {
   if (!food) return "";
 
   // Ambil nama kategori pendukung
@@ -35,13 +37,11 @@ function createFoodCardHTML(food) {
     ? getFoodImage(food)
     : (food.image || "assets/images/placeholder-food.svg");
 
-  // Render tag bahan/metode jika ada (maksimal 2 tag agar tampilan tetap rapi)
-  const tagsHTML = Array.isArray(food.tags)
-    ? food.tags.slice(0, 2).map((tag) => `<span class="food-tag">${tag}</span>`).join("")
-    : "";
+  // Hitung delay stagger animasi (1 - 4)
+  const staggerDelay = ((index % 4) + 1);
 
   return `
-    <article class="food-card" data-food-id="${food.id}">
+    <article class="food-card fade-up" data-delay="${staggerDelay}" data-food-id="${food.id}">
       <div class="food-card-media">
         <a href="detail.html?id=${food.id}" class="food-card-image-link" tabindex="-1" aria-hidden="true">
           <img 
@@ -52,24 +52,19 @@ function createFoodCardHTML(food) {
             onerror="this.onerror=null; this.src='assets/images/placeholder-food.svg';"
           />
         </a>
-        <span class="food-category-badge">${categoryName}</span>
       </div>
 
       <div class="food-card-content">
-        <div class="food-card-header">
-          <h3 class="food-card-title">
-            <a href="detail.html?id=${food.id}">${food.name}</a>
-          </h3>
-        </div>
+        <span class="food-card-category">${categoryName}</span>
+        <h3 class="food-card-title">
+          <a href="detail.html?id=${food.id}">${food.name}</a>
+        </h3>
 
         <p class="food-card-description">
           ${food.shortDescription || food.characteristics || ""}
         </p>
 
         <div class="food-card-footer">
-          <div class="food-card-tags">
-            ${tagsHTML}
-          </div>
           <a href="detail.html?id=${food.id}" class="btn-card-detail" aria-label="Pelajari hidangan ${food.name}">
             <span>Pelajari</span>
             <svg class="arrow-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

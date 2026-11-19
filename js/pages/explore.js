@@ -234,8 +234,12 @@ function updateFoodDisplay() {
   }
 
   container.innerHTML = filteredResults
-    .map((food) => createFoodCardHTML(food))
+    .map((food, index) => createFoodCardHTML(food, index))
     .join("");
+
+  if (typeof initFadeUpAnimations === "function") {
+    initFadeUpAnimations(container);
+  }
 }
 
 /**

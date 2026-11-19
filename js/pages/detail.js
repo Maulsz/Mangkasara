@@ -180,8 +180,12 @@ function renderRelatedFoods(currentFood) {
   }
 
   container.innerHTML = relatedList
-    .map((food) => createFoodCardHTML(food))
+    .map((food, index) => createFoodCardHTML(food, index))
     .join("");
+
+  if (typeof initFadeUpAnimations === "function") {
+    initFadeUpAnimations(container);
+  }
 }
 
 if (document.readyState === "loading") {

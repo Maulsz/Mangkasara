@@ -43,7 +43,7 @@
 
   /* Spasi dan Layout */
   --container-max-width: 1200px;
-  --header-height: 76px;
+  --header-height: 80px;
   
   /* Efek Bayangan Lembut & Halus (Restrained Shadows) */
   --shadow-subtle: 0 1px 4px rgba(48, 40, 33, 0.03);
@@ -337,6 +337,8 @@ p:last-child {
   background-color: var(--color-section);
   border-color: var(--color-primary-soft);
   color: var(--color-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(48, 40, 33, 0.06);
 }
 
 .btn-outline {
@@ -348,6 +350,8 @@ p:last-child {
 .btn-outline:hover {
   background-color: var(--color-primary);
   color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(189, 98, 73, 0.2);
 }
 
 .btn-sm {
@@ -358,4 +362,48 @@ p:last-child {
 .btn-lg {
   padding: 13px 26px;
   font-size: 1rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* 8. INITIAL PAGE-LOAD FADE-UP ANIMATION SYSTEM                              */
+/* (Page Load Only — No Scroll Triggers — Respects prefers-reduced-motion)    */
+/* -------------------------------------------------------------------------- */
+@keyframes pageLoadFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fallback default: Elemen secara default tampil penuh dan statis */
+.fade-up {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Dipicu HANYA saat inisialisasi awal pemuatan halaman (Page Load Only) */
+  html.page-animating .fade-up {
+    animation: pageLoadFadeUp 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* Stagger delays minimal dan singkat (40ms - 200ms) */
+  html.page-animating .fade-up[data-delay="1"] { animation-delay: 40ms; }
+  html.page-animating .fade-up[data-delay="2"] { animation-delay: 80ms; }
+  html.page-animating .fade-up[data-delay="3"] { animation-delay: 120ms; }
+  html.page-animating .fade-up[data-delay="4"] { animation-delay: 160ms; }
+  html.page-animating .fade-up[data-delay="5"] { animation-delay: 200ms; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
 }

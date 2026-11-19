@@ -37,8 +37,12 @@ function renderFeaturedFoods() {
   }
 
   container.innerHTML = featuredFoods
-    .map((food) => createFoodCardHTML(food))
+    .map((food, index) => createFoodCardHTML(food, index))
     .join("");
+
+  if (typeof initFadeUpAnimations === "function") {
+    initFadeUpAnimations(container);
+  }
 }
 
 /**
@@ -65,9 +69,10 @@ function renderCategoriesGrid() {
       : 0;
 
     const formattedIndex = String(index + 1).padStart(2, "0");
+    const staggerDelay = (index % 5) + 1;
 
     return `
-      <a href="explore.html?category=${cat.id}" class="category-card" title="Jelajahi kategori ${cat.name}">
+      <a href="explore.html?category=${cat.id}" class="category-card fade-up" data-delay="${staggerDelay}" title="Jelajahi kategori ${cat.name}">
         <div class="category-card-top">
           <span class="category-index font-serif">${formattedIndex}</span>
           <span class="category-card-count">${itemCount} Hidangan</span>
@@ -85,6 +90,10 @@ function renderCategoriesGrid() {
   }).join("");
 
   container.innerHTML = categoryCardsHTML;
+
+  if (typeof initFadeUpAnimations === "function") {
+    initFadeUpAnimations(container);
+  }
 }
 
 /**
