@@ -14,6 +14,7 @@
  * - shortDescription {string}: Ringkasan 1 kalimat untuk card preview.
  * - description {string}     : Deskripsi lengkap berdasarkan dokumentasi kuliner terpercaya.
  * - ingredients {string[]}   : Daftar bahan-bahan utama.
+ * - preparationSteps {string[]}: Tahapan ringkas dan berurutan cara pembuatan hidangan tradisional.
  * - characteristics {string} : Profil cita rasa dan karakteristik tekstur.
  * - history {string|null}    : Catatan sejarah terverifikasi (null jika belum terverifikasi).
  * - image {string|null}      : Path foto lokal jika sudah tersedia, atau null jika menunggu dokumentasi.
@@ -49,6 +50,14 @@ const foods = [
       "Bawang merah dan bawang putih",
       "Air tajin (cucian beras putih pertama)"
     ],
+    preparationSteps: [
+      "Rebus daging sapi dan jeroan bersama serai, lengkuas, jahe, dan daun salam menggunakan air tajin (cucian beras pertama) hingga empuk.",
+      "Angkat daging dan jeroan matang, tiriskan lalu potong berbentuk dadu sedang. Sisihkan air kaldu rebusannya.",
+      "Haluskan bumbu rempah seperti bawang merah, bawang putih, ketumbar, jintan, dan merica yang telah disangrai.",
+      "Tumis bumbu halus dengan sedikit minyak hingga matang dan harum, lalu masukkan ke dalam panci kuah kaldu.",
+      "Tambahkan kacang tanah sangrai yang telah digiling sangat halus ke dalam kuah mendidih, aduk rata hingga kuah mengental dan gurih.",
+      "Sajikan panas dalam mangkuk bersama ketupat atau buras, irisan daun bawang, bawang goreng, perasan jeruk nipis, dan sambal tauco."
+    ],
     characteristics: "Kuah kental berwarna kecokelatan dengan aroma rempah pekat, tekstur daging empuk, dan cita rasa gurih legit kacang yang khas.",
     history: "Coto Makassar diyakini telah ada sejak era Kerajaan Gowa pada abad ke-16. Pada mulanya, bagian daging sirloin atau has dalam disajikan khusus untuk bangsawan dan raja di istana, sementara bagian jeroan diolah untuk masyarakat umum dan prajurit. Seiring waktu, sajian ini berkembang menjadi kuliner rakyat yang dinikmati oleh seluruh lapisan masyarakat.",
     image: "assets/images/coto.jpg",
@@ -74,6 +83,14 @@ const foods = [
       "Ketumbar dan jintan bubuk",
       "Bawang merah dan bawang putih",
       "Gula merah dan garam"
+    ],
+    preparationSteps: [
+      "Rebus potongan daging sapi dan jeroan dalam air mendidih bersama memaran serai dan lengkuas hingga empuk.",
+      "Haluskan bumbu rempah yang terdiri dari bawang merah, bawang putih, ketumbar sangrai, jintan, cabai, dan jahe.",
+      "Tumis bumbu halus hingga harum dan tanak, kemudian tuang ke dalam panci rebusan kaldu daging.",
+      "Bumbui kuah dengan air asam jawa, gula merah, dan garam secukupnya untuk menghasilkan paduan rasa gurih segar.",
+      "Masukkan kelapa parut yang telah disangrai kecokelatan dan ditumbuk halus ke dalam kuah mendidih, aduk hingga kuah bertekstur kental beraroma khas.",
+      "Sajikan panas dalam mangkuk, tambahkan kuning telur ayam kampung mentah (alas) jika diinginkan, dan nikmati bersama nasi putih hangat."
     ],
     characteristics: "Kuah bertekstur agak kasar karena serundeng kelapa, gurih pekat beraroma sangrai, dan creamy jika ditambah kuning telur.",
     history: "Nama 'Pallubasa' berasal dari bahasa Makassar, yaitu 'pallu' yang berarti memasak dan 'basa' yang berarti basah atau berkuah. Dahulu merupakan makanan para pekerja pelabuhan dan buruh karena kalorinya yang tinggi dan mengenyangkan.",
@@ -101,6 +118,14 @@ const foods = [
       "Bawang merah dan bawang putih",
       "Ketumbar dan merica"
     ],
+    preparationSteps: [
+      "Cuci bersih iga sapi berdaging tebal, lalu rebus dalam air mendidih bersama daun salam, serai, dan kayu manis hingga daging iga empuk lembut.",
+      "Rendam buah kluwek tua dengan air hangat, ambil daging buahnya lalu haluskan bersama bawang merah, bawang putih, ketumbar, jintan, pala, dan merica.",
+      "Tumis bumbu kluwek halus bersama cengkeh dan kapulaga hingga harum dan matang sempurna.",
+      "Masukkan tumisan bumbu ke dalam panci rebusan iga, aduk rata hingga kuah berubah warna menjadi gelap kehitaman khas konro.",
+      "Bumbui dengan garam dan sedikit gula, masak dengan api kecil agar bumbu rempah meresap ke dalam pori-pori daging iga dan tulang.",
+      "Sajikan panas bersama taburan bawang goreng, irisan seledri, perasan jeruk nipis, dan sambal cabai rawit pedas."
+    ],
     characteristics: "Kuah pekat gurih beraroma rempah hangat dan kluwek yang earthy, berpadu dengan daging iga lembut yang juicy.",
     history: "Konro merupakan sajian tradisional yang berakar dari masyarakat Bugis-Makassar. Pada mulanya disajikan pada upacara adat atau perayaan hari besar, kini Konro telah menjadi salah satu kuliner Nusantara yang paling tersohor.",
     image: null,
@@ -127,6 +152,14 @@ const foods = [
       "Serai, jahe, dan kayu manis",
       "Pala bubuk dan kaldu sapi"
     ],
+    preparationSteps: [
+      "Rebus daging sapi bagian has dalam atau sengkel hingga empuk, potong dadu kecil, lalu sisihkan kuah kaldunya.",
+      "Siapkan bahan pelengkap khas: goreng perkedel kentang kecil dan potongan paru sapi hingga kering renyah.",
+      "Haluskan bumbu rempah seperti bawang merah, bawang putih, kemiri, ketumbar, jintan, lengkuas, dan jahe.",
+      "Tumis bumbu halus hingga harum, masukkan ke dalam air kaldu rebusan daging, lalu tambahkan sedikit susu evaporasi atau santan encer agar kuah gurih lembut.",
+      "Tata bihun atau soun seduh di dasar mangkuk, tambahkan potongan daging sapi empuk, perkedel kentang, dan irisan paru goreng renyah.",
+      "Siram dengan kuah rempah mendidih, taburi daun bawang serta bawang goreng, dan santap bersama nasi putih hangat atau ikan bakar."
+    ],
     characteristics: "Kuah harum rempah ringan namun gurih, dipadukan dengan kelembutan soun dan tekstur renyah-lembut perkedel kentang.",
     history: "Diciptakan pertama kali oleh H. Dollahi pada era 1950-an di Pangkajene (Pangkep), yang kemudian membuka cabang di Makassar. Nama 'Saudara' diambil dari filosofi persaudaraan bahwa siapa pun yang singgah menyantap sup ini dianggap sebagai saudara.",
     image: null,
@@ -151,6 +184,14 @@ const foods = [
       "Tauge segar",
       "Kacang tanah goreng renyah",
       "Bawang goreng dan seledri cincang"
+    ],
+    preparationSteps: [
+      "Kupas singkong (ubi kayu), potong dadu sedang, lalu goreng dalam minyak panas hingga bagian luarnya renyah dan bagian dalamnya empuk mereka.",
+      "Rebus daging sapi atau tetelan bersama daun salam dan serai hingga menghasilkan kaldu sapi yang gurih dan bening.",
+      "Haluskan bawang putih, bawang merah, merica butir, dan pala, lalu tumis hingga harum dan masukkan ke dalam panci kuah kaldu sapi.",
+      "Siapkan mangkuk saji, susun singkong goreng hangat, bihun seduh, tauge pendek, dan potongan daging sapi rebus.",
+      "Siramkan kuah kaldu sapi panas mendidih ke atas susunan bahan di mangkuk.",
+      "Beri taburan kacang tanah goreng, irisan seledri, bawang goreng renyah, potongan telur rebus, dan sambal cabai rawit kuning khas Makassar."
     ],
     characteristics: "Perpaduan rasa gurih kaldu sapi dengan manis-lembut singkong goreng yang menyerap kuah secara nikmat.",
     history: null,
@@ -177,6 +218,14 @@ const foods = [
       "Serai dimemarkan",
       "Garam dan minyak kelapa"
     ],
+    preparationSteps: [
+      "Bersihkan ikan segar (bandeng, kakap, atau tongkol), potong sesuai selera, lumuri dengan garam dan sedikit air perasan jeruk nipis untuk menghilangkan aroma amis.",
+      "Larutkan asam jawa matang dengan air bersih secukupnya, saring dan buang ampas serta bijinya.",
+      "Iris tipis bawang merah dan haluskan kunyit segar untuk memberikan warna kuning cerah alami.",
+      "Masukkan air asam jawa ke dalam panci tanah liat atau wajan, tambahkan irisan bawang merah, kunyit, garam, dan cabai rawit utuh.",
+      "Didihkan kuah asam kunyit, kemudian masukkan potongan ikan segar secara perlahan agar bentuknya tetap utuh dan tidak hancur.",
+      "Masak dengan api sedang hingga ikan matang sempurna dan kuahnya terasa asam, gurih, dan menyegarkan."
+    ],
     characteristics: "Cita rasa dominan asam menyegarkan berpadu gurih ikan laut alami dan sedikit sengatan pedas cabai rawit.",
     history: "Berasal dari kata 'pallu' (memasak) dan 'mara' (kering/mengecil atau rasa kecut/segar). Hidangan ini mencerminkan kearifan masyarakat pesisir Makassar dalam mengolah hasil laut segar dengan rempah sederhana yang menghilangkan aroma amis ikan.",
     image: "assets/images/pallu-mara.png",
@@ -202,6 +251,14 @@ const foods = [
       "Cabai rawit merah",
       "Garam dan daun salam"
     ],
+    preparationSteps: [
+      "Bersihkan kepala atau potongan daging ikan segar, lumuri dengan air jeruk nipis dan garam, lalu diamkan sebentar.",
+      "Keluarkan daging buah kaloa (kluwek) yang sudah matang tua, rendam dengan air hangat, lalu haluskan hingga lembut.",
+      "Haluskan bumbu rempah yang terdiri dari bawang merah, bawang putih, cabai, jahe, ketumbar, dan serai bagian putih.",
+      "Tumis bumbu halus bersama pasta kaloa hingga benar-benar matang dan harum agar tidak menyisakan rasa langu atau getir.",
+      "Tuangkan air kaldu atau air secukupnya ke dalam tumisan bumbu, tambahkan air asam jawa dan garam, lalu didihkan hingga kuah berwarna gelap.",
+      "Masukkan potongan ikan ke dalam kuah mendidih, masak dengan api sedang hingga bumbu meresap sempurna dan tekstur ikan lembut matang."
+    ],
     characteristics: "Rasa gurih mendalam dan legit dari kaloa berpadu kesegaran asam jawa dan daging ikan lembut.",
     history: null,
     image: null,
@@ -224,6 +281,14 @@ const foods = [
       "Garam laut kristal melimpah",
       "Air bersih secukupnya",
       "Cabai rawit merah utuh"
+    ],
+    preparationSteps: [
+      "Bersihkan ikan cakalang, tongkol, atau layang segar, buang insang dan isi perutnya, lalu cuci bersih.",
+      "Kerat-kerat kedua sisi badan ikan agar bumbu garam dan kunyit dapat meresap sempurna hingga ke bagian dalam.",
+      "Balurkan garam dalam jumlah yang cukup banyak bersama kunyit bubuk secara merata ke seluruh permukaan tubuh ikan.",
+      "Susun ikan di dalam wajan atau kuali tebal beralaskan batang serai yang telah dimemarkan, lalu beri sedikit air.",
+      "Masak dengan api kecil hingga air rebusan menyusut habis dan mengering, sehingga bumbu kunyit garam mengkristal di kulit ikan dan dagingnya menjadi padat tahan lama.",
+      "Sajikan ikan pallu ce'la bersama sambal raca' mangga muda yang segar pedas dan sepiring nasi hangat."
     ],
     characteristics: "Gurih asin yang kuat dengan semburat aroma kunyit yang menonjolkan kesegaran alami ikan.",
     history: "Dahulu merupakan cara nelayan Makassar mengawetkan hasil tangkapan ikan agar tidak lekas basi sebelum adanya mesin pendingin modern.",
@@ -254,6 +319,15 @@ const foods = [
       "Telur ayam kocok lepas",
       "Sawi hijau segar dan bawang putih cincang"
     ],
+    preparationSteps: [
+      "Urai mie basah tipis khas Makassar, lalu goreng dalam minyak panas yang banyak (deep frying) hingga mekar garing keemasan. Angkat dan tiriskan.",
+      "Iris tipis daging ayam fillet, hati ayam, bakso sapi, dan udang kupas sebagai isian kuah gurih.",
+      "Tumis bawang putih cincang hingga harum, masukkan potongan ayam, hati, bakso, dan udang, aduk hingga berubah warna.",
+      "Tuangkan air kaldu ayam, bumbui dengan garam, merica, saus tiram, dan sedikit minyak wijen, lalu masak hingga mendidih.",
+      "Masukkan potongan sawi hijau, kocok sebutir telur lalu tuangkan perlahan ke dalam kuah sambil diaduk cepat hingga membentuk serabut halus.",
+      "Larutkan tepung maizena atau sagu dengan sedikit air, masukkan ke dalam kuah sambil diaduk hingga kuah mengental kental berkilau.",
+      "Tata mie kering renyah di atas piring saji, lalu siramkan kuah kental panas beserta isiannya tepat sesaat sebelum disantap."
+    ],
     characteristics: "Sensasi kontras antara mie renyah gurih dan kuah kental panas yang gurih lembut beraroma bawang putih.",
     history: "Diciptakan oleh Ang Kho Tjao pada tahun 1950-an dan kemudian dipopulerkan oleh salah satu putranya yang akrab disapa 'Titi'. Kini sajian ini telah menjadi salah satu identitas kuliner malam paling favorit di Kota Makassar.",
     image: null,
@@ -279,6 +353,14 @@ const foods = [
       "Cabai merah, cabai rawit, dan terasi untuk sambal tumis",
       "Gula merah kelapa"
     ],
+    preparationSteps: [
+      "Cuci bersih beras ketan putih atau ketan hitam, lalu rendam dalam air bersih selama 1 hingga 2 jam agar teksturnya pulen.",
+      "Kukus beras ketan dalam dandang pengukus hingga setengah matang.",
+      "Didihkan santan kelapa sedang bersama daun pandan wangi dan garam, lalu campurkan beras ketan setengah matang ke dalam santan (aron) hingga terserap habis.",
+      "Kukus kembali ketan yang telah diaron hingga matang tanak, harum, dan mengilat pulen.",
+      "Buat serundeng kelapa: sangrai kelapa parut bersama bumbu halus bawang merah, bawang putih, cabai, gula merah, dan asam jawa hingga kering renyah kecokelatan.",
+      "Sajikan songkolo ketan hangat beralas daun pisang dengan taburan serundeng kelapa melimpah, ikan teri asin goreng renyah, dan sambal pedas."
+    ],
     characteristics: "Tekstur pulen ketan berpadu gurih manis serundeng, asin renyah ikan teri, dan pedas sambal yang menggugah selera.",
     history: "Dinamakan 'Bagadang' (begadang) karena kedai-kedai Songkolo di Makassar umumnya buka hingga larut malam dan dini hari, menjadi santapan favorit warga yang beraktivitas di malam hari.",
     image: null,
@@ -303,6 +385,14 @@ const foods = [
       "Daun pandan wangi",
       "Bawang merah goreng gurih"
     ],
+    preparationSteps: [
+      "Cuci bersih beras berkualitas baik, lalu tiriskan hingga kering.",
+      "Haluskan bumbu yang terdiri dari bawang merah, bawang putih, kunyit bakar, jahe, dan serai.",
+      "Tumis bumbu halus menggunakan minyak kelapa atau minyak samin hingga matang dan mengeluarkan aroma harum semerbak.",
+      "Masukkan beras ke dalam tumisan bumbu, tambahkan santan kelapa sedang, daun salam, daun jeruk, dan garam, lalu aron hingga santan meresap ke butiran beras.",
+      "Pindahkan beras aron ke dalam dandang pengukus yang telah dipanaskan, kukus hingga nasi matang tanak dan berwarna kuning keemasan berkilau.",
+      "Sajikan kaddo minyak hangat sebagai hidangan perayaan adat bersama aneka lauk pendamping seperti ayam masak habang, telur pindang, dan serundeng."
+    ],
     characteristics: "Aroma harum rempah yang pekat, tekstur nasi pulen berminyak lembut, dan cita rasa gurih sedap.",
     history: "Merupakan makanan sakral dan simbol rasa syukur masyarakat Makassar dalam upacara tradisi Maudu Lompoa (peringatan Maulid akbar).",
     image: null,
@@ -326,6 +416,14 @@ const foods = [
       "Tepung beras sebagai pengental halus",
       "Gula pasir tabur",
       "Garam secukupnya"
+    ],
+    preparationSteps: [
+      "Rendam biji jagung pulut putih yang telah dikupas kulit arinya dalam air bersih semalaman agar butirannya lunak dan mekar.",
+      "Rebus jagung pulut dalam air mendidih bersama daun pandan wangi dengan api sedang hingga butiran jagung merekah dan empuk menyerupai bubur kental.",
+      "Tuangkan santan kelapa encer dan sedikit garam ke dalam rebusan jagung, aduk perlahan agar santan tidak pecah.",
+      "Larutkan sedikit tepung beras atau tepung maizena dengan air, tuangkan ke dalam bubur jagung sambil diaduk hingga teksturnya lembut mengental.",
+      "Angkat dan sajikan bubur bassang panas-panas di dalam mangkuk saji.",
+      "Beri taburan gula pasir di atasnya sesuai tingkat kemanisan yang diinginkan sebelum disantap."
     ],
     characteristics: "Tekstur kenyal-lembut dari biji jagung pulut berpadu dengan kuah santan gurih lembut dan manis ringan.",
     history: "Berasal dari kata 'bassang' dalam bahasa Makassar yang merupakan singkatan dari 'possi bassang' (mengenyangkan). Makanan sarapan murah meriah dan padat energi bagi masyarakat Makassar sejak masa lampau.",
@@ -356,6 +454,14 @@ const foods = [
       "Cabai rawit iris pedas",
       "Minyak kelapa untuk menumis bumbu"
     ],
+    preparationSteps: [
+      "Bersihkan ikan laut segar (seperti baronang, kakap, atau bawal), buat beberapa guratan pada badannya, lalu lumuri dengan garam dan air jeruk nipis.",
+      "Bakar ikan di atas bara arang batok kelapa sambil sesekali diolesi minyak hingga setengah matang.",
+      "Haluskan bumbu parape yang terdiri dari bawang merah dalam jumlah banyak, cabai merah, sedikit bawang putih, dan terasi bakar.",
+      "Tumis bumbu halus bersama gula merah sisir, kecap manis, air asam jawa, dan garam hingga bumbu mengental pekat dan terkaramelisasi harum.",
+      "Oleskan bumbu parape kental secara tebal dan merata ke kedua sisi ikan, lalu bakar kembali di atas bara arang hingga bumbu meresap dan matang kecokelatan harum.",
+      "Angkat ikan bakar bumbu parape dan sajikan segera bersama nasi putih hangat dan sambal segar pendamping."
+    ],
     characteristics: "Paduan rasa manis karamel bawang yang gurih, semburat asam segar, dan aroma asap bakaran arang batok kelapa.",
     history: "Dikenal sebagai salah satu teknik olahan ikan tertua di kalangan nelayan Makassar, memadukan kekayaan hasil laut Selat Makassar dengan gula aren dan asam lokal.",
     image: null,
@@ -378,6 +484,14 @@ const foods = [
       "Jeruk nipis segar",
       "Minyak kelapa untuk olesan bakar",
       "Sambal terasi cobe dan sambal mangga muda pencit"
+    ],
+    preparationSteps: [
+      "Bersihkan ikan laut segar ukuran sedang hingga besar, biarkan utuh bersama sisiknya jika ingin menjaga kelembapan daging selama pemanggangan tradisional.",
+      "Lumuri badan ikan dengan campuran perasan air jeruk nipis dan garam secukupnya, diamkan selama 10 menit agar meresap.",
+      "Siapkan panggangan kawat di atas bara arang batok kelapa yang menyala stabil tanpa kobaran api besar.",
+      "Panggang ikan di atas bara sambil dibolak-balik secara teratur hingga kulitnya kering beraroma asap dan daging bagian dalamnya matang sempurna.",
+      "Oleskan sedikit minyak kelapa atau minyak bumbu tipis-tipis agar permukaan ikan tidak lengket pada panggangan.",
+      "Angkat ikan bakar yang matang harum dan sajikan bersama aneka racikan sambal khas Makassar seperti dabu-dabu, sambal terasi, atau sambal mangga muda."
     ],
     characteristics: "Daging ikan yang manis segar beraroma asap alami, sangat nikmat ketika dicocol ke sambal pedas-asam.",
     history: null,
@@ -403,6 +517,14 @@ const foods = [
       "Kunyit segar dan jahe",
       "Garam dan merica"
     ],
+    preparationSteps: [
+      "Bersihkan sisik dan isi perut ikan bandeng segar, lalu pukul-pukul perlahan seluruh badan ikan hingga daging di dalamnya hancur terlepas dari kulitnya.",
+      "Patahkan tulang ekor dan tarik keluar tulang punggung utama ikan dari arah lubang insang tanpa merobek kulit luar.",
+      "Keluarkan seluruh daging ikan, lalu pisahkan dan bersihkan duri-duri halusnya secara teliti.",
+      "Campurkan daging ikan yang telah bersih duri dengan kelapa parut sangrai, telur kocok, serta bumbu halus (bawang merah, bawang putih, ketumbar, merica, dan garam).",
+      "Masukkan kembali adonan daging ikan berbumbu ke dalam kantung kulit ikan bandeng hingga kembali padat berbentuk ikan utuh.",
+      "Kukus ikan bandeng isi hingga matang padat, lumuri dengan kocokan telur, lalu goreng dalam minyak panas hingga berwarna kuning keemasan renyah."
+    ],
     characteristics: "Tekstur padat lembut bebas duri dengan rasa rempah gurih aromatik kelapa yang lezat.",
     history: null,
     image: null,
@@ -425,6 +547,14 @@ const foods = [
       "Garam kristal halus",
       "Minyak kelapa untuk olesan panggangan",
       "Sambal tomat segar dan kecap manis cabai rawit"
+    ],
+    preparationSteps: [
+      "Bersihkan ikan bandeng segar, belah dari bagian punggung atau dada membentuk kupu-kupu, dan buang kotoran perutnya hingga bersih.",
+      "Cabut duri-duri halus (jika menggunakan varian bandeng tanpa duri) agar lebih nyaman dinikmati.",
+      "Lumuri seluruh permukaan daging ikan dengan air perasan jeruk nipis, garam, dan sedikit kunyit bubuk untuk menghilangkan aroma amis.",
+      "Jepit ikan pada panggangan kawat, letakkan di atas bara arang batok kelapa dengan sisi kulit menghadap bara terlebih dahulu.",
+      "Saat dibalik, olesi permukaan daging ikan dengan racikan mentega cair, kecap manis, dan ketumbar bubuk secara merata.",
+      "Bakar hingga kedua sisi matang sempurna dengan bagian luar kecokelatan harum dan daging tetap berair lembut (juicy), lalu sajikan bersama sambal kecap pedas."
     ],
     characteristics: "Gurih alami, lembut berlemak di bagian perut, serta aroma khas panggangan arang.",
     history: null,
@@ -454,6 +584,14 @@ const foods = [
       "Bawang putih, cuka makan, dan cabai merah giling untuk saus merah cair",
       "Gula pasir dan garam secukupnya"
     ],
+    preparationSteps: [
+      "Buat adonan kulit: campur tepung terigu, minyak goreng panas atau margarin leleh, dan air garam hangat, uleni hingga kalis elastis lalu gilas tipis.",
+      "Buat isian: tumis bawang putih dan bawang merah cincang, masukkan wortel dan kentang dadu kecil, tauge, soun rebus, serta daging cincang, bumbui dengan garam, merica, dan pala bubuk hingga matang.",
+      "Cetak lembaran kulit tipis berbentuk lingkaran, letakkan satu sendok isian sayur dan sepotong telur rebus di tengahnya.",
+      "Lipat kulit menjadi bentuk setengah lingkaran, lalu pilin atau kelim rapat tepian kulitnya agar isian tidak keluar saat digoreng.",
+      "Goreng jalangkote dalam minyak panas yang banyak dengan api sedang hingga kulit melepuh renyah dan berwarna kuning keemasan.",
+      "Sajikan jalangkote hangat bersama saus sambal cuka cair khas Makassar yang berasa asam, manis, dan pedas menyegarkan."
+    ],
     characteristics: "Kulit luar super renyah dan gurih, isian sayur lembut manis, berpadu sempurna dengan siraman saus cabai asam-manis-pedas yang segar.",
     history: "Nama 'Jalangkote' berasal dari kata 'jalang' (jalan) dan 'kote' (berkotek/teriak), merujuk pada anak-anak penjaja kue keliling pada masa lampau yang berjalan kaki sambil berteriak menjajakan kue hangat ini di perkampungan Makassar.",
     image: "assets/images/jalangkote.jpg",
@@ -477,6 +615,14 @@ const foods = [
       "Garam dan daun pandan",
       "Daun pisang segar dan semat lidi",
       "Isian abon ikan cakalang/tuna pedas gurih (varian kambu)"
+    ],
+    preparationSteps: [
+      "Cuci bersih beras ketan putih atau ketan hitam, rendam selama 1 hingga 2 jam, lalu tiriskan.",
+      "Masak beras ketan bersama santan kelapa kental, daun pandan wangi, dan garam hingga santan terserap habis (aron).",
+      "Kukus beras ketan aron hingga setengah matang, lalu angkat dan biarkan agak hangat agar mudah dibentuk.",
+      "Ambil selembar daun pisang yang telah dilayukan, letakkan adonan ketan memanjang, dan beri isian abon ikan tongkol berbumbu pedas gurih di bagian tengahnya.",
+      "Gulung daun pisang hingga memadat berbentuk silinder ramping panjang, lalu semat kedua ujungnya menggunakan tusuk lidi.",
+      "Panggang gogoso di atas bara arang batok kelapa sambil dibolak-balik hingga daun pisang mengering kecokelatan dan aroma bakar meresap ke dalam ketan."
     ],
     characteristics: "Tekstur ketan kenyal dan pulen dengan aroma harum asap daun pisang bakar serta rasa gurih santan yang mantap.",
     history: "Gogoso merupakan sajian istimewa yang wajib hadir saat perayaan Hari Raya Idulfitri dan Iduladha di Makassar, biasanya disantap bersama telur asin atau Coto.",
@@ -502,6 +648,14 @@ const foods = [
       "Vanili bubuk aromatik",
       "Minyak kelapa / mentega untuk olesan cetakan"
     ],
+    preparationSteps: [
+      "Campur tepung terigu, gula pasir, ragi instan atau baking powder, dan garam secukupnya di dalam wadah bersih.",
+      "Tuangkan santan kelapa hangat sedikit demi sedikit sambil diaduk menggunakan whisk hingga adonan menjadi licin dan rata tanpa gumpalan.",
+      "Masukkan kelapa parut setengah tua yang gurih ke dalam adonan, aduk rata, lalu diamkan selama 15-20 menit agar adonan sedikit mengembang.",
+      "Panaskan cetakan kue baroncong tradisional (berbentuk busur setengah lingkaran) di atas kompor atau bara arang, olesi tipis dengan minyak atau margarin.",
+      "Tuangkan adonan ke dalam lubang-lubang cetakan hingga hampir penuh, tutup cetakan, dan masak dengan api kecil.",
+      "Panggang hingga bagian bawah dan pinggir kue berwarna cokelat renyah dan bagian atasnya matang empuk, lalu cungkil dan angkat untuk disajikan selagi hangat."
+    ],
     characteristics: "Lembut di dalam, sedikit garing di bagian dasar cetakan, dengan perpaduan rasa manis lembut dan gurih kelapa.",
     history: "Kue warisan tempo dulu yang hingga kini masih lestari dijajakan menggunakan gerobak khas dengan corong kayu bakar di sudut-sudut jalanan Kota Makassar.",
     image: "assets/images/baroncong.jpg",
@@ -524,6 +678,14 @@ const foods = [
       "Gula pasir secukupnya",
       "Garam dan vanili",
       "Minyak goreng bersih"
+    ],
+    preparationSteps: [
+      "Kukus atau rebus ubi jalar (ubi manis) hingga matang empuk sempurna, lalu kupas kulitnya selagi masih hangat.",
+      "Haluskan ubi menggunakan garpu atau ulekan hingga lumat lembut tanpa menyisakan gumpalan keras.",
+      "Campurkan ubi halus dengan sedikit gula pasir, garam, dan tepung terigu secukupnya hingga adonan kalis dan mudah dibentuk.",
+      "Ambil sejumput adonan ubi, bentuk menjadi bulatan lonjong atau pipih sesuai ukuran kudapan tradisional.",
+      "Buat adonan pencelup renyah: larutkan tepung terigu, sedikit tepung beras, garam, dan air dingin hingga membentuk adonan cair yang cukup kental.",
+      "Celupkan bulatan ubi ke dalam adonan pencelup, lalu goreng dalam minyak panas sedang hingga kulit luarnya berwarna kuning keemasan renyah dan bagian dalamnya lembut manis."
     ],
     characteristics: "Kulit luar renyah kriuk dengan bagian dalam ubi yang lembut, empuk, dan manis alami.",
     history: null,
@@ -552,6 +714,15 @@ const foods = [
       "Gula pasir dan sedikit garam",
       "Daun pisang kepok untuk bungkus khusus"
     ],
+    preparationSteps: [
+      "Pilih buah pisang kepok matang pohon yang manis harum, kupas kulitnya, dan buang bagian tengah pisang yang berbiji hitam.",
+      "Haluskan daging buah pisang bersama telur bebek atau ayam, santan kelapa kental, gula pasir, dan sedikit garam menggunakan blender atau remasan tangan hingga lembut menyatu.",
+      "Siapkan daun pisang batu atau kepok yang telah dibersihkan dan dipotong rapi, lalu bentuk bungkusan khas tum (tembera).",
+      "Tuangkan beberapa sendok adonan pisang cair ke dalam daun pisang, lipat kedua sisi daun ke tengah dan semat bagian atasnya menggunakan tusuk lidi.",
+      "Panaskan dandang pengukus dengan air mendidih, lalu susun bungkusan barongko secara tegak di dalam wadah kukusan.",
+      "Kukus selama 25 hingga 30 menit hingga barongko matang memadat dan aroma daun pisang menguar harum.",
+      "Dinginkan di suhu ruang lalu simpan dalam lemari pendingin, karena barongko paling nikmat disantap dalam keadaan dingin."
+    ],
     characteristics: "Tekstur super lembut seperti puding sutra yang meleleh di lidah dengan rasa manis legit alami pisang dan gurih santan.",
     history: "Dahulu Barongko merupakan hidangan penutup penjamuan khusus para raja dan bangsawan Bugis-Makassar, serta menjadi hantaran wajib adat dalam prosesi lamaran dan pernikahan adat ('erang-erang').",
     image: "assets/images/barongko.jpg",
@@ -575,6 +746,14 @@ const foods = [
       "Daun pandan wangi",
       "Air bersih / air kelapa",
       "Topping pilihan: keju parut, cokelat, atau pasta durian asli"
+    ],
+    preparationSteps: [
+      "Pilih pisang kepok atau pisang raja yang mengkal (setengah matang dan bertekstur padat), lalu kupas kulitnya.",
+      "Panggang buah pisang di atas panggangan bara arang batok kelapa sambil dibolak-balik hingga setengah matang dan aromanya keluar.",
+      "Angkat pisang, letakkan di antara dua papan penjepit kayu khusus (alat epe), lalu tekan perlahan hingga pisang menjadi pipih rata tanpa hancur.",
+      "Letakkan kembali pisang pipih di atas bara api, bakar hingga kedua permukaannya matang kecokelatan dan beraroma legit khas bakaran arang.",
+      "Buat saus gula merah aren: lelehkan gula merah aren bersama air, daun pandan wangi, dan sedikit garam, lalu masak hingga mengental menjadi sirup karamel harum.",
+      "Tata pisang bakar pipih di atas piring saji, lalu siramkan saus gula merah aren hangat melimpah di atasnya sebelum dinikmati."
     ],
     characteristics: "Tekstur pisang yang kenyal dan sedikit asam-sepat berpadu serasi dengan manis karamel saus gula merah yang legit dan aroma panggangan arang.",
     history: "Kata 'Epe' berasal dari bahasa Makassar yang berarti 'jepit' atau 'ditekan hingga pipih'. Menjadi ikon budaya kuliner nongkrong malam tepi laut masyarakat Makassar sejak puluhan tahun silam.",
@@ -602,6 +781,14 @@ const foods = [
       "Sirup merah rasa pisang ambon (sirup DHT khas Makassar)",
       "Susu kental manis putih"
     ],
+    preparationSteps: [
+      "Kukus pisang raja matang sebentar agar teksturnya padat dan warnanya cerah, lalu kupas kulitnya dan sisihkan.",
+      "Buat adonan kulit hijau: campur tepung beras, tepung terigu, santan encer, gula, garam, dan perasan air daun pandan suji, lalu masak di atas api kecil hingga adonan menggumpal kalis.",
+      "Ambil adonan kulit hijau, pipihkan di atas selembar plastik yang diolesi sedikit minyak, letakkan satu buah pisang raja utuh di tengahnya, lalu gulung rapat menyelimuti pisang.",
+      "Kukus pisang berbalut adonan hijau dalam pengukus selama 15-20 menit hingga matang mengilat, angkat dan biarkan dingin lalu potong-potong serong.",
+      "Buat bubur sumsum: rebus tepung beras bersama santan kelapa, daun pandan, dan sedikit garam sambil terus diaduk hingga mengental lembut dan meletup-letup.",
+      "Sajikan dalam mangkuk: taruh bubur sumsum di dasar mangkuk, tata potongan pisang ijo, beri serutan es batu melimpah, lalu siram dengan sirup merah DHT aroma pisang ambon dan krimer kental manis."
+    ],
     characteristics: "Perpaduan rasa manis legit, aroma pandan yang wangi, kelembutan gurih bubur sumsum, dan kesegaran es yang dingin melepas dahaga.",
     history: "Konon berakar dari kisah juru masak istana di masa kerajaan yang menyajikan pisang berbalut adonan hijau sebagai simbol kedamaian dan kesejukan. Kini menjadi santapan berbuka puasa dan pelepas dahaga paling favorit di Makassar.",
     image: "assets/images/pisang-hijo.jpg",
@@ -627,6 +814,14 @@ const foods = [
       "Sirup merah DHT khas Makassar",
       "Es serut dingin"
     ],
+    preparationSteps: [
+      "Pilih buah pisang raja matang pohon, kukus pisang utuh bersama kulitnya hingga empuk matang, lalu kupas dan potong-potong bulat serong tebal.",
+      "Buat bubur sumsum lembut: larutkan tepung beras dengan santan kelapa sedang, tambahkan gula pasir, sedikit garam, dan selembar daun pandan wangi.",
+      "Masak larutan tepung dan santan di atas api kecil sambil terus diaduk perlahan menggunakan spatula kayu agar tidak hangus di dasar panci, hingga meletup-letup dan bertekstur kental halus.",
+      "Siapkan mangkuk saji, tata potongan pisang raja kukus di bagian dasar mangkuk.",
+      "Tuangkan bubur sumsum santan hangat di atas potongan pisang hingga tertutup rata.",
+      "Sajikan dengan tambahan es serut dingin, kucuran sirup merah DHT aroma pisang ambon khas Makassar, dan sedikit susu kental manis. Dapat pula dinikmati hangat tanpa es."
+    ],
     characteristics: "Rasa manis alami pisang yang empuk berpadu dengan gurih santan bubur sumsum yang lembut serta sensasi dingin manis sirup.",
     history: "Dapat dinikmati dalam keadaan dingin dengan es serut di siang hari yang terik, maupun disajikan hangat di pagi hari atau musim hujan.",
     image: "assets/images/pallu-butung.jpg",
@@ -649,6 +844,14 @@ const foods = [
       "Tepung terigu sedikit sebagai pengikat",
       "Gula pasir untuk rebusan sirup kental",
       "Air daun pandan wangi"
+    ],
+    preparationSteps: [
+      "Pisahkan kuning telur bebek segar dari putihnya secara hati-hati; gunakan hanya kuning telur untuk mendapatkan tekstur lembut dan warna kuning keemasan alami.",
+      "Kocok kuning telur bersama sedikit kenari cincang halus hingga mengembang lembut dan berbusa halus.",
+      "Masukkan adonan telur ke dalam cetakan kecil atau bentuk bulatan lonjong kecil.",
+      "Buat larutan air gula: rebus air bersama gula pasir dalam jumlah banyak dan daun pandan wangi hingga mendidih dan menjadi sirup gula cair yang jernih.",
+      "Masukkan bulatan adonan kuning telur ke dalam rebusan air gula mendidih, rebus perlahan dengan api kecil hingga kue matang mengapung dan sirup gula meresap ke dalam pori-pori kue.",
+      "Angkat kue cucuru bayao yang telah matang mengilat keemasan, tiriskan perlahan dan sajikan dingin sebagai kudapan adat khas bangsawan Makassar."
     ],
     characteristics: "Tekstur empuk basah dengan rasa manis pekat yang legit dan aroma khas telur berpadu gurih renyah kenari.",
     history: "Merupakan kue prestisius yang selalu disajikan dalam wadah bosara pada upacara pernikahan adat bangsawan Bugis-Makassar sebagai simbol kehidupan rumah tangga yang manis dan kaya berkah.",

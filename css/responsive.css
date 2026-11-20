@@ -228,6 +228,21 @@
     padding: 24px 20px;
   }
 
+  .preparation-step-item {
+    gap: 12px;
+    padding: 12px 14px;
+  }
+
+  .step-number {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+  }
+
+  .step-text {
+    font-size: 0.88rem;
+  }
+
   /* Modal Mobile */
   .modal-dialog {
     margin: 16px;

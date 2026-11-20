@@ -312,6 +312,7 @@ Search and filtering must work with the local JavaScript data.
 - Short description.
 - Full description.
 - Ingredients.
+- Preparation steps (Cara Pembuatan).
 - Characteristics.
 - Historical or cultural story, when reliable information is available.
 - Sources or references when available.
@@ -324,6 +325,7 @@ Search and filtering must work with the local JavaScript data.
 3. Display the corresponding food information.
 4. Display a clear invalid or unavailable state if the food identifier does not exist.
 5. Related food cards should navigate to their respective detail pages.
+6. Render sequential preparation steps (`preparationSteps`). If `preparationSteps` is empty, null, or unavailable, display a gentle empty state notification ("Informasi cara pembuatan belum tersedia.") without rendering an empty list or throwing errors.
 
 Example URL:
 
@@ -393,6 +395,12 @@ Example:
     "Daging sapi",
     "Jeroan",
     "Kacang tanah"
+  ],
+  preparationSteps: [
+    "Rebus daging sapi dan jeroan bersama serai dan jahe hingga empuk.",
+    "Haluskan bumbu rempah dan kacang tanah sangrai.",
+    "Tumis bumbu halus hingga harum, lalu masukkan ke kuah kaldu rebusan.",
+    "Sajikan panas bersama ketupat, daun bawang, dan sambal tauco."
   ],
   characteristics: "Kuah kaya rempah dengan cita rasa gurih.",
   history: null,

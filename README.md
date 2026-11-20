@@ -130,6 +130,7 @@ Information may include:
 - Short description.
 - Full description.
 - Ingredients.
+- Preparation steps (Cara Pembuatan): Sequential overview of traditional cooking/preparation methods.
 - Characteristics.
 - History or cultural story when reliable information is available.
 - Sources or references.
@@ -326,6 +327,12 @@ export const foods = [
     shortDescription: "Hidangan berkuah khas Makassar.",
     description: "Deskripsi lengkap mengenai makanan.",
     ingredients: ["Daging sapi", "Jeroan", "Kacang tanah"],
+    preparationSteps: [
+      "Rebus daging sapi dan jeroan bersama serai dan jahe hingga empuk.",
+      "Haluskan bumbu rempah dan kacang tanah sangrai.",
+      "Tumis bumbu halus hingga harum, lalu masukkan ke kuah kaldu rebusan.",
+      "Sajikan panas bersama ketupat, daun bawang, dan sambal tauco."
+    ],
     characteristics: "Kuah kaya rempah dengan cita rasa gurih.",
     history: null,
     image: "assets/images/coto-makassar.webp",
@@ -337,6 +344,12 @@ export const foods = [
 ```
 
 This is an example of the data structure. The actual property names should remain consistent throughout the project.
+
+**Preparation Steps (`preparationSteps`):**
+- Properti `preparationSteps` berupa array string yang berisi tahapan berurutan cara pembuatan atau pengolahan kuliner secara ringkas dan informatif.
+- Pada `detail.html`, modul `js/pages/detail.js` merender elemen ini ke dalam container `#detail-food-preparation` sebagai ordered list (`<ol class="preparation-steps-list">`) dengan penomoran elegan.
+- **Penanganan Empty State:** Jika kuliner tidak memiliki tahapan pembuatan atau array `preparationSteps` kosong/tidak terdefinisi, sistem menampilkan pesan ramah *"Informasi cara pembuatan belum tersedia untuk kuliner ini."* tanpa menimbulkan error JavaScript atau merender list kosong.
+- Fungsi sanitasi `escapeHTML()` diterapkan untuk mencegah injeksi kode HTML berbahaya pada konten dinamis.
 
 **Why use local data?**
 

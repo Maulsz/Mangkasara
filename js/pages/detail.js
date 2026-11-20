@@ -113,7 +113,35 @@ function renderFoodDetail(food) {
 
   const descContainer = document.getElementById("detail-food-description");
   if (descContainer) {
-    descContainer.innerHTML = `<p>${food.description || food.shortDescription}</p>`;
+    descContainer.innerHTML = `<p>${escapeHTML(food.description || food.shortDescription)}</p>`;
+  }
+
+  // --------------------------------------------------------------------------
+  // CARA PEMBUATAN / LANGKAH PEMBUATAN TRADISIONAL
+  // --------------------------------------------------------------------------
+  // Merender tahapan pembuatan secara berurutan (1, 2, 3...) menggunakan
+  // angka serif terracotta dan box item yang nyaman dibaca.
+  // Jika preparationSteps kosong/tidak tersedia, tampilkan empty state ramah.
+  const prepContainer = document.getElementById("detail-food-preparation");
+  if (prepContainer) {
+    if (Array.isArray(food.preparationSteps) && food.preparationSteps.length > 0) {
+      prepContainer.innerHTML = `
+        <ol class="preparation-steps-list">
+          ${food.preparationSteps.map((step, index) => `
+            <li class="preparation-step-item">
+              <span class="step-number font-serif" aria-hidden="true">${index + 1}</span>
+              <p class="step-text">${escapeHTML(step)}</p>
+            </li>
+          `).join("")}
+        </ol>
+      `;
+    } else {
+      prepContainer.innerHTML = `
+        <p class="preparation-empty-note">
+          Informasi cara pembuatan belum tersedia untuk kuliner ini.
+        </p>
+      `;
+    }
   }
 
   const ingredientsContainer = document.getElementById("detail-ingredients-list");
@@ -186,6 +214,21 @@ function renderRelatedFoods(currentFood) {
   if (typeof initFadeUpAnimations === "function") {
     initFadeUpAnimations(container);
   }
+}
+
+/**
+ * Sanitasi string untuk mencegah injeksi HTML sebelum dimasukkan ke DOM.
+ * @param {string} str - Teks mentah yang akan disanitasi.
+ * @returns {string} Teks yang aman dirender ke innerHTML.
+ */
+function escapeHTML(str) {
+  if (!str) return "";
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
 if (document.readyState === "loading") {
