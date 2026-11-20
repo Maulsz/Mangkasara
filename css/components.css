@@ -1389,13 +1389,16 @@
 
 .footer-links a {
   font-size: 0.9rem;
-  color: rgba(247, 242, 234, 0.75);
-  transition: color var(--transition-fast);
+  color: rgba(247, 242, 234, 0.65);
+  text-decoration: none;
+  display: inline-block;
+  transform: translateX(0);
+  transition: color 0.25s ease, transform 0.25s ease;
 }
 
 .footer-links a:hover {
   color: #FFFFFF;
-  padding-left: 3px;
+  transform: translateX(3px);
 }
 
 .footer-bottom {
