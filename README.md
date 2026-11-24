@@ -507,9 +507,9 @@ The team has collected official brand and food photography assets for the projec
 
 ### 9.1 Brand Logo & Favicon
 
-- **Path:** `assets/logo-1.png`
-- **Spesifikasi:** Format 32-bit RGBA (1402 x 475 px) dengan latar transparan.
-- **Implementasi:** Digunakan sebagai logo utama pada navbar seluruh halaman website dan favicon browser (`<link rel="icon" type="image/png" href="assets/logo-1.png" />`).
+- **Path:** `assets/logo-1.png` (Brand Logo Utama) dan `assets/favicon.png` (Favicon Browser)
+- **Spesifikasi:** Format 32-bit RGBA (1402 x 475 px) untuk logo utama; cropped icon simbol rumah khas Makassar 256 x 256 px untuk favicon browser.
+- **Implementasi:** `assets/logo-1.png` digunakan sebagai logo utama navbar dan footer; `assets/favicon.png` digunakan sebagai favicon browser (`<link rel="icon" type="image/png" href="assets/favicon.png" />`).
 - **Warna Identitas:** Menampilkan aksen terracotta `#BD6249` dan warna teks gelap `#302821`.
 
 ### 9.2 Food Photography Mapping

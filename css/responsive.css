@@ -214,9 +214,11 @@
   .category-pills-list {
     width: 100%;
     overflow-x: auto;
+    overflow-y: hidden;
     flex-wrap: nowrap;
-    padding-bottom: 6px;
+    padding-bottom: 8px;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
   }
 
   .btn-category-pill {
