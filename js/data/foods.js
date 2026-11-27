@@ -94,7 +94,7 @@ const foods = [
     ],
     characteristics: "Kuah bertekstur agak kasar karena serundeng kelapa, gurih pekat beraroma sangrai, dan creamy jika ditambah kuning telur.",
     history: "Nama 'Pallubasa' berasal dari bahasa Makassar, yaitu 'pallu' yang berarti memasak dan 'basa' yang berarti basah atau berkuah. Dahulu merupakan makanan para pekerja pelabuhan dan buruh karena kalorinya yang tinggi dan mengenyangkan.",
-    image: null,
+    image: "assets/images/pallubasa.jpg",
     tags: ["Daging sapi", "Rebus", "Gurih"],
     sources: [
       "Dinas Pariwisata Kota Makassar",
@@ -128,7 +128,7 @@ const foods = [
     ],
     characteristics: "Kuah pekat gurih beraroma rempah hangat dan kluwek yang earthy, berpadu dengan daging iga lembut yang juicy.",
     history: "Konro merupakan sajian tradisional yang berakar dari masyarakat Bugis-Makassar. Pada mulanya disajikan pada upacara adat atau perayaan hari besar, kini Konro telah menjadi salah satu kuliner Nusantara yang paling tersohor.",
-    image: null,
+    image: "assets/images/sop-konro.jpg",
     tags: ["Daging sapi", "Rebus", "Gurih"],
     sources: [
       "Pemerintah Kota Makassar",
@@ -162,7 +162,7 @@ const foods = [
     ],
     characteristics: "Kuah harum rempah ringan namun gurih, dipadukan dengan kelembutan soun dan tekstur renyah-lembut perkedel kentang.",
     history: "Diciptakan pertama kali oleh H. Dollahi pada era 1950-an di Pangkajene (Pangkep), yang kemudian membuka cabang di Makassar. Nama 'Saudara' diambil dari filosofi persaudaraan bahwa siapa pun yang singgah menyantap sup ini dianggap sebagai saudara.",
-    image: null,
+    image: "assets/images/sop-saudara.jpg",
     tags: ["Daging sapi", "Rebus", "Gurih"],
     sources: [
       "Kajian Gastronomi Sulawesi Selatan — Balai Pelestarian Nilai Budaya"
@@ -261,7 +261,7 @@ const foods = [
     ],
     characteristics: "Rasa gurih mendalam dan legit dari kaloa berpadu kesegaran asam jawa dan daging ikan lembut.",
     history: null,
-    image: null,
+    image: "assets/images/pallu-kaloa.jpg",
     tags: ["Ikan", "Rebus", "Gurih", "Asam"],
     sources: [
       "Dokumentasi Kuliner Tradisional Sulawesi Selatan"
@@ -330,7 +330,7 @@ const foods = [
     ],
     characteristics: "Sensasi kontras antara mie renyah gurih dan kuah kental panas yang gurih lembut beraroma bawang putih.",
     history: "Diciptakan oleh Ang Kho Tjao pada tahun 1950-an dan kemudian dipopulerkan oleh salah satu putranya yang akrab disapa 'Titi'. Kini sajian ini telah menjadi salah satu identitas kuliner malam paling favorit di Kota Makassar.",
-    image: null,
+    image: "assets/images/mie-titti.jpg",
     tags: ["Ayam", "Seafood", "Goreng", "Gurih"],
     sources: [
       "Pemerintah Kota Makassar — Dinas Kebudayaan",
@@ -363,7 +363,7 @@ const foods = [
     ],
     characteristics: "Tekstur pulen ketan berpadu gurih manis serundeng, asin renyah ikan teri, dan pedas sambal yang menggugah selera.",
     history: "Dinamakan 'Bagadang' (begadang) karena kedai-kedai Songkolo di Makassar umumnya buka hingga larut malam dan dini hari, menjadi santapan favorit warga yang beraktivitas di malam hari.",
-    image: null,
+    image: "assets/images/songkolo-bagadang.webp",
     tags: ["Beras", "Kukus", "Gurih", "Pedas"],
     sources: [
       "Pusat Dokumentasi Kebudayaan Makassar"
@@ -395,7 +395,7 @@ const foods = [
     ],
     characteristics: "Aroma harum rempah yang pekat, tekstur nasi pulen berminyak lembut, dan cita rasa gurih sedap.",
     history: "Merupakan makanan sakral dan simbol rasa syukur masyarakat Makassar dalam upacara tradisi Maudu Lompoa (peringatan Maulid akbar).",
-    image: null,
+    image: "assets/images/kaddo-minyak.jpg",
     tags: ["Beras", "Kukus", "Gurih"],
     sources: [
       "Balai Pelestarian Nilai Budaya Sulawesi Selatan"
@@ -427,7 +427,7 @@ const foods = [
     ],
     characteristics: "Tekstur kenyal-lembut dari biji jagung pulut berpadu dengan kuah santan gurih lembut dan manis ringan.",
     history: "Berasal dari kata 'bassang' dalam bahasa Makassar yang merupakan singkatan dari 'possi bassang' (mengenyangkan). Makanan sarapan murah meriah dan padat energi bagi masyarakat Makassar sejak masa lampau.",
-    image: null,
+    image: "assets/images/bassang.jpg",
     tags: ["Rebus", "Gurih", "Manis"],
     sources: [
       "Ensiklopedi Kuliner Tradisional Nusantara"
@@ -464,7 +464,7 @@ const foods = [
     ],
     characteristics: "Paduan rasa manis karamel bawang yang gurih, semburat asam segar, dan aroma asap bakaran arang batok kelapa.",
     history: "Dikenal sebagai salah satu teknik olahan ikan tertua di kalangan nelayan Makassar, memadukan kekayaan hasil laut Selat Makassar dengan gula aren dan asam lokal.",
-    image: null,
+    image: "assets/images/juku-parape.jpg",
     tags: ["Ikan", "Seafood", "Bakar", "Manis", "Gurih"],
     sources: [
       "Dinas Perikanan dan Ketahanan Pangan Kota Makassar"
@@ -527,7 +527,7 @@ const foods = [
     ],
     characteristics: "Tekstur padat lembut bebas duri dengan rasa rempah gurih aromatik kelapa yang lezat.",
     history: null,
-    image: null,
+    image: "assets/images/juku-kambu.jpg",
     tags: ["Ikan", "Goreng", "Gurih"],
     sources: [
       "Pusat Pelestarian Kuliner Pesisir Sulawesi Selatan"
@@ -626,7 +626,7 @@ const foods = [
     ],
     characteristics: "Tekstur ketan kenyal dan pulen dengan aroma harum asap daun pisang bakar serta rasa gurih santan yang mantap.",
     history: "Gogoso merupakan sajian istimewa yang wajib hadir saat perayaan Hari Raya Idulfitri dan Iduladha di Makassar, biasanya disantap bersama telur asin atau Coto.",
-    image: null,
+    image: "assets/images/gogoso.jpg",
     tags: ["Beras", "Bakar", "Kukus", "Gurih"],
     sources: [
       "Lembaga Kesenian dan Kebudayaan Makassar"
@@ -689,7 +689,7 @@ const foods = [
     ],
     characteristics: "Kulit luar renyah kriuk dengan bagian dalam ubi yang lembut, empuk, dan manis alami.",
     history: null,
-    image: null,
+    image: "assets/images/tarajong.jpg",
     tags: ["Goreng", "Manis"],
     sources: [
       "Jajanan Pasar Tradisional Sulawesi Selatan"
